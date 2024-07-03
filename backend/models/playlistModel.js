@@ -10,7 +10,7 @@ const playlist = new mongo.Schema({
         ref: "user",
     },
     likedCount:{
-        type: Int32Array,
+        type: Number,
         default: 0,
     },
     artwork:{

@@ -13,7 +13,7 @@ const tracks = new mongo.Schema({
         required: true,
     },
     plays:{
-        type: Int32Array,
+        type: Number,
         default: 0,
     },
     albumArt:{
