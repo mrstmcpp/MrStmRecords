@@ -5,4 +5,4 @@ const getToken = async(email , user) => {
     return token;
 }
 
-module.exports = {getToken};
+module.exports = getToken;

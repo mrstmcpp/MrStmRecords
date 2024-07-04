@@ -16,6 +16,11 @@ const userSchema = new mongo.Schema({
         type: String,
         required: true,
     },
+    password:{
+        type: String,
+        required: true,
+        private: true,
+    }
 })
 
 const UserModel = mongo.model("userdata" , userSchema);

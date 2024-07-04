@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const {getToken} = require("../utils/helpers");
+const getToken = require("../utils/helpers");
 
 router.post("/register" , async(req , res) => {
     const {email , username , firstName, lastName , password} = req.body;

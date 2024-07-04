@@ -6,9 +6,9 @@ const tracks = new mongo.Schema({
     },
     artist:{
         type: mongo.Types.ObjectId,
-        ref: "user",
+        ref: "User",
     },
-    releasedate:{
+    releaseDate:{
         type: Date,
         required: true,
     },
