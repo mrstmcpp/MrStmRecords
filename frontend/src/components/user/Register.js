@@ -7,14 +7,16 @@ import PasswordInput from '../shared/PasswordInput';
 const RegisterComponent = () => {
     return (
         <Layout>
-            <div className='flex flex-col items-center justify-center py-40'>
-                <div className='w-full max-w-lg px-6 py-10 bg-gray-200 shadow-md rounded-lg'>
-                    <div className='font-semibold text-center mb-6'>Register your account</div>
+            <div className='bg-app-color flex flex-col items-center justify-center py-40'>
+                <div className='w-full max-w-lg px-6 py-10 bg-gray-800 shadow-md rounded-lg'>
+                    <div className='text-center font-bold text-rev-color mb-6 text-2xl'>Register your account</div>
+                    <TextInput placeholder={"Enter your full name"} label={"Name"} />
                     <TextInput placeholder={"Enter your email"} label={"Email"} />
                     <PasswordInput placeholder={"Enter your Password"} label={"Password"} />
+                    <PasswordInput placeholder={"Confirm your Password"} label={"Confirm Password"} />
                     <div className='flex justify-center mt-6'>
-                        <button className='bg-sky-500 hover:bg-sky-700 text-lg font-semibold rounded-full p-2 px-7 text-white'>
-                            REGISTER
+                        <button className='bg-orange-500 font-semibold p-2 px-7 rounded-full block text-white hover:bg-orange-400'>
+                            Sign Up
                         </button>
                     </div>
                     <div className='flex justify-center mt-4'>
