@@ -7,7 +7,9 @@ const authRoutes = require("./routes/authRoutes");
 const trackRoutes = require("./routes/trackRoutes");
 const playlistRoutes = require("./routes/playlistRoutes");
 const passport = require("passport");
+const cors = require("cors")
 
+app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 PassPortModule();

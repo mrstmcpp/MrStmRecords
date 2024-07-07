@@ -12,3 +12,7 @@ export const unauthenticatedPostRequest = async(route, body) => {
     return formattedResponse;
 }
 
+export const authenticatedGetRequest = async(route , token) => {
+    
+}
+

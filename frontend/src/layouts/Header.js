@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="">
+        <div className="fixed z-10">
             <div className='flex px-8 items-center fixed top-0 left-0 right-0 bg-app-color'>
                 <div className="p-4">
                     <Icon icon="solar:bag-music-bold" className='text-cyan-50' width={40} />

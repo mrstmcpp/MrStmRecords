@@ -1,23 +1,73 @@
+// Homepage.jsx
 import React from "react";
 import Layout from "./Layout";
 import { HomeCards } from "../components/shared/HomeCards";
-
+import { cardsData } from "../components/cards/cardsData";
+import { topArtistsData } from "../components/cards/artistsData";
+import { topTracksData } from "../components/cards/topTracks";
+import { GenreCards } from "../components/shared/GenreCards"
+import { genreData } from "../components/cards/genreData";
 
 const Homepage = () => {
     return (
         <Layout>
             <div className='bg-app-color py-20'>
-                
+                <h1 className="text-3xl font-bold text-center mb-8 text-white pt-24">New Releases</h1>
                 <div className="flex items-center justify-center space-x-4">
-                    <HomeCards text="Sample Text" urlImage="https://static.vecteezy.com/system/resources/thumbnails/037/044/052/small_2x/ai-generated-studio-shot-of-black-headphones-over-music-note-explosion-background-with-empty-space-for-text-photo.jpg" artist="Mr Stm" genre="MAINSTAGE"/>
-                    <HomeCards text="Sample Text" urlImage="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-pair-of-headphones-on-the-water-at-nighttime-image_2931863.jpg" artist="Mr Stm" genre="MAINSTAGE"/>
-                    <HomeCards text="Sample Text" urlImage="https://t3.ftcdn.net/jpg/05/62/98/36/360_F_562983674_524xR5Rzurt8MjTQghCvNYBcyeuvLHPE.jpg" artist="Mr Stm" genre="MAINSTAGE"/>
-                    <HomeCards text="Sample Text" urlImage="https://cache.desktopnexus.com/thumbseg/1597/1597682-bigthumbnail.jpg" artist="Mr Stm" genre="MAINSTAGE"/>
-                    <HomeCards text="Sample Text" urlImage="https://wallpapers.com/images/hd/people-and-music-phone-597tfo98qlhx2xbp.jpg" artist="Mr Stm" genre="MAINSTAGE"/>
+                    {cardsData.map((card, index) => (
+                        <HomeCards
+                            key={index}
+                            text={card.text}
+                            urlImage={card.urlImage}
+                            artist={card.artist}
+                            genre={card.genre}
+                        />
+                    ))}
+                </div>
+
+                {/* Top Tracks cards */}
+                <h1 className="text-3xl font-bold text-center mb-8 text-white pt-24">Top Tracks</h1>
+                <div className="flex items-center justify-center space-x-4">
+                    {topTracksData.map((card, index) => (
+                        <HomeCards
+                            key={index}
+                            text={card.text}
+                            urlImage={card.imageUrl}
+                            artist={card.artist}
+                            genre={card.genre}
+                        />
+                    ))}
+                </div>
+
+                {/* Top Artists cards */}
+                <h1 className="text-3xl font-bold text-center mb-8 text-white pt-24">Our Artists</h1>
+                <div className="flex items-center justify-center space-x-4">
+                    {topArtistsData.map((card, index) => (
+                        <HomeCards
+                            key={index}
+                            text={card.text}
+                            urlImage={card.urlImage}
+                            artist={card.artist}
+                            genre={card.genre}
+                        />
+                    ))}
+                </div>
+
+                {/* Music Genres Section */}
+                <h1 className="text-3xl font-bold text-center text-white mb-8 pt-24">Music Genres</h1>
+                <div className="flex items-center justify-center space-x-4">
+                    {genreData.map((genre, index) => (
+                        <GenreCards
+                            key={index}
+                            genreName={genre.genreName}
+                            description={genre.description}
+                            imageUrl={genre.imageUrl}
+                        />
+                    ))}
                 </div>
             </div>
         </Layout>
-    )
+    );
 }
 
 export default Homepage;

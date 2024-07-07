@@ -1,10 +1,60 @@
+.home-card-container {
+    position: relative;
+    width: 15rem; /* Tailwind w-60 */
+    height: 20rem; /* Tailwind h-80 */
+    overflow: hidden;
+    
+}
+
 .home-card {
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    /* You can add more transitions for different properties if needed */
+    position: relative;
+    z-index: 0; /* Ensure main content is above the background */
+    width: 100%;
+    height: 100%;
+    padding-top: 2rem; /* Tailwind pt-8 */
+    background-color: rgba(31, 41, 55, 0.8); /* Tailwind bg-slate-800 with transparency */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Tailwind shadow-lg */
 }
 
-.home-card:hover {
-    transform: scale(1.05);
-    background-color: #4a5568;  /* Change to your desired color */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Adjust the blur amount here */
+    z-index: -1; /* Place it behind the card content */
 }
 
+.home-card img {
+    width: 11rem; /* Tailwind w-44 */
+    height: 11rem; /* Tailwind h-44 */
+    object-fit: cover;
+}
+
+.home-card .font-bold {
+    color: white;
+    text-align: center;
+    padding-top: 1rem; /* Tailwind pt-4 */
+}
+
+.home-card .text-rev-color {
+    color: var(--rev-color); /* Define your custom color variable */
+    text-align: center;
+    overflow: auto;
+}
+
+.home-card .bg-orange-300 {
+    background-color: #fbbf24; /* Tailwind bg-orange-300 */
+    font-family: sans-serif;
+    font-weight: 100; /* Tailwind font-thin */
+    margin: 0.25rem; /* Tailwind m-1 */
+    padding: 0.25rem; /* Tailwind px-1 */
+}
+
+.home-card hr {
+    border-color: #6b7280; /* Tailwind border-gray-500 */
+    margin-top: 0.5rem; /* Tailwind mt-2 */
+}
