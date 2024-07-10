@@ -1,0 +1,31 @@
+.background-release-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    filter: blur(100px);
+    opacity: 0.4;
+    transition: background-image 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.content-release-box {
+    position: relative;
+    z-index: 1;
+    /* background-color: rgba(255, 255, 255, 0.6); Optional, for contrast
+     /* Optional, to enhance blur effect */
+    padding: 20px;
+    border-radius: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.slider-image {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out , filter 0.5s ease-in-out;
+}
+
+.slider-text {
+    transition: opacity 0.5s ease-in-out;
+}

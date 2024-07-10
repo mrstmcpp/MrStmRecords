@@ -46,11 +46,11 @@ const RegisterComponent = () => {
                     <TextInput placeholder="Enter your email" label="Email" value={email} setValue={setEmail} />
                     <PasswordInput placeholder="Enter your Password" label="Password" value={password} setValue={setPassword} />
                     <PasswordInput placeholder="Confirm your Password" label="Confirm Password" value={confirmPassword} setValue={setConfirmPassword} />
-                    <div className='flex items-center mt-4'>
+                    <div className='flex justify-center items-center mt-4'>
                         <input
                             type='checkbox'
                             id='terms'
-                            className='mr-2'
+                            className='mr-2 accent-green-500 items-center'
                             checked={agreedToTerms}
                             onChange={(e) => setAgreedToTerms(e.target.checked)}
                         />

@@ -1,11 +1,14 @@
 .home-card-container {
     position: relative;
     width: 15rem; /* Tailwind w-60 */
-    height: 20rem; /* Tailwind h-80 */
+    height: 22rem; /* Tailwind h-80 */
     overflow: hidden;
     
 }
 
+.home-card:hover {
+    transform: scale(1.05);
+}
 .home-card {
     position: relative;
     z-index: 0; /* Ensure main content is above the background */
@@ -14,6 +17,7 @@
     padding-top: 2rem; /* Tailwind pt-8 */
     background-color: rgba(31, 41, 55, 0.8); /* Tailwind bg-slate-800 with transparency */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Tailwind shadow-lg */
+    transition: transform 0.3s ease;
 }
 
 .background-image {

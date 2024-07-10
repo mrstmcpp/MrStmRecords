@@ -12,7 +12,18 @@ export const unauthenticatedPostRequest = async(route, body) => {
     return formattedResponse;
 }
 
-export const authenticatedGetRequest = async(route , token) => {
+export const unauthenticatedGetRequest = async(route , body) => {
+    const response = await fetch(backendURL + route , {
+        method: "GET", 
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+    })
+
+    const formattedResponse = await response.json();
+    return formattedResponse;
+
     
 }
 
