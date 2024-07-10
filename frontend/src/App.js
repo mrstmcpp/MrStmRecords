@@ -7,6 +7,9 @@ import ContactUs from './components/misc/Contact';
 import RegisterComponent from './components/user/Register';
 import PlayerComponent from './components/player/Player';
 import { useCookies } from 'react-cookie';
+import Admin from './components/admin/Admin';
+
+import UploadArea from './components/admin/UploadArea';
 
 function App() {
   const [cookie, setCookies] = useCookies(["token"]);
@@ -18,20 +21,24 @@ function App() {
 
         {/* PUBLIC ROUTES */}
 
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/contact-us' element={<ContactUs />} />
-        </Routes>
 
 
         {cookie.token ? (
           <Routes>
-
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='*' element={<Homepage />} />
+            <Route path='/admin' element={<Admin />} />
             <Route path='/player' element={<PlayerComponent />} />
+            <Route path='/upload' element={<UploadArea/>} />
           </Routes>
         ) : (
           <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='*' element={<Homepage />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/register' element={<RegisterComponent />} />
           </Routes>)}

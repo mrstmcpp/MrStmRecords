@@ -4,6 +4,10 @@ const tracks = new mongo.Schema({
         type: String,
         required: true,
     },
+    trackUrl:{
+        type: String,
+        required: true,
+    },
     artist:{
         type: mongo.Types.ObjectId,
         ref: "User",

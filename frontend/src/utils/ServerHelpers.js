@@ -12,18 +12,41 @@ export const unauthenticatedPostRequest = async(route, body) => {
     return formattedResponse;
 }
 
-export const unauthenticatedGetRequest = async(route , body) => {
+
+export const authenticatedPostRequest = async(route, body) => {
+    const token = getToken();
     const response = await fetch(backendURL + route , {
-        method: "GET", 
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
         },
+
         body: JSON.stringify(body),
-    })
+    });
 
     const formattedResponse = await response.json();
     return formattedResponse;
-
-    
 }
 
+
+export const authenticatedGETRequest = async (route) => {
+    const token = getToken();
+    const response = await fetch(backendURL + route, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const formattedResponse = await response.json();
+    return formattedResponse;
+};
+
+const getToken = () => {
+    const accessToken = document.cookie.replace(
+        /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+        "$1"
+    );
+    return accessToken;
+};

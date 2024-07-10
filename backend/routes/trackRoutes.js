@@ -4,12 +4,12 @@ const SongModel = require("../models/songModel");
 const router = express.Router();
 
 router.post("/create" , passport.authenticate("jwt" , {session: false}) , async(req, res) => {
-    const {title , releaseDate, plays , albumArt} = req.body;
-    if(!title || !releaseDate || !albumArt){
+    const {title , releaseDate, plays , albumArt , trackUrl} = req.body;
+    if(!title || !releaseDate || !albumArt || !trackUrl){
         return res.status(301).json({error : "Insufficient details."});
     }
     const artist = req.user._id;
-    const songDetails = {title , releaseDate, plays , albumArt , artist};
+    const songDetails = {title , releaseDate, plays , albumArt , artist , trackUrl};
     try {
         const createdSong = await SongModel.create(songDetails);
         return res.status(200).json(createdSong);
