@@ -1,22 +1,42 @@
-import React, { useState } from "react";
-import Layout from "../../layouts/Layout";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import UploadTrack from "./UploadSong";
 import UploadThumbnail from "./UploadThumbnail";
-import TextInput from "../shared/TextInput";
-import { authenticatedPostRequest } from "../../utils/ServerHelpers";
+import { authenticatedPostRequest, unauthenticatedGETRequest } from "../../utils/ServerHelpers";
+import { useNavigate } from "react-router-dom";
 
 const UploadArea = () => {
     const today = new Date();
-    const formattedDate = today.toLocaleDateString();
     const [title, setTitle] = useState("");
     const [albumArt, setAlbumArt] = useState("");
-    const [trackUrl, settrackUrl] = useState("");
-    const [releaseDate, setreleaseDate] = useState(formattedDate);
-
+    const [trackUrl, setTrackUrl] = useState("");
+    const [genre, setGenre] = useState("");
+    const [releaseDate, setReleaseDate] = useState(today);
     const [error, setError] = useState("");
+    const [genres, setGenres] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchGenres = async () => {
+            try {
+                const response = await unauthenticatedGETRequest("/genre/genres");
+                if (response) {
+                    setGenres(response);
+                } else {
+                    setError("Failed to load genres.");
+                }
+            } catch (error) {
+                console.error("Error fetching genres:", error);
+                setError("An error occurred while fetching genres.");
+            }
+        };
+
+        fetchGenres();
+    }, []);
 
     const validateInputs = () => {
-        if (!title || !albumArt || !trackUrl || !releaseDate) {
+        if (!title || !albumArt || !trackUrl || !releaseDate || !genre) {
             setError("All fields are required.");
             return false;
         }
@@ -28,49 +48,80 @@ const UploadArea = () => {
             return;
         }
 
+        // Format releaseDate to YYYY-MM-DD string
+        const formattedReleaseDate = releaseDate.toISOString().slice(0, 10);
+
         const data = {
             title,
             albumArt,
             trackUrl,
-            releaseDate
+            releaseDate: formattedReleaseDate,
+            genre
         };
 
         try {
             const response = await authenticatedPostRequest("/song/create", data);
             if (response && !response.err) {
                 alert("Successfully uploaded.");
-                
+                navigate("/admin");
             } else {
                 alert("Upload failed. Please check your data and try again.");
-                
             }
         } catch (error) {
             alert("An error occurred while uploading. Please try again.");
-            
         }
     };
 
     return (
-        <Layout>
-            <div className='bg-app-color flex flex-col items-center justify-center py-40'>
-                <div className='w-full max-w-screen-md px-6 py-10 bg-gray-800 shadow-md rounded-lg'>
-                    <div className='text-center font-bold text-white mb-6 text-2xl'>Upload Your Songs Here</div>
-                    {error && <div className="text-white mb-4 bg-red-600 rounded-full px-4 py-2">{error}</div>}
-                    <TextInput placeholder={"Title"} label={"Title of the track"} value={title} setValue={setTitle} />
-                    <div className="flex items-center justify-between py-8 font-semibold">
-                        <div className="place-content-center place-items-center text-center"><UploadThumbnail value={albumArt} setValue={setAlbumArt} /></div>
+        <div className="flex justify-center items-center h-full">
+            <div className="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-3xl">
+                {error && <div className="text-white mb-4 bg-red-600 rounded-full px-4 py-2 text-center">{error}</div>}
+                <label className="block text-white font-semibold mb-2">Title of the track:</label>
+                <input
+                    type="text"
+                    placeholder="Title"
+                    className="w-full p-2 border border-gray-300 rounded"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <div className="mt-4 flex flex-col space-y-4">
+                    <UploadThumbnail value={albumArt} setValue={setAlbumArt} />
+                    <UploadTrack value={trackUrl} setValue={setTrackUrl} />
+                </div>
+
+                <div className="flex mt-4 justify-between">
+                    <div className="w-1/2 pr-4">
+                        <label className="block text-white font-semibold mb-2">Release Date:</label>
+                        <DatePicker
+                            selected={releaseDate}
+                            onChange={date => setReleaseDate(date)}
+                            dateFormat="yyyy-MM-dd"
+                            className="w-full p-2 border border-gray-300 rounded"
+                        />
                     </div>
-                    <div className="flex items-center justify-between py-8 font-semibold">
-                        <div className=""><UploadTrack value={trackUrl} setValue={settrackUrl} /></div>
-                    </div>
-                    <TextInput placeholder={"YYYY-MM-DD"} label={"Release Date"} className="py-8" value={releaseDate} setValue={setreleaseDate} />
-                    <div className="py-4"></div>
-                    <div className="bg-orange-400 rounded-full px-3 py-2 font-semibold text-center items-center w-20 hover:bg-orange-300 cursor-pointer" onClick={submitTrack}>
-                        Submit
+                    <div className="w-1/2 pl-4">
+                        <label className="block text-white font-semibold mb-2">Genre:</label>
+                        <select
+                            value={genre}
+                            onChange={(e) => setGenre(e.target.value)}
+                            className="w-full p-2 border border-gray-300 rounded"
+                        >
+                            <option value="">Select Genre</option>
+                            {genres.map((genre, index) => (
+                                <option key={index} value={genre.genreName}>
+                                    {genre.genreName}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
+                <div className="mt-8 flex justify-center">
+                    <button className="bg-orange-400 rounded-full px-6 py-3 font-semibold text-white hover:bg-orange-300 transition duration-300" onClick={submitTrack}>
+                        Submit
+                    </button>
+                </div>
             </div>
-        </Layout>
+        </div>
     );
 }
 

@@ -37,9 +37,9 @@ export const LazySlider = () => {
             <div className="content-release-box ">
                 <div>
 
-                    <div className="flex flex-auto justify-evenly items-center pb-8">
+                    <div className="flex flex-wrap justify-evenly items-center pb-8">
                         <div className="w-96 h-96 slider-image">
-                            <div className="relative w-full h-full aspect-w-2 aspect-h-2">
+                            <div className="relative w-full h-full aspect-w-2 aspect-h-2 slider-image">
                                 <img
                                     key={slideIndex} // Force re-render of the image element
                                     src={slides[slideIndex].image}
@@ -56,7 +56,7 @@ export const LazySlider = () => {
                     </div>
                     <div className="border border-gray-500 m-8 mr-80 ml-80"></div>
 
-                    <div className="flex justify-end w-full px-96 mt-4 space-x-4">
+                    <div className="flex justify-around mt-4 space-x-4">
                         <button
                             className="bg-opacity-50 text-white cursor-pointer hover:bg-opacity-80 "
                             onClick={prevSlide}

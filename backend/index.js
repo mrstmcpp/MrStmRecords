@@ -7,7 +7,8 @@ const authRoutes = require("./routes/authRoutes");
 const trackRoutes = require("./routes/trackRoutes");
 const playlistRoutes = require("./routes/playlistRoutes");
 const passport = require("passport");
-const cors = require("cors")
+const cors = require("cors");
+const genreRoute = require("./routes/genreRoute");
 
 app.use(cors());
 app.use(express.json());
@@ -20,6 +21,7 @@ app.get("/" , (req, res) => {
 app.use("/auth" , authRoutes);
 app.use("/song" , trackRoutes);
 app.use("/playlist" , playlistRoutes);
+app.use("/genre" , genreRoute);
 
 
 Connection();

@@ -10,7 +10,7 @@ const tracks = new mongo.Schema({
     },
     artist:{
         type: mongo.Types.ObjectId,
-        ref: "User",
+        ref: "userdata",
     },
     releaseDate:{
         type: Date,
@@ -23,7 +23,11 @@ const tracks = new mongo.Schema({
     albumArt:{
         type: String,
         default: "",
-    }
+    },
+    genre:{
+        type: String,
+        default: "",
+    },
 
 })
 

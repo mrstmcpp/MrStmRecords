@@ -6,7 +6,7 @@ const SongModel = require("../models/songModel");
 const router = express.Router();
 
 router.post("/create" , passport.authenticate("jwt" , {session: false}) , async(req , res) => {
-    const {name , tracks , artwork} = req.body;
+    const {name , tracks , artwork , description} = req.body;
     if(!name || !tracks || !artwork){
         return res.status(301).json({error : "Insufficient details provided."});
     }
@@ -18,6 +18,7 @@ router.post("/create" , passport.authenticate("jwt" , {session: false}) , async(
         artwork,
         tracks,
         collabrators: [],
+        description,
     }
 
     const playlistDetails = await playlistModel.create(playlistPayload);
@@ -66,6 +67,12 @@ router.post("/add/song" , passport.authenticate("jwt" , {session: false}) , asyn
     playlist.tracks.push(songId);
     await playlist.save();
     return res.status(200).json(playlist);
+})
+
+
+router.get("/myplaylists" , passport.authenticate("jwt" , {session: false}) , async(req, res) => {
+    const playlists = await playlistModel.find({owner: req.user._id}).populate("owner");;
+    return res.status(200).json({playlists});
 })
 
 module.exports = router;

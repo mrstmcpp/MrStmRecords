@@ -5,9 +5,13 @@ const playlist = new mongo.Schema({
         type: String,
         required: true,
     },
+    description:{
+        type: String,
+        default: "",
+    },
     owner:{
         type: mongo.Types.ObjectId,
-        ref: "user",
+        ref: "userdata",
     },
     likedCount:{
         type: Number,
@@ -20,13 +24,13 @@ const playlist = new mongo.Schema({
     tracks:[
         {
             type: mongo.Types.ObjectId,
-            ref: "song",
+            ref: "tracks",
         }
     ],
     collabrators:[
         {
             type: mongo.Types.ObjectId,
-            ref: "user",
+            ref: "userdata",
         }
     ]
 })

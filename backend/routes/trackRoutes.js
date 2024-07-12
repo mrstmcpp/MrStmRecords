@@ -1,15 +1,16 @@
 const express = require("express");
 const passport = require("passport");
 const SongModel = require("../models/songModel");
+const User = require("../models/userModel");
 const router = express.Router();
 
 router.post("/create" , passport.authenticate("jwt" , {session: false}) , async(req, res) => {
-    const {title , releaseDate, plays , albumArt , trackUrl} = req.body;
-    if(!title || !releaseDate || !albumArt || !trackUrl){
+    const {title , releaseDate, plays , albumArt , trackUrl , genre} = req.body;
+    if(!title || !releaseDate || !albumArt || !trackUrl || !genre){
         return res.status(301).json({error : "Insufficient details."});
     }
     const artist = req.user._id;
-    const songDetails = {title , releaseDate, plays , albumArt , artist , trackUrl};
+    const songDetails = {title , releaseDate, plays , albumArt , artist , trackUrl , genre};
     try {
         const createdSong = await SongModel.create(songDetails);
         return res.status(200).json(createdSong);
@@ -22,7 +23,7 @@ router.post("/create" , passport.authenticate("jwt" , {session: false}) , async(
 
 
 router.get("/mytracks" , passport.authenticate("jwt" , {session: false}) , async(req, res) => {
-    const tracks = await SongModel.find({artist: req.user._id});
+    const tracks = await SongModel.find({artist: req.user._id}).populate("artist");
     return res.status(200).json({tracks});
 })
 

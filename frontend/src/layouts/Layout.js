@@ -6,7 +6,7 @@ const Layout = ({children}) => {
     return (
         <>
             <Header />
-                <div style={{ paddingTop: '120px' }} className="bg-app-color">
+                <div  className="bg-app-color">
                     {children}
                 </div>
             <Footer />

@@ -3,6 +3,7 @@
     width: 15rem; /* Tailwind w-60 */
     height: 22rem; /* Tailwind h-80 */
     overflow: hidden;
+    display: flex;
     
 }
 

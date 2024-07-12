@@ -16,7 +16,7 @@ function App() {
 
 
   return (
-    <div className='w-1/3 h-1/3 bg-app-color font-poppins'>
+    <div className=' bg-app-color font-poppins'>
       <BrowserRouter>
 
         {/* PUBLIC ROUTES */}
@@ -29,7 +29,7 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path='/contact-us' element={<ContactUs />} />
             <Route path='*' element={<Homepage />} />
-            <Route path='/admin' element={<Admin />} />
+            <Route path='/admin/*' element={<Admin />} />
             <Route path='/player' element={<PlayerComponent />} />
             <Route path='/upload' element={<UploadArea/>} />
           </Routes>
