@@ -1,6 +1,6 @@
-# Stmify
+# MrStmRecords 
 
-Welcome to **Stmify** – a portfolio website showcasing my work as a developer and artist. Stmify provides a unique streaming experience for visitors, allowing them to listen to my songs and explore the artist section.
+Welcome to **MrStmRecords ** – a portfolio website showcasing my work as a developer and artist. Stmify provides a unique streaming experience for visitors, allowing them to listen to my songs and explore the artist section.
 
 ## Features
 
@@ -57,7 +57,7 @@ To run this project locally, follow these steps:
 ## Project Structure
 
 ```
-stmify/
+MrStmRecords /
 ├── public/
 │   ├── index.html
 │   └── ...
