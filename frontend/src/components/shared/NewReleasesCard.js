@@ -54,7 +54,7 @@ export const LazySlider = () => {
                             <button className="border-2 rounded-full p-3 font-bold text-white hover:text-orange-200 hover:bg-slate-700 hover:opacity-90"> {slides[slideIndex].buttonName} </button>
                         </div>
                     </div>
-                    <div className="border border-gray-500 m-8 mr-80 ml-80"></div>
+                    <div className="border border-gray-500 m-8 sm:ml-80 sm:mr-80"></div>
 
                     <div className="flex justify-around mt-4 space-x-4">
                         <button

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../assets/Stmify-8-7-2024.png";
 import { Icon } from '@iconify/react';
+import './Header.css'; 
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const Header = () => {
                         )}
                     </button>
                 </div>
-                <div className={`md:flex flex-wrap items-center ${isOpen ? 'block' : 'hidden'}`}>
+                <div className={`md:flex flex-wrap ${isOpen ? '' : 'hidden'}`}>
                     <NavLink to={"/"} label="HOME" toggleMenu={toggleMenu} className="hover:text-gray-300" />
                     <NavLink to={"/about"} label="ABOUT" toggleMenu={toggleMenu} className="hover:text-gray-300"/>
                     <NavLink to={"/portfolio"} label="PORTFOLIO" toggleMenu={toggleMenu} className="hover:text-gray-300"/>

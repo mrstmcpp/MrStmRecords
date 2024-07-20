@@ -33,10 +33,29 @@ router.get("/genres", async (req, res) => {
 });
 
 
-router.get("/genres/:genreTitle" , passport.authenticate("jwt" , {session: false}) , async(req , res) => {
-    const {genreTitle} = req.params;
-    const genre = await genreModel.find({genreName : genreTitle});
+router.get("/genres/:genreId" , async(req , res) => {
+    const {genreId} = req.params;
+    const genre = await genreModel.find({_id : genreId});
     return res.status(200).json({data : genre});
+})
+
+
+
+
+router.put("/updateGenre/:genreId" , passport.authenticate("jwt" , {session: false}) , async(req , res) => {
+    const {genreId} = req.params;
+    const {artwork , description , genreName} = req.body;
+
+    try {
+        const updatedGenre = await genreModel.findByIdAndUpdate(genreId , {artwork , description ,  genreName} , {new : true});
+        if (!updatedGenre) {
+            return res.status(404).json({ message: "Genre not found" });
+        }
+
+        return res.status(200).json(updatedGenre);
+    } catch (error) {
+        return res.status(500).json({ message: "Error updating genre", error });
+    }
 })
 
 

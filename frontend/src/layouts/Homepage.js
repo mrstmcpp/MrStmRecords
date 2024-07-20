@@ -72,7 +72,7 @@ const Homepage = () => {
                             genreName={genre.genreName}
                             description={genre.description}
                             imageUrl={genre.artwork}
-                            
+                            genreId={genre._id}
                         />
                     ))}
                 </div>

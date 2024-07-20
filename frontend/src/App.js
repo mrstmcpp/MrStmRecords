@@ -8,7 +8,7 @@ import RegisterComponent from './components/user/Register';
 import PlayerComponent from './components/player/Player';
 import { useCookies } from 'react-cookie';
 import Admin from './components/admin/Admin';
-
+import GenrePage from './components/pages/genrePage';
 import UploadArea from './components/admin/UploadArea';
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
             <Route path='/admin/*' element={<Admin />} />
             <Route path='/player' element={<PlayerComponent />} />
             <Route path='/upload' element={<UploadArea/>} />
+            <Route path='/genre/*' element={<GenrePage/>} />
           </Routes>
         ) : (
           <Routes>

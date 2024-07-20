@@ -20,9 +20,9 @@ export const ArtistChange = () => {
 
     const renderArtists = () => {
         return artists.map((artist, index) => (
-            <div key={index} className="py-2">
+            <div key={index} className="p-2">
                 <div className="flex flex-wrap border p-4 rounded-lg shadow-lg">
-                    <div className="">
+                    <div className="flex items-center justify-center">
                         <img src={artist.urlImage} alt={artist.artist} className="object-cover w-40 h-40 rounded-md" />
                     </div>
                     <div className="flex flex-col justify-center items-start px-8 space-y-4">
@@ -60,22 +60,25 @@ export const ArtistChange = () => {
     };
 
     return (
-        <div className="">
+        <div>
+
+        <div className="flex flex-wrap">
             {renderArtists()}
-            <div className="flex justify-center mt-8">
-                <button
-                    onClick={handleSubmit}
-                    className="bg-blue-500 text-white rounded-full px-6 py-2 hover:bg-blue-600"
-                >
-                    Submit
-                </button>
             </div>
             {successMessage && (
                 <div className="flex justify-center mt-4">
                     <p className="text-green-500 font-semibold">{successMessage}</p>
                 </div>
             )}
-        </div>
+            <div className="flex justify-center mt-8">
+                <button
+                    onClick={handleSubmit}
+                    className="bg-blue-500 text-white rounded-full px-6 py-2 hover:bg-blue-600"
+                    >
+                    Submit
+                </button>
+            </div>
+            </div>
     );
 };
 

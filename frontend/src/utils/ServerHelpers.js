@@ -66,6 +66,32 @@ export const unauthenticatedGETRequest = async (route) => {
 };
 
 
+export const authenticatedPUTRequest = async (route, body) => {
+    const token = getToken();
+    try {
+        const response = await fetch(backendURL + route, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(body),
+        });
+
+        if (!response.ok) {
+            console.error(`Failed to fetch ${route}: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to fetch ${route}: ${response.status} ${response.statusText}`);
+        }
+
+        const formattedResponse = await response.json();
+        return formattedResponse;
+    } catch (error) {
+        console.error("PUT request failed:", error);
+        throw error;
+    }
+};
+
+
 const getToken = () => {
     const accessToken = document.cookie.replace(
         /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
