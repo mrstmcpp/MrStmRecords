@@ -2,7 +2,7 @@ import React from "react";
 import "./HomeCards.css";
 import { Link } from "react-router-dom";
 
-export const GenreCards = ({ genreName, description, imageUrl, genreId }) => {
+export const PlaylistCards = ({ genreName, description, imageUrl, genreId }) => {
     const containerStyle = {
         backgroundImage: `url(${imageUrl})`,
         filter: `blur(16px)`,
@@ -18,13 +18,13 @@ export const GenreCards = ({ genreName, description, imageUrl, genreId }) => {
                     </div>
                     <div className="flex justify-center items-center flex-col">
                         <div className="font-semibold text-center pt-4">
-                            <Link to={`/genre/${genId}`} className="text-white hover:text-slate-300">
+                            <Link to={`/playlist/${genId}`} className="text-white hover:text-slate-300">
                                 {genreName}
                             </Link>
                         </div>
                         <p className="description font-normal text-white text-center overflow-auto">{description}</p>
                         <div className="border w-full mt-4 border-slate-500 opacity-30"></div>
-                        <Link to={`/genre/${genId}`} className="text-center items-center mt-1">
+                        <Link to={`/playlist/${genId}`} className="text-center items-center mt-1">
                             <div className="text-white font-semibold hover:text-orange-300">
                                 Explore
                             </div>

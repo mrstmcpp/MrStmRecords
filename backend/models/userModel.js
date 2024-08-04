@@ -12,6 +12,14 @@ const userSchema = new mongo.Schema({
         type: String,
         required: true,
     },
+    stageName:{
+        type: String,
+        required: true,
+    },
+    artistImage:{
+        type: String,
+        default: "https://res.cloudinary.com/dtur9xepq/image/upload/v1721457968/stmify/assets/s1wczvohzzhzzbqwisga.png",
+    },
     email:{
         type: String,
         required: true,
@@ -20,6 +28,10 @@ const userSchema = new mongo.Schema({
         type: String,
         required: true,
         private: true,
+    },
+    bio: {
+        type: String,
+        required: false,
     }
 })
 
