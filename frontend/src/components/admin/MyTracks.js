@@ -9,11 +9,11 @@ export const MyTracks = () => {
         const getData = async () => {
             try {
                 const response = await authenticatedGETRequest("/song/mytracks");
-                setSongData(response.tracks || []); // Fallback to empty array if response.data is undefined
+                setSongData(response.tracks || []); 
 
             } catch (error) {
                 console.error("Error fetching song data:", error);
-                setSongData([]); // Fallback to empty array in case of error
+                setSongData([]); 
             }
         };
         getData();

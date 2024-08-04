@@ -63,3 +63,14 @@
     border-color: #6b7280; /* Tailwind border-gray-500 */
     margin-top: 0.5rem; /* Tailwind mt-2 */
 }
+
+.home-card .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3em; /* Adjust height based on the number of lines */
+    line-height: 1.5em; /* Adjust line height */
+    max-height: 4.5em; /* Ensure max height matches line height * number of lines */
+}

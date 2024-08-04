@@ -22,7 +22,7 @@ export const GenreCards = ({ genreName, description, imageUrl, genreId }) => {
                                 {genreName}
                             </Link>
                         </div>
-                        <p className="font-normal text-white text-center overflow-auto">{description}</p>
+                        <p className="description font-normal text-white text-center overflow-auto">{description}</p>
                         <div className="border w-full mt-4 border-slate-500 opacity-30"></div>
                         <Link to={`/genre/${genId}`} className="text-center items-center mt-1">
                             <div className="text-white font-semibold hover:text-orange-300">

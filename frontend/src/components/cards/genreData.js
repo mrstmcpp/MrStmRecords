@@ -3,6 +3,12 @@ export const fetchGenre = async () => {
     const response = await unauthenticatedGETRequest("/genre/genres");
     return response;
 }
+
+export const fetchPlaylist = async () => {
+    const response = await unauthenticatedGETRequest("/playlist/allPlaylist");
+    return response;
+}
+
 export const updateGenre = async ({ genreId, body }) => {
     try {
         const response = await authenticatedPUTRequest(`/genre/updateGenre/${genreId}`, body);

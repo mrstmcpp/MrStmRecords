@@ -27,6 +27,14 @@ router.get("/mytracks" , passport.authenticate("jwt" , {session: false}) , async
     return res.status(200).json({tracks});
 })
 
+router.get("/genre/:genreId" , async(req, res) => {
+    const {genreId} = req.body;
+
+    const genreWiseTracks = await SongModel.find({genre: genreId});
+    return res.status(200).json({genreWiseTracks});
+})
+
+
 //getting song by artist
 router.get("/artist/:artistId" , passport.authenticate("jwt" , {session : false}) , async(req , res) => {
     const {artistId} = req.params;

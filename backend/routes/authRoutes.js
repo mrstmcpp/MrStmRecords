@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const getToken = require("../utils/helpers");
 
 router.post("/register" , async(req , res) => {
-    const {email , username , firstName, lastName , password} = req.body;
+    const {email , username , firstName, lastName , password , stageName} = req.body;
     const user = await UserModel.findOne({email});
     if(user){
         return res.status(403).json({error: "User Already Exist."});
@@ -18,6 +18,7 @@ router.post("/register" , async(req , res) => {
         username,
         firstName,
         lastName,
+        stageName,
     };
 
     const newUser = await UserModel.create(newUserData);
@@ -49,5 +50,7 @@ router.post("/login" , async(req,res) => {
     return res.status(200).json(userToReturn);
 
 })
+
+
 
 module.exports = router;

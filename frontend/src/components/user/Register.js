@@ -10,6 +10,7 @@ const RegisterComponent = () => {
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [stageName, setstageName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -23,7 +24,7 @@ const RegisterComponent = () => {
             return;
         }
 
-        const data = { email, password, firstName, lastName, username };
+        const data = { email, password, firstName, lastName, username, stageName };
         const response = await unauthenticatedPostRequest("/auth/register", data);
         
         if (response && !response.err) {
@@ -43,6 +44,7 @@ const RegisterComponent = () => {
                     <TextInput placeholder="Enter your first name" label="First Name" value={firstName} setValue={setFirstName} />
                     <TextInput placeholder="Enter your last name" label="Last Name" value={lastName} setValue={setLastName} />
                     <TextInput placeholder="Enter your username" label="Username" value={username} setValue={setUsername} />
+                    <TextInput placeholder="Enter your stage/artist name" label="Stage Name" value={stageName} setValue={setstageName} />
                     <TextInput placeholder="Enter your email" label="Email" value={email} setValue={setEmail} />
                     <PasswordInput placeholder="Enter your Password" label="Password" value={password} setValue={setPassword} />
                     <PasswordInput placeholder="Confirm your Password" label="Confirm Password" value={confirmPassword} setValue={setConfirmPassword} />

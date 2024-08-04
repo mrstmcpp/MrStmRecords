@@ -10,7 +10,8 @@ import { useCookies } from 'react-cookie';
 import Admin from './components/admin/Admin';
 import GenrePage from './components/pages/genrePage';
 import UploadArea from './components/admin/UploadArea';
-
+import ArtistPage from './components/pages/artistPage';
+import FloatingPlayer from './components/player/floatingPlayer';
 function App() {
   const [cookie, setCookies] = useCookies(["token"]);
 
@@ -31,12 +32,16 @@ function App() {
             <Route path='*' element={<Homepage />} />
             <Route path='/admin/*' element={<Admin />} />
             <Route path='/player' element={<PlayerComponent />} />
+            <Route path='/floatTest' element={<FloatingPlayer/> }/>
             <Route path='/upload' element={<UploadArea/>} />
             <Route path='/genre/*' element={<GenrePage/>} />
+            <Route path='/artist/*' element={<ArtistPage/>} />
           </Routes>
         ) : (
           <Routes>
             <Route path='/' element={<Homepage />} />
+            <Route path='/artist/*' element={<ArtistPage/>} />
+            <Route path='/genre/*' element={<GenrePage/>} />
             <Route path='/about' element={<About />} />
             <Route path='/contact-us' element={<ContactUs />} />
             <Route path='*' element={<Homepage />} />
