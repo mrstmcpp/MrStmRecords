@@ -110,6 +110,20 @@ const Homepage = () => {
                             genreName={genre.genreName}
                             description={genre.description}
                             imageUrl={genre.artwork}
+                            genreId={genre.genreName}
+                        />
+                    ))}
+                </div>
+
+                {/* Playlist Section for test */}
+                <h1 className="text-3xl font-bold text-center text-white mb-8 pt-24">Our Playlists</h1>
+                <div className="flex flex-wrap justify-center">
+                    {playlist.slice(0,5).map((genre, index) => (
+                        <GenreCards
+                            key={index}
+                            genreName={genre.name}
+                            description={genre.description}
+                            imageUrl={genre.artwork}
                             genreId={genre._id}
                         />
                     ))}
