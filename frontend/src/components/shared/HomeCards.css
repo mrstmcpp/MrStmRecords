@@ -1,15 +1,15 @@
 .home-card-container {
     position: relative;
-    width: 15rem; /* Tailwind w-60 */
-    height: 22rem; /* Tailwind h-80 */
+    width: 17rem; /* Tailwind w-60 */
+    height: 25rem; /* Tailwind h-80 */
     overflow: hidden;
     display: flex;
     
 }
 
-.home-card:hover {
+/* .home-card:hover {
     transform: scale(1.05);
-}
+} */
 .home-card {
     position: relative;
     z-index: 0; /* Ensure main content is above the background */
@@ -17,7 +17,7 @@
     height: 100%;
     padding-top: 2rem; /* Tailwind pt-8 */
     background-color: rgba(31, 41, 55, 0.8); /* Tailwind bg-slate-800 with transparency */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Tailwind shadow-lg */
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); /* Tailwind shadow-lg */
     transition: transform 0.3s ease;
 }
 
@@ -29,13 +29,14 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(8px); /* Adjust the blur amount here */
+    background-color: rgba(0, 0, 0, 0.5);
+     /* Adjust the blur amount here */
     z-index: -1; /* Place it behind the card content */
 }
 
 .home-card img {
-    width: 11rem; /* Tailwind w-44 */
-    height: 11rem; /* Tailwind h-44 */
+    width: 12rem; /* Tailwind w-44 */
+    height: 12rem; /* Tailwind h-44 */
     object-fit: cover;
 }
 

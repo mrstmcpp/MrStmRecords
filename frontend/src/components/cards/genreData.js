@@ -18,3 +18,5 @@ export const updateGenre = async ({ genreId, body }) => {
         throw error;
     }
 };
+
+

@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 export const ArtistCard = ({ artistName, profileUrl, imageUrl }) => {
     const containerStyle = {
         backgroundImage: `url(${imageUrl})`,
-        filter: `blur(16px)`,
+        filter: `blur(70px)`,
+        backgroundColor: `rgba(0, 0, 0, 0.5)`,
     };
 
     return (

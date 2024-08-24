@@ -39,7 +39,7 @@ const ReleasesPage = () => {
                         key={index}
                         text={card.title}
                         urlImage={card.albumArt}
-                        artist={card.artist.stageName}
+                        artist={card.artist}
                         genre={card.genre}
                         id={card._id}
                     />

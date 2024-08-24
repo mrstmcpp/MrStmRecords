@@ -4,7 +4,8 @@ import "./HomeCards.css";
 export const HomeCards = ({ text, urlImage, artist, genre }) => {
     const containerStyle = {
         backgroundImage: `url(${urlImage})`,
-        filter: `blur(16px)`,
+        filter: `blur(70px)`,
+        backgroundColor: `rgba(0, 0, 0, 0.5)`,
     };
 
     return (
