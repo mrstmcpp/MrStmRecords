@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "./Layout";
 import { useState, useEffect } from "react";
-import { HomeCards } from "../components/shared/HomeCards";
 import { topArtistsData } from "../components/cards/artistsData";
 import { topTracksData } from "../components/cards/topTracks";
 import { GenreCards } from "../components/shared/GenreCards"
@@ -115,19 +114,7 @@ const Homepage = () => {
                     ))}
                 </div>
 
-                {/* Playlist Section for test */}
-                <h1 className="text-3xl font-bold text-center text-white mb-8 pt-24">Our Playlists</h1>
-                <div className="flex flex-wrap justify-center">
-                    {playlist.slice(0,5).map((genre, index) => (
-                        <GenreCards
-                            key={index}
-                            genreName={genre.name}
-                            description={genre.description}
-                            imageUrl={genre.artwork}
-                            genreId={genre._id}
-                        />
-                    ))}
-                </div>
+                
 
                 {/* Playlist Section for test */}
                 <h1 className="text-3xl font-bold text-center text-white mb-8 pt-24">Our Playlists</h1>

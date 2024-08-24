@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomeCards.css";
 import { Link } from "react-router-dom";
+import { Icon } from '@iconify/react';
 
 const TrackView = ({ text, urlImage, artist, genre, id }) => {
     const containerStyle = {
@@ -31,7 +32,21 @@ const TrackView = ({ text, urlImage, artist, genre, id }) => {
                                 {artist.stageName}
                             </Link>
                         </p>
-                        <p className="bg-orange-500 text-sm font-extralight text-white rounded m-4 px-1">{genre}</p>
+                        <p className="bg-orange-500 text-sm font-extralight text-white rounded mt-3 px-1">{genre}</p>
+                        <div className="border w-full mt-3 border-slate-500 opacity-30"></div>
+                        <div className="flex w-full justify-around opacity-60">
+                            <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2 ">
+                                <Icon icon="mdi:play" className='w-6 h-6'/>
+                            </div>
+                            <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2">
+                                <Icon icon="ph:queue-bold" className='w-6 h-6'/>
+                            </div>
+                            <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2">
+                                <Icon icon="ic:round-share" className='w-6 h-6'/>
+                            </div>
+
+                        </div>
+
 
                     </div>
                 </div>
