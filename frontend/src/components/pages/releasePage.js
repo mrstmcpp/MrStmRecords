@@ -42,6 +42,7 @@ const ReleasesPage = () => {
                         artist={card.artist}
                         genre={card.genre}
                         id={card._id}
+                        all={card}
                     />
                 ))}
             </div>

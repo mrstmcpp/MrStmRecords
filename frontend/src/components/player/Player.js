@@ -3,8 +3,8 @@ import Layout from "../../layouts/Layout";
 const PlayerComponent = () => {
     return (
         <Layout>
-            <div className="font-bold text-2xl text-center">
-                Welcome to player page
+            <div className="font-bold text-white text-9xl text-center">
+            I LOVE YOU Miss Gungun ❤️
             </div>
         </Layout>
     )

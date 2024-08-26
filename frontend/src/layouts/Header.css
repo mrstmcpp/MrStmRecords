@@ -5,3 +5,8 @@
 .header-menu-closed {
     transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
 }
+
+
+.float-player {
+    float: left;
+}
