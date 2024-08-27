@@ -1,103 +1,169 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useLayoutEffect, useRef, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import playerContext from "../contexts/playerContexts"
-
-import { Icon } from '@iconify/react';
-import { Howl, Howler } from 'howler';
+import playerContext from "../contexts/playerContexts";
+import { Icon } from "@iconify/react";
+import { Howl } from "howler";
 import { Link } from "react-router-dom";
-
+import "../components/shared/NewReleaseCards.css";
 
 const Layout = ({ children }) => {
-    const { currSong, setCurrentSong } = useContext(playerContext);
+    const {
+        currSong,
+        setCurrSong,
+        soundPlayed,
+        setSoundPlayed,
+        isPaused,
+        setIsPaused,
+        isPlayerVisible,
+        setIsPlayerVisible,
+        isSongPlaying,
+        setIsSongPlaying
+    } = useContext(playerContext);
 
 
-    const [soundPlayed, setsoundPlayed] = useState(null);
-    const [isPaused, setIsPaused] = useState(true);
+    const firstUpdate = useRef(true);
 
-    const playSong = (source) => {
+
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+
+        if (!currSong) {
+            return;
+        }
+        changeSong(currSong.trackUrl);
+    }, [currSong && currSong.trackUrl]);
+
+    const playSound = () => {
+        if (!soundPlayed) {
+            return;
+        }
+        soundPlayed.play();
+        setIsSongPlaying(true);
+    };
+
+    const changeSong = (songSrc) => {
         if (soundPlayed) {
             soundPlayed.stop();
-            setIsPaused(false);
         }
         let sound = new Howl({
-            src: source
+            src: [songSrc],
+            html5: true,
         });
-
-        setsoundPlayed(sound);
-        setIsPaused(false);
+        setSoundPlayed(sound);
         sound.play();
-    }
+        setIsPaused(false);
+        setIsSongPlaying(true);
+    };
 
-    const pauseSong = () => {
+    const pauseSound = () => {
         soundPlayed.pause();
-        setIsPaused(true)
-    }
+        setIsSongPlaying(false);
+    };
 
     const togglePlayPause = () => {
         if (isPaused) {
-            playSong(currSong.trackUrl);
+            playSound();
+            setIsPaused(false);
         } else {
-            pauseSong();
+            pauseSound();
+            setIsPaused(true);
         }
-    }
+    };
+
+    const handleClosePlayer = () => {
+        setIsPlayerVisible(false);
+    };
+
+    const handleOpenPlayer = () => {
+        if (isSongPlaying) {
+            setIsPlayerVisible(true);
+        }
+    };
+
+    const containerStyle = {
+        backgroundImage: currSong?.albumArt ? `url(${currSong.albumArt})` : 'none',
+        filter: currSong?.albumArt ? `blur(30px)` : 'none',
+    };
 
     return (
         <>
             <Header />
-            {/* Added flex, justify-center, and items-center to center content */}
-            <div className="bg-app-color ">
-                {children}
-            </div>
 
-            <div>
-                {currSong && (
+            <div className="bg-app-color">{children}</div>
 
-                    <div className="relative z-10 flex items-center bg-gray-800 p-4 rounded-lg shadow-md w-full max-w-2xl">
+            {/* Floating player */}
+            {currSong && isPlayerVisible && (
+
+
+                    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-700 p-4 rounded-lg shadow-md w-full max-w-2xl flex items-center z-50">
+                        <button
+                            className="absolute top-1 right-1 bg-gray-700 rounded text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                            onClick={handleClosePlayer}
+                        >
+                            <Icon icon="charm:cross" className="text-2xl" />
+                        </button>
 
                         <div className="w-20 h-20 bg-gray-600 rounded-lg overflow-hidden">
                             <Link to={`/track/${currSong._id}`}>
                                 <img
                                     src={currSong.albumArt}
                                     alt={currSong.title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover hover:opacity-90"
                                 />
                             </Link>
                         </div>
 
-
                         <div className="flex flex-col flex-grow ml-4">
                             <div className="text-lg text-white font-semibold">
-
-                                <Link to={`/track/${currSong._id}`}>
-                                    {currSong.title}
-                                </Link>
+                                <Link to={`/track/${currSong._id}`} className="hover:underline">{currSong.title}</Link>
                             </div>
                             <div className="text-sm font-semibold text-gray-400">
-                                <Link to={`/artist/id/${currSong.artist._id}`}>
+                                <Link to={`/artist/id/${currSong.artist._id}`} className="hover:underline">
                                     {currSong.artist.stageName}
                                 </Link>
                             </div>
-                            <div className="text-sm font-extralight text-white">{currSong.genre}</div>
+                            <div className="text-sm font-extralight text-white">
+                                {currSong.genre}
+                            </div>
                         </div>
 
-
-                        <div className="flex items-center space-x-4">
-                            <button className="text-white hover:text-gray-400">
-                                <Icon icon="f7:backward-end-fill" />
+                        <div className="flex items-center space-x-4 pr-4">
+                            <button className="border rounded-3xl text-white hover:text-gray-400 transition duration-300 ease-in-out text-2xl">
+                                <Icon icon="f7:backward-end-fill" className="m-1" />
                             </button>
-                            <button className="text-white hover:text-gray-400" onClick={togglePlayPause}>
-                                {isPaused ? <Icon icon="mdi:play" /> : <Icon icon="mdi:pause" />}
-
+                            <button
+                                className="border rounded-3xl text-white hover:text-gray-400 transition duration-300 ease-in-out text-3xl"
+                                onClick={togglePlayPause}
+                            >
+                                {isPaused ? (
+                                    <Icon icon="mdi:play" className="m-1" />
+                                ) : (
+                                    <Icon icon="mdi:pause" className="m-1" />
+                                )}
                             </button>
-                            <button className="text-white hover:text-gray-400">
-                                <Icon icon="f7:forward-end-fill" />
+                            <button className="border rounded-3xl text-white hover:text-gray-400 transition duration-300 ease-in-out text-2xl">
+                                <Icon icon="f7:forward-end-fill" className="m-1" />
                             </button>
                         </div>
                     </div>
-                )
-                }
-            </div>
+
+                
+
+            )}
+            {/* Button to open player */}
+            {!isPlayerVisible && isSongPlaying && (
+                <button
+                    className="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-full shadow-md text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                    onClick={handleOpenPlayer}
+                >
+                    <Icon icon="mdi:play" className="text-2xl" />
+                </button>
+            )}
+
             <Footer />
         </>
     );

@@ -28,6 +28,14 @@ const tracks = new mongo.Schema({
         type: String,
         default: "",
     },
+    description:{
+        type : String,
+        default: "",
+    },
+    songType:{
+        type: String,
+        default: "Original",
+    }
 
 })
 

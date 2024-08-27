@@ -15,7 +15,7 @@ const ArtistPage = () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/artist/id/${artistId}`);
                 setartistData(userDetail || []);
-                console.log(userDetail);
+                
             } catch (error) {
                 console.log("error while fetching");
             }
@@ -31,7 +31,7 @@ const ArtistPage = () => {
                     console.log("No tracks available for this artist.");
                 } else {
                     setsongsData(tracksData);
-                    console.log(tracksData);
+                    
                 }
             } catch (error) {
                 console.log("Error while fetching songs", error);

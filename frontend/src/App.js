@@ -15,10 +15,15 @@ import playerContext from './contexts/playerContexts';
 import ReleasesPage from './components/pages/releasePage';
 import { useState } from 'react';
 import { FloatingPlayer } from './components/player/floatingPlayer';
+import TrackPage from './components/pages/trackPage';
 
 
 function App() {
-  const [currSong , setCurrSong] = useState(null);
+  const [currSong, setCurrSong] = useState(null);
+  const [soundPlayed, setSoundPlayed] = useState(null);
+  const [isPaused, setIsPaused] = useState(true);
+  const [isPlayerVisible, setIsPlayerVisible] = useState(true);
+  const [isSongPlaying, setIsSongPlaying] = useState(false);
   const [cookie, setCookies] = useCookies(["token"]);
 
 
@@ -31,7 +36,7 @@ function App() {
 
 
         {cookie.token ? (
-          <playerContext.Provider value={{currSong , setCurrSong}}>
+          <playerContext.Provider value={{ currSong, setCurrSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused, isPlayerVisible,setIsPlayerVisible, isSongPlaying, setIsSongPlaying }}>
 
             <Routes>
               <Route path='/' element={<Homepage />} />
@@ -42,12 +47,12 @@ function App() {
               <Route path='/player' element={<FloatingPlayer />} />
               <Route path='/upload' element={<UploadArea />} />
               <Route path='/genre/:genreId' element={<GenrePage />} />
-              
+              <Route path='/track/:trackID' element={<TrackPage />} />
               <Route path='/artist/id/:artistId' element={<ArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
             </Routes>
-            
+
           </playerContext.Provider>
         ) : (
           <Routes>

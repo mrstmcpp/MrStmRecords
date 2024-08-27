@@ -4,6 +4,7 @@ const SongModel = require("../models/songModel");
 const User = require("../models/userModel");
 const UserModel = require("../models/userModel");
 const router = express.Router();
+const mongoose = require("mongoose");
 
 router.post("/create", passport.authenticate("jwt", { session: false }), async (req, res) => {
     const { title, releaseDate, plays, albumArt, trackUrl, genre } = req.body;
@@ -39,11 +40,33 @@ router.get("/genre/:genreId", async (req, res) => {
 
 
 //getting song by title
-router.get("/title/:trackTitle", passport.authenticate("jwt", { session: false }), async (req, res) => {
-    const { trackTitle } = req.params;
-    const track = await SongModel.find({ title: trackTitle });
-    return res.status(200).json({ data: track });
-})
+router.get("/id/:trackID", async (req, res) => {
+    const { trackID } = req.params;
+  
+    if (!mongoose.Types.ObjectId.isValid(trackID)) {
+      return res.status(400).json({ error: "Invalid track ID" });
+    }
+  
+    try {
+      const track = await SongModel.findOne({ _id: trackID }).populate("artist");
+  
+      if (!track) {
+        return res.status(404).json({ error: "Track not found" });
+      }
+      const relatedTracks = await SongModel.find({
+        $or: [
+          { artist: track.artist._id },
+          { genre: track.genre }
+        ],
+        _id: { $ne: trackID }
+      }).limit(5).populate("artist");
+
+      return res.status(200).json({track , relatedTracks});
+    } catch (error) {
+      console.error("Error fetching track:", error);
+      return res.status(500).json({ error: "Server error" });
+    }
+  });
 
 
 router.get("/getallsongs", async (req, res) => {

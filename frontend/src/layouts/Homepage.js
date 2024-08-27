@@ -96,8 +96,7 @@ const Homepage = () => {
                             urlImage={card.albumArt}
                             artist={card.artist}
                             genre={card.genre}
-                            id={card._id}
-                            
+                            id={card._id} 
                             all={card}
                         />
                     ))}

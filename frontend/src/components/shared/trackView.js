@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import playerContext from "../../contexts/playerContexts";
 
-const TrackView = ({ text, urlImage, artist, genre, id, all, playSong }) => {
+const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
     const { currSong, setCurrSong } = useContext(playerContext);
-    console.log(currSong);
+    
 
     const containerStyle = {
         backgroundImage: `url(${urlImage})`,
@@ -44,7 +44,6 @@ const TrackView = ({ text, urlImage, artist, genre, id, all, playSong }) => {
                         <div className="flex w-full justify-around opacity-60">
                             <button className="text-gray-400 hover:text-white hover:cursor-pointer mt-2 " title="Play" onClick={() => {
                                 setCurrSong(all)
-                                
                             }}>
                                 <Icon icon="mdi:play" className='w-6 h-6' />
                             </button>

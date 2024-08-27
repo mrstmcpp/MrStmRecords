@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div>
             
-            <div className="bg-footer-color p-4 flex justify-between items-center text-center">
+            <div className="bg-footer-color p-4 flex justify-between items-center text-center mt-24">
                 <div className="font-semibold ml-8 text-rev-color">Mr Stm Records © 2024. All Rights Reserved.</div>
                 <div className="flex space-x-8 mr-8">
                     <Link to="https://youtube.com/@mrstmmusic" target="_blank" rel="noopener noreferrer">
