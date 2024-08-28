@@ -1,5 +1,5 @@
 const express = require("express");
-const UserModel = require("../models/userModel");
+const UserModel = require("../models/artistModel");
 const SongModel = require("../models/songModel");
 const router = express.Router();
 
@@ -7,8 +7,8 @@ const router = express.Router();
 //getting artist page
 router.get("/id/:artistId" , async(req, res) => {
     const {artistId} = req.params;
-    const artistData = await UserModel.findOne({_id : artistId} , 'stageName , artistImage , username , lastName , email , bio');
-    return res.status(200).json(artistData);
+    const artistData = await UserModel.findOne({_id : artistId} , 'stageName , artistImage , username , lastName , email , bio , socialLinks');
+    return res.status(200).json(artistData); 
 
 })
 
@@ -32,7 +32,7 @@ router.get("/tracks/:artistId", async (req, res) => {
             return res.status(404).json({ error: "No such artist available." });
         }
 
-        const tracksData = await SongModel.find({artist : artistId});
+        const tracksData = await SongModel.find({artist : artistId}).populate("artist");
         if(!tracksData || tracksData.length === 0){
             return res.status(404).json({error: "No Data available to show"});
         }

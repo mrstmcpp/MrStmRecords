@@ -28,7 +28,7 @@ function App() {
 
 
   return (
-    <div className=' bg-app-color font-poppins'>
+    <div className=''>
       <BrowserRouter>
 
         {/* PUBLIC ROUTES */}

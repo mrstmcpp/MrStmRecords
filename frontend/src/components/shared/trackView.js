@@ -18,9 +18,8 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
 
 
     return (
-        <div className="p-4">
-
-            <div className="home-card-container ">
+        <div className="p-2">
+            <div className="home-card-container">
                 <div className="home-card bg-slate-800 shadow-lg pt-8">
                     <div className="background-image" style={containerStyle}></div>
                     <div className="flex items-center justify-center">

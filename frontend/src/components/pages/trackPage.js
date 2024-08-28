@@ -146,7 +146,7 @@ const TrackPage = () => {
 
                         <div className="border border-gray-500 mt-32 m-8 sm:ml-80 sm:mr-80"></div>
 
-                        <h1 className="text-3xl font-bold text-center mt-24 text-white">More From Artist</h1>
+                        <h1 className="text-3xl font-bold text-center mt-24 text-white">More From {trackData.artist?.stageName}</h1>
                         <div className="flex flex-wrap justify-center items-center mt-12">
                             {relatedTrackData.map((card, index) => (
                                 <TrackView

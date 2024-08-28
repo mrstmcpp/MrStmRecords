@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const playlistModel = require("../models/playlistModel");
-const UserModel = require("../models/userModel");
+const UserModel = require("../models/artistModel");
 const SongModel = require("../models/songModel");
 const router = express.Router();
 

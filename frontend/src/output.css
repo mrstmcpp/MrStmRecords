@@ -63,6 +63,8 @@ html,
 
 body {
   margin: 0;
+  background-color: #272936;
+  color: #ffffff;
   /* 1 */
   line-height: inherit;
   /* 2 */

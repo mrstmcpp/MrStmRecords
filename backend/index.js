@@ -10,6 +10,7 @@ const passport = require("passport");
 const cors = require("cors");
 const genreRoute = require("./routes/genreRoute");
 const artistRoutes = require("./routes/artistRoutes");
+const accountRoutes = require("./routes/acccountRoutes");
 
 app.use(cors());
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use("/song" , trackRoutes);
 app.use("/playlist" , playlistRoutes);
 app.use("/genre" , genreRoute);
 app.use("/artist" , artistRoutes);
+app.use("/account" , accountRoutes);
 
 
 Connection();
