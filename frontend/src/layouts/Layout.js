@@ -84,10 +84,7 @@ const Layout = ({ children }) => {
         }
     };
 
-    const containerStyle = {
-        backgroundImage: currSong?.albumArt ? `url(${currSong.albumArt})` : 'none',
-        filter: currSong?.albumArt ? `blur(30px)` : 'none',
-    };
+    
 
     return (
         <>
@@ -157,7 +154,7 @@ const Layout = ({ children }) => {
             {/* Button to open player */}
             {!isPlayerVisible && isSongPlaying && (
                 <button
-                    className="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-full shadow-md text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                    className="z-50 fixed bottom-4 right-4 bg-gray-800 p-4 rounded-full shadow-md text-white hover:text-gray-400 transition duration-300 ease-in-out"
                     onClick={handleOpenPlayer}
                 >
                     <Icon icon="mdi:play" className="text-2xl" />

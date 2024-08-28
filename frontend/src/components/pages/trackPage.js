@@ -6,16 +6,16 @@ import { unauthenticatedGETRequest } from "../../utils/ServerHelpers";
 import "../shared/NewReleaseCards.css";
 import TrackView from "../shared/trackView";
 import playerContext from "../../contexts/playerContexts";
-import {Icon} from "@iconify/react";
-
+import { Icon } from "@iconify/react";
 
 const TrackPage = () => {
     const { currSong, setCurrSong } = useContext(playerContext);
     const { trackID } = useParams();
     const [trackData, setTrackData] = useState({});
-    const [relatedTrackData, setRelatedTrackData] = useState({});
+    const [relatedTrackData, setRelatedTrackData] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [showFullDescription, setShowFullDescription] = useState(false);
 
     useEffect(() => {
         const fetchSongDetails = async () => {
@@ -25,7 +25,6 @@ const TrackPage = () => {
                     setTrackData(trackDetails.track);
                     setRelatedTrackData(trackDetails.relatedTracks);
                     console.log(trackDetails.relatedTracks)
-
                 } else {
                     setError("No track details found.");
                 }
@@ -37,15 +36,17 @@ const TrackPage = () => {
             }
         };
 
-
         fetchSongDetails();
     }, [trackID]);
 
-    const titleOfTrack = isLoading ? "Loading..." : trackData.title || "Track Not Found";
+    const titleOfTrack = isLoading ? "Loading..." : trackData.title + " - " + trackData.artist.stageName || "Track Not Found";
 
     const containerStyle = trackData.albumArt
         ? { backgroundImage: `url(${trackData.albumArt})` }
         : {};
+
+    // Function to toggle the full description view
+    const toggleDescription = () => setShowFullDescription(!showFullDescription);
 
     return (
         <Layout>
@@ -65,15 +66,11 @@ const TrackPage = () => {
                     ></div>
 
                     <div className="content-release-box">
-
-
-
-
                         <div className="flex flex-wrap justify-center space-x-8">
                             <img
                                 src={trackData.albumArt}
                                 alt={`${trackData.title} album art`}
-                                className="w-80 h-80 object-cover rounded-md shadow-lg"
+                                className="w-80 h-80 object-cover rounded-md shadow-lg mb-4"
                             />
                             <div className="w-96 h-80 flex flex-col flex-wrap justify-between">
                                 <div className="space-y-1">
@@ -89,46 +86,58 @@ const TrackPage = () => {
                                             {trackData.artist?.stageName}
                                         </Link>
                                     </div>
-
                                 </div>
 
                                 <div className="text-white text-sm">
-                                    {trackData.description}
+                                    {/* Description logic */}
+                                    {trackData.description && trackData.description.length > 200 ? (
+                                        <>
+                                            {showFullDescription ? (
+                                                <>
+                                                    {trackData.description}
+                                                    <button className="text-orange-600 ml-2" onClick={toggleDescription}>
+                                                        [ Show Less ]
+                                                    </button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    {trackData.description.substring(0, 200)}...
+                                                    <button className="text-orange-600 ml-2" onClick={toggleDescription}>
+                                                        [ Read More ]
+                                                    </button>
+                                                </>
+                                            )}
+                                        </>
+                                    ) : (
+                                        trackData.description
+                                    )}
                                 </div>
 
                                 <div className="text-gray-500 pb-2">
+                                
                                     <div className="text-gray-300">
-                                        <strong>Streams:</strong> {trackData.plays}
-                                    </div>
-                                    <div className="text-gray-300">
-
                                         <strong>Released:</strong> {new Date(trackData.releaseDate).toLocaleDateString()}
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
                         <div className="flex flex-row justify-center space-x-4 mt-12">
                             <button
-                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600"
+                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600 transition duration-300 ease-in-out"
                                 onClick={() => setCurrSong(trackData)}
                             >
-                                <Icon icon="weui:play-filled" /> 
+                                <Icon icon="weui:play-filled" />
                                 PLAY
                             </button>
                             <button
-                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600"
+                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600 transition duration-300 ease-in-out"
                                 onClick={() => setCurrSong(trackData)}
                             >
                                 <Icon icon="ph:queue-bold" />ADD TO QUEUE
                             </button>
                             <button
-                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600"
+                                className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600 transition duration-300 ease-in-out"
                                 onClick={() => setCurrSong(trackData)}
                             >
                                 <Icon icon="ph:share-bold" />SHARE
