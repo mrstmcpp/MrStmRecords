@@ -16,7 +16,7 @@ import ReleasesPage from './components/pages/releasePage';
 import { useState } from 'react';
 import { FloatingPlayer } from './components/player/floatingPlayer';
 import TrackPage from './components/pages/trackPage';
-
+import AllArtistPage from './components/pages/allArtistPage';
 
 function App() {
   const [currSong, setCurrSong] = useState(null);
@@ -49,6 +49,7 @@ function App() {
               <Route path='/genre/:genreId' element={<GenrePage />} />
               <Route path='/track/:trackID' element={<TrackPage />} />
               <Route path='/artist/id/:artistId' element={<ArtistPage />} />
+              <Route path='/artist' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
             </Routes>

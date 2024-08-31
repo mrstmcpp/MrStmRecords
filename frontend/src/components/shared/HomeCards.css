@@ -7,6 +7,22 @@
     
 }
 
+
+.home-card-container-artist {
+    position: relative;
+    width: 17rem; /* Tailwind w-60 */
+    height: 19rem; /* Tailwind h-80 */
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.home-card-container-artist:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+}
+
 /* .home-card:hover {
     transform: scale(1.05);
 } */
