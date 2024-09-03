@@ -9,7 +9,7 @@ const PasswordInput = ({ placeholder, label, value , setValue }) => {
                 type="password"
                 placeholder={placeholder}
                 id={label}
-                className="border border-gray-400 rounded-full border-solid p-3 placeholder-slate-500 mb-2"
+                className="text-black border border-gray-400 rounded-full border-solid p-3 placeholder-slate-500 mb-2"
                 value={value}
                 onChange={(e) => {
                     setValue(e.target.value);

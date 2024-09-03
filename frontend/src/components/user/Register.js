@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../layouts/Layout';
 import TextInput from '../shared/TextInput';
 import PasswordInput from '../shared/PasswordInput';
 import { unauthenticatedPostRequest } from '../../utils/ServerHelpers';
+import { toast } from 'react-toastify';
 
 const RegisterComponent = () => {
     const [email, setEmail] = useState("");
@@ -12,25 +13,36 @@ const RegisterComponent = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [agreedToTerms, setAgreedToTerms] = useState(false);
-    const [alertMessage, setAlertMessage] = useState("");
-    const [alertType, setAlertType] = useState("success");
+
+    const navigate = useNavigate();
 
     const signUp = async () => {
+        if (!email || !firstName || !lastName || !password || !confirmPassword) {
+            toast.error("Please fill in all fields.");
+            return;
+        }
+
         if (password !== confirmPassword) {
-            setAlertMessage("Passwords do not match. Please try again.");
-            setAlertType("error");
+            toast.error("Passwords do not match. Please try again.");
+            return;
+        }
+
+        if (!agreedToTerms) {
+            toast.error("You must agree to the terms and conditions.");
             return;
         }
 
         const data = { email, password, firstName, lastName };
-        const response = await unauthenticatedPostRequest("/account/register", data);
-        
-        if (response && !response.err) {
-            setAlertMessage("Registration successful! Login through login page");
-            setAlertType("success");
-        } else {
-            setAlertMessage("Registration failed. Please try again later.");
-            setAlertType("error");
+        try {
+            const response = await unauthenticatedPostRequest("/account/register", data);
+            if (response && !response.err) {
+                toast.success("Registration successful! Login through the login page.");
+                navigate('/login');  // Navigate to login page on successful registration
+            } else {
+                toast.error("Registration failed. Please try again later.");
+            }
+        } catch (error) {
+            toast.error("An error occurred during registration.");
         }
     }
 
@@ -71,11 +83,6 @@ const RegisterComponent = () => {
                             Already have an account? Login
                         </Link>
                     </div>
-                    {alertMessage && (
-                        <div className={`mt-4 p-3 rounded-md text-center ${alertType === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-                            {alertMessage}
-                        </div>
-                    )}
                 </div>
             </div>
         </Layout>

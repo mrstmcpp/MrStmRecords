@@ -4,20 +4,20 @@ import Layout from '../../layouts/Layout';
 import TextInput from '../shared/TextInput';
 import PasswordInput from '../shared/PasswordInput';
 import { unauthenticatedPostRequest } from '../../utils/ServerHelpers';
-import {useCookies} from "react-cookie";
+import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
 
 const LoginComponent = () => {
-    const [email , setEmail] = useState("");
-    const [password , setPassword] = useState("");
-    const [cookie , setCookie] = useCookies("token"); 
-    const [alertMessage, setAlertMessage] = useState("");
-    const [alertType, setAlertType] = useState("success");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [cookie, setCookie] = useCookies("token"); 
     const navigate = useNavigate();
     
     const login = async() => {
-        const data = {email , password};
+        const data = { email, password };
         
-        const response = await unauthenticatedPostRequest('/account/login', data);
+        try {
+            const response = await unauthenticatedPostRequest('/account/login', data);
             if (response && response.token) {
                 const token = response.token;
                 const date = new Date();
@@ -25,10 +25,13 @@ const LoginComponent = () => {
                 setCookie('token', token, { path: '/', expires: date });
                 navigate("/");
             } else {
-                setAlertMessage('Login failed. Please check your credentials.');
-                setAlertType('error');
+                toast.error('Login failed. Please check your credentials.');
             }
+        } catch (error) {
+            toast.error('An error occurred while trying to log in.');
+        }
     }
+
     return (
         <Layout>
             <div className='bg-app-color flex flex-col items-center justify-center py-40'>
@@ -59,9 +62,6 @@ const LoginComponent = () => {
                             </Link>
                         </div>
                     </div>
-                    {alertMessage && (
-                        <div className={`mt-4 text-center text-${alertType}-500`}>{alertMessage}</div>
-                    )}
                 </div>
             </div>
         </Layout>

@@ -42,4 +42,25 @@ router.get("/tracks/:artistId", async (req, res) => {
     }
 });
 
+router.get("/similar/:artistId", async (req, res) => {
+    const { artistId } = req.params;
+
+    try {
+        const artist = await UserModel.findOne({ _id: artistId });
+        
+        if (!artist) {
+            return res.status(404).json({ error: "Artist not found" });
+        }
+
+        const similarArtists = await UserModel.find({
+            _id: { $ne: artistId },
+            genre: artist.genre
+        }).limit(5);
+
+        return res.status(200).json(similarArtists);
+    } catch (error) {
+        return res.status(500).json({ error: "Server error occurred." });
+    }
+});
+
 module.exports = router;

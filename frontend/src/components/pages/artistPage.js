@@ -1,25 +1,27 @@
 import Layout from "../../layouts/Layout";
 import { useEffect, useState } from "react";
 import { unauthenticatedGETRequest } from "../../utils/ServerHelpers";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import TrackView from "../shared/trackView";
 import { Helmet } from "react-helmet";
-import { Icon } from "@iconify/react"; 
+import { Icon } from "@iconify/react";
 import "../shared/NewReleaseCards.css";
+import { toast } from "react-toastify";
 
 const ArtistPage = () => {
     const { artistId } = useParams();
-    const [artistData, setartistData] = useState([]);
+    const [artistData, setartistData] = useState({});
     const [songsData, setsongsData] = useState([]);
+    const [similarArtists, setSimilarArtists] = useState([]);
 
     useEffect(() => {
         const fetchArtistData = async () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/artist/id/${artistId}`);
-                setartistData(userDetail || []);
-                console.log(userDetail);
+                setartistData(userDetail || {});
+                
             } catch (error) {
-                console.log("Error while fetching artist data", error);
+                toast.error("Error while fetching artist data", error);
             }
         }
 
@@ -29,41 +31,52 @@ const ArtistPage = () => {
 
                 if (!tracksData || tracksData.length === 0) {
                     setsongsData([]);
-                    console.log("No tracks available for this artist.");
+                    toast.error("No Data to Show.");
                 } else {
                     setsongsData(tracksData);
-                    console.log(tracksData);
                 }
             } catch (error) {
-                console.log("Error while fetching songs", error);
+                toast.error("No Data to Show.");
+                setsongsData([]);
+            }
+        }
+
+        const fetchSimilarArtists = async () => {
+            try {
+                const similarArtistsData = await unauthenticatedGETRequest(`/artist/similar/${artistId}`);
+                setSimilarArtists(similarArtistsData || []);
+                
+            } catch (error) {
+                toast.error("Error while fetching similar artists", error);
             }
         }
 
         if (artistId) {
             fetchArtistData();
             fetchTrackByArtist();
+            fetchSimilarArtists();
         }
     }, [artistId]);
 
     return (
         <Layout>
             <Helmet>
-                <title>{artistData.stageName}</title>
+                <title>{artistData.stageName || "Artist Page"}</title>
             </Helmet>
-                <div
-                    className="background-release-image"
-                    style={{ backgroundImage: `url(${artistData.artistImage})` }}
-                ></div>
+            <div
+                className="background-release-image"
+                style={{ backgroundImage: `url(${artistData.artistImage})` }}
+            ></div>
             <div className="flex flex-col items-center w-full content-release-box">
                 <div className="relative mt-8 w-5/6">
                     {/* Line in the middle */}
-                    <div className="border-t absolute left-0 right-0 top-1/2 transform -translate-y-1/2 z-0"></div>
+                    <div className="border-t absolute left-0 right-0 top-1/2 transform -translate-y-1/2 z-0 drop-shadow-lg"></div>
 
                     {/* Artist Image */}
                     <img
                         src={artistData.artistImage}
                         alt={artistData.stageName}
-                        className="h-60 w-60 object-cover rounded-full border-4 border-orange-400 z-10 mx-auto relative"
+                        className="h-60 w-60 object-cover rounded-full border-4 border-orange-400 z-10 mx-auto relative drop-shadow-lg"
                     />
                 </div>
 
@@ -75,7 +88,7 @@ const ArtistPage = () => {
 
                     {/* Social Media Links */}
                     <div className="flex justify-center space-x-4 mt-6">
-                        {artistData && artistData.socialLinks && (
+                        {artistData.socialLinks && (
                             <>
                                 {artistData.socialLinks.twitter && artistData.socialLinks.twitter.length > 0 && (
                                     <a href={artistData.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
@@ -115,10 +128,6 @@ const ArtistPage = () => {
                             </>
                         )}
                     </div>
-
-
-
-
                 </div>
 
                 <div className="flex flex-col flex-wrap justify-center font-poppins m-4 w-4/5 ">
@@ -126,7 +135,7 @@ const ArtistPage = () => {
                         About {artistData.stageName}
                     </div>
                     <div className="text-gray-300">
-                        {artistData.bio}
+                        {artistData.bio || "No biography available for this artist."}
                     </div>
                 </div>
 
@@ -134,34 +143,65 @@ const ArtistPage = () => {
                     Top Tracks By Artist
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
-                    {songsData.slice(0, 3).map((card, index) => (
-                        <TrackView
-                            key={index}
-                            id={index}
-                            all={card}
-                            urlImage={card.albumArt}
-                            text={card.title}
-                            genre={card.genre}
-                            artist={card.artist}
-                        />
-                    ))}
+                    {songsData.length > 0 ? (
+                        songsData.slice(0, 3).map((card, index) => (
+                            <TrackView
+                                key={index}
+                                id={index}
+                                all={card}
+                                urlImage={card.albumArt}
+                                text={card.title}
+                                genre={card.genre}
+                                artist={card.artist}
+                            />
+                        ))
+                    ) : (
+                        <div className="text-gray-500">No top tracks available for this artist.</div>
+                    )}
                 </div>
 
                 <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
                     Discography
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
-                    {songsData.map((card, index) => (
-                        <TrackView
-                            key={index}
-                            id={index}
-                            all={card}
-                            urlImage={card.albumArt}
-                            text={card.title}
-                            genre={card.genre}
-                            artist={card.artist}
-                        />
-                    ))}
+                    {songsData.length > 0 ? (
+                        songsData.map((card, index) => (
+                            <TrackView
+                                key={index}
+                                id={index}
+                                all={card}
+                                urlImage={card.albumArt}
+                                text={card.title}
+                                genre={card.genre}
+                                artist={card.artist}
+                            />
+                        ))
+                    ) : (
+                        <div className="text-gray-500">No discography available for this artist.</div>
+                    )}
+                </div>
+
+                {/* Similar Artists Section */}
+                <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
+                    Similar Artists
+                </div>
+                <div className="flex flex-wrap justify-center w-5/6">
+                    {
+                        similarArtists.map((artist, index) => (
+                            <Link key={index} to={`/artist/id/${artist._id}`}>
+                                <div className="flex flex-col items-center m-4">
+                                    <img
+                                        src={artist.artistImage}
+                                        alt={artist.stageName}
+                                        className="h-40 w-40 object-cover rounded-full border-4 border-orange-400"
+                                    />
+                                    <div className="text-center mt-2 font-bold text-lg">
+                                        {artist.stageName}
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    )}
                 </div>
             </div>
         </Layout>

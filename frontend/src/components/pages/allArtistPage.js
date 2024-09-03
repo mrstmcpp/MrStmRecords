@@ -4,6 +4,7 @@ import { topArtistsData } from "../cards/artistsData"
 import { ArtistCard } from "../shared/ArtistCards"
 const AllArtistPage = () => {
     const [allArtists, setAllArtists] = useState([]);
+    
     useEffect(() => {
         const functiontoget = async () => {
             try {
@@ -20,7 +21,7 @@ const AllArtistPage = () => {
         <Layout>
             <h1 className="text-3xl font-bold text-center mb-8 text-white pt-24">Our Artists</h1>
             <div className="flex flex-wrap justify-center">
-                {allArtists.slice(0, 5).map((card, index) => (
+                {allArtists.map((card, index) => (
                     <ArtistCard
                         key={index}
                         artistName={card.stageName}
