@@ -1,0 +1,10 @@
+.title {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 0 1rem; /* Adjust the padding as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

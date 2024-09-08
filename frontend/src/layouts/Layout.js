@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import { Howl } from "howler";
 import { Link } from "react-router-dom";
 import "../components/shared/NewReleaseCards.css";
+import { unauthenticatedPostRequest } from "../utils/ServerHelpers";
 
 const Layout = ({ children }) => {
     const {
@@ -23,7 +24,14 @@ const Layout = ({ children }) => {
 
 
     const firstUpdate = useRef(true);
-
+    const playCount = async() =>{
+        try {
+            const updatedb = await unauthenticatedPostRequest(`/song/inc/plays/${currSong._id}`);
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useLayoutEffect(() => {
         if (firstUpdate.current) {
@@ -35,6 +43,9 @@ const Layout = ({ children }) => {
             return;
         }
         changeSong(currSong.trackUrl);
+        playCount();
+        
+
     }, [currSong && currSong.trackUrl]);
 
     const playSound = () => {

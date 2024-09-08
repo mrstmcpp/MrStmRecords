@@ -116,6 +116,8 @@ const TrackPage = () => {
                                 <div className="text-gray-500 pb-2">
                                 
                                     <div className="text-gray-300">
+                                        <strong>Streams:</strong> {trackData.plays}
+                                        <br/>
                                         <strong>Released:</strong> {new Date(trackData.releaseDate).toLocaleDateString()}
                                     </div>
                                 </div>

@@ -1,0 +1,31 @@
+.spinner {
+    margin: 100px auto;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+  
+    border-radius: 100%;
+    display: inline-block;
+    animation: sk-bounce 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    animation-delay: -0.16s;
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0);
+    } 50% {
+        transform: scale(1);
+    }
+}

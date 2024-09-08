@@ -1,0 +1,242 @@
+[{
+  "_id": {
+    "$oid": "668aac22b39a788792881db9"
+  },
+  "firstName": "Satyam",
+  "lastName": "Prajapati",
+  "username": "mrstm",
+  "email": "mrstmmusic@gmail.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "__v": 0,
+  "artistImage": "https://yt3.googleusercontent.com/0HodD7CaOyiYjTrGqE8aC4Q2O74pubaaZ4tf6PPOLfHOINEejAfap9BAwIGKGkEI2zd4erFNzQ=s900-c-k-c0x00ffffff-no-rj",
+  "stageName": "Mr Stm",
+  "bio": "Mr Stm crafts his own unique soundscapes, blending pulsating beats, infectious melodies, and a touch of magic into every track. Immerse yourself in a symphony of sonic bliss as you journey through genres like progressive house, future bass, trance, and more.  But the excitement doesn't end there! Mr Stm also showcases his exceptional remixing skills by transforming famous songs into electrifying EDM masterpieces. Witness the transformation as beloved melodies are infused with a fresh new twist, breathing new life into familiar tunes. His remixes are a testament to his ability to seamlessly merge the old with the new, creating a sonic experience that will make you move and groove. Get ready to unleash your inner EDM enthusiast with Mr Stm! EDM is lob (Gulabi Dil). ",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/5oHY2VM2iSHR5aOCZrZJnR",
+    "instagram": "https://instagram.com/mrstmmusic",
+    "soundcloud": "https://soundcloud.com/mrstmmusic",
+    "youtube": "https://www.youtube.com/@mrstmmusic",
+    "twitter": "https://x.com/mrstmmusic"
+  }
+},
+{
+  "_id": {
+    "$oid": "669b5e2beb93685c1c4c96ca"
+  },
+  "firstName": "Gungun",
+  "lastName": "Pandey",
+  "username": "gungun",
+  "stageName": "Utkarsha",
+  "bio": "Passionate musician with a love for blending traditional sounds with modern beats. Inspired by diverse musical genres and committed to creating unique, soulful music.",
+  "socialLinks": {
+    "spotify": "",
+    "instagram": "",
+    "soundcloud": "",
+    "youtube": "",
+    "twitter": ""
+  },
+  "artistImage": "https://media.licdn.com/dms/image/D4D03AQG0zRGBwRm_0Q/profile-displayphoto-shrink_200_200/0/1672676757161?e=2147483647&v=beta&t=y23ZGl4rby5s9ryiToHTQlvHiS1lxtB2_Jc45XcKYlc",
+  "email": "gungun@gungun.com",
+  "password": "$2b$10$RiuP68qxkoEjKcIe4nxNee9zs.z7JEfHlZHOZlMUaOCiEG7Y..63y"
+},
+{
+  "_id": {
+    "$oid": "66cf64d13e8b5b4cb742a07e"
+  },
+  "firstName": "Diljit",
+  "lastName": "Dosanjh",
+  "username": "diljitdosanjh",
+  "email": "diljit.music@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "__v": 0,
+  "artistImage": "https://www.india.com/wp-content/uploads/2023/05/When-Diljit-Dosanjh-Said-Doing-Films-Without-Turban-is-Not-Possible.jpg",
+  "stageName": "Diljit Dosanjh",
+  "bio": "Diljit Dosanjh is a multifaceted artist known for his energetic performances, soulful vocals, and charismatic persona. He effortlessly blends Punjabi folk music with contemporary pop and hip-hop beats, creating a unique sound that resonates with audiences worldwide. From chart-topping singles to award-winning albums, Diljit's music captures the spirit of joy, love, and celebration. Not just a singer, he is also a celebrated actor, bringing his charm and versatility to the big screen. Dive into Diljit's world, where tradition meets innovation, and let his music make you dance to the vibrant rhythms of Punjab.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/1DiJ8vNAETnSW9Q9bWXDoP",
+    "instagram": "https://instagram.com/diljitdosanjh",
+    "soundcloud": "https://soundcloud.com/diljitdosanjh",
+    "youtube": "https://www.youtube.com/@diljitdosanjh",
+    "twitter": "https://x.com/diljitdosanjh"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d60f449b97798033f8dcf0"
+  },
+  "firstName": "Dimitri",
+  "lastName": "Thivaios",
+  "username": "dimitrivegaslikemike",
+  "stageName": "Dimitri Vegas & Like Mike",
+  "artistImage": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSYn-jys60RgFVEcnVZq5d6040v4oTvkaEng4D2JMlGGNLX_I9m",
+  "email": "dimitri@example.com",
+  "password": "hashed_password_example",
+  "bio": "Dimitri Vegas & Like Mike are Belgian-Greek DJs and record producers, best known for their energetic performances and hit tracks in the electronic dance music scene.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/73jBynjsVtofjRpdpRAJGk",
+    "instagram": "https://instagram.com/dimitrivegasandlikemike",
+    "soundcloud": "https://soundcloud.com/dimitrivegasandlikemike",
+    "youtube": "https://youtube.com/dimitrivegasandlikemike",
+    "twitter": "https://twitter.com/dimitrivegas"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d611439b97798033f8dcf5"
+  },
+  "firstName": "Niles",
+  "lastName": "Hollowell-Dhar",
+  "username": "kshmr",
+  "stageName": "KSHMR",
+  "artistImage": "https://i.scdn.co/image/ab6761610000e5ebd1db941d6e307ab229651fae",
+  "email": "kshmr@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "KSHMR is an American musician, record producer, and DJ of Kashmiri descent, known for his unique blend of Indian sounds with electronic music.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/2wX6xSig4Rig5kZU6ePlWe",
+    "instagram": "https://instagram.com/kshmr",
+    "soundcloud": "https://soundcloud.com/kshmr",
+    "youtube": "https://youtube.com/user/KSHMRmusic",
+    "twitter": "https://twitter.com/KSHMRmusic"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6118a9b97798033f8dcf7"
+  },
+  "firstName": "Robbert",
+  "lastName": "van de Corput",
+  "username": "hardwell",
+  "stageName": "Hardwell",
+  "artistImage": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Hardwell_2018_%28cropped%29.jpg",
+  "email": "hardwell@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Hardwell is a Dutch DJ, record producer, and remixer from Breda, known for his electrifying performances and chart-topping tracks in the electronic dance music scene.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/6BrvowZBreEkXzJQMpL174",
+    "instagram": "https://instagram.com/hardwell",
+    "soundcloud": "https://soundcloud.com/hardwell",
+    "youtube": "https://youtube.com/user/DJHardwell",
+    "twitter": "https://twitter.com/HARDWELL"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6118a9b97798033f8dcf8"
+  },
+  "firstName": "Steven",
+  "lastName": "Aoki",
+  "username": "steveaoki",
+  "stageName": "Steve Aoki",
+  "artistImage": "https://protocol-recordings.com/wp-content/uploads/steve_aoki.jpg",
+  "email": "steveaoki@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Steve Aoki is an American DJ, record producer, and music executive known for his high-energy performances and collaborations with various artists across genres.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/77AiFEVeAVj2ORpC85QVJs",
+    "instagram": "https://instagram.com/steveaoki",
+    "soundcloud": "https://soundcloud.com/steveaoki",
+    "youtube": "https://youtube.com/user/SteveAoki",
+    "twitter": "https://twitter.com/steveaoki"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6129d9b97798033f8dcf9"
+  },
+  "firstName": "Pablo",
+  "lastName": "Rindt",
+  "username": "maddix",
+  "stageName": "Maddix",
+  "artistImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Maddix_Press_Pic_2024_COLOR.jpg/800px-Maddix_Press_Pic_2024_COLOR.jpg",
+  "email": "maddix@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Maddix is a Dutch DJ and electronic music producer known for his energetic big room house and techno tracks, lighting up stages around the world.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/0RMeG9M8QFzss9bAbq99KA",
+    "instagram": "https://instagram.com/maddixmusic",
+    "soundcloud": "https://soundcloud.com/maddixmusic",
+    "youtube": "https://youtube.com/channel/UCr0sLBobcQ2lHEAVOGJX4FA",
+    "twitter": "https://twitter.com/maddixmusic"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6129d9b97798033f8dcfa"
+  },
+  "firstName": "Aviram",
+  "lastName": "Sahar",
+  "username": "vinivici",
+  "stageName": "Vini Vici",
+  "artistImage": "https://d3vhc53cl8e8km.cloudfront.net/artists/1682/52859756-f3ac-11ed-b991-0ee6b8365494.jpg",
+  "email": "vinivici@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Vini Vici are an Israeli DJ duo known for their high-energy psytrance tracks, fusing modern electronic sounds with traditional elements.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/29zsVzEH33dD5QqxeL8dvy",
+    "instagram": "https://instagram.com/vinivicimusic",
+    "soundcloud": "https://soundcloud.com/vinivicimusic",
+    "youtube": "https://youtube.com/channel/UCPV8l6xRfNSE2nBq9w7t4IA",
+    "twitter": "https://twitter.com/vinivicimusic"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6129d9b97798033f8dcfb"
+  },
+  "firstName": "Nigel",
+  "lastName": "Coppen",
+  "username": "subzeroproject",
+  "stageName": "Sub Zero Project",
+  "artistImage": "https://i1.sndcdn.com/avatars-Dhg5EzROeeBZ9gyK-iXxGfQ-t1080x1080.jpg",
+  "email": "subzeroproject@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Sub Zero Project is a Dutch hardstyle duo known for their raw, energetic beats and intense live performances, captivating audiences worldwide.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/4f0OXMMSxr0r8Ztx6CdpAl",
+    "instagram": "https://instagram.com/subzeroproject",
+    "soundcloud": "https://soundcloud.com/subzeroproject",
+    "youtube": "https://youtube.com/channel/UC8Y0kljO1H_LFdSABUsqH6g",
+    "twitter": "https://twitter.com/subzeroproject"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6133e9b97798033f8dcfc"
+  },
+  "firstName": "Martijn",
+  "lastName": "Garritsen",
+  "username": "martingarrix",
+  "stageName": "Martin Garrix",
+  "artistImage": "https://i.ytimg.com/vi/cWJV0DgMqEA/maxresdefault.jpg",
+  "email": "martingarrix@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Martin Garrix is a Dutch DJ, record producer, and songwriter known for his progressive and electro house music and for being one of the youngest DJs to reach the top of DJ Mag's Top 100 DJs list.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ",
+    "instagram": "https://instagram.com/martingarrix",
+    "soundcloud": "https://soundcloud.com/martingarrix",
+    "youtube": "https://youtube.com/user/MartinGarrix",
+    "twitter": "https://twitter.com/martingarrix"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d6133e9b97798033f8dcfd"
+  },
+  "firstName": "Thom",
+  "lastName": "Jongejan",
+  "username": "blasterjaxx",
+  "stageName": "Blasterjaxx",
+  "artistImage": "https://yt3.googleusercontent.com/JcA4nCvGZeFrm4qironXZCanToQkRD3Ewyis2108C1OzchNxLzt7PJtQEUrUK4AFN3jO0N_tUg=s900-c-k-c0x00ffffff-no-rj",
+  "email": "blasterjaxx@example.com",
+  "password": "$2b$10$p15STn8sl1.hKv3iydLtvOzIfn8SD8N0UksqBey2.hLtFhN6C9Wnm",
+  "bio": "Blasterjaxx is a Dutch DJ and record producer duo consisting of Thom Jongkind and Idir Makhlaf, known for their energetic electro house music and big room house productions.",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/37awA8DFCAnCCL7aqYbDnD",
+    "instagram": "https://instagram.com/blasterjaxx",
+    "soundcloud": "https://soundcloud.com/blasterjaxx",
+    "youtube": "https://youtube.com/user/BlasterJaxxTV",
+    "twitter": "https://twitter.com/blasterjaxx"
+  }
+}]
