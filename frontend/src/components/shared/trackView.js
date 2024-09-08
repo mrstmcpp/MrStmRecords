@@ -3,6 +3,7 @@ import "./HomeCards.css";
 import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import playerContext from "../../contexts/playerContexts";
+import { ClickToShare } from "../misc/ClickToShare";
 
 const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
     const { currSong, setCurrSong } = useContext(playerContext);
@@ -49,7 +50,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                             <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2" title="Add to Queue">
                                 <Icon icon="ph:queue-bold" className='w-6 h-6' />
                             </div>
-                            <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2" title="Share">
+                            <div className="text-gray-400 hover:text-white hover:cursor-pointer mt-2" title="Share" onClick={() => ClickToShare(all, 'track')}>
                                 <Icon icon="ic:round-share" className='w-6 h-6' />
                             </div>
 

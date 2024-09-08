@@ -34,6 +34,7 @@ const ArtistPage = () => {
                     toast.error("No Data to Show.");
                 } else {
                     setsongsData(tracksData);
+                    console.log(tracksData);
                 }
             } catch (error) {
                 toast.error("No Data to Show.");
@@ -144,10 +145,10 @@ const ArtistPage = () => {
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
                     {songsData.length > 0 ? (
-                        songsData.slice(0, 3).map((card, index) => (
+                        songsData.sort((a,b) => b.plays - a.plays).slice(0, 3).map((card, index) => (
                             <TrackView
                                 key={index}
-                                id={index}
+                                id={card._id}
                                 all={card}
                                 urlImage={card.albumArt}
                                 text={card.title}
@@ -168,7 +169,7 @@ const ArtistPage = () => {
                         songsData.map((card, index) => (
                             <TrackView
                                 key={index}
-                                id={index}
+                                id={card._id}
                                 all={card}
                                 urlImage={card.albumArt}
                                 text={card.title}

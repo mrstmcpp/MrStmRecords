@@ -7,6 +7,7 @@ import "../shared/NewReleaseCards.css";
 import TrackView from "../shared/trackView";
 import playerContext from "../../contexts/playerContexts";
 import { Icon } from "@iconify/react";
+import { ClickToShare } from "../misc/ClickToShare";
 
 const TrackPage = () => {
     const { currSong, setCurrSong } = useContext(playerContext);
@@ -24,7 +25,7 @@ const TrackPage = () => {
                 if (trackDetails) {
                     setTrackData(trackDetails.track);
                     setRelatedTrackData(trackDetails.relatedTracks);
-                    console.log(trackDetails.relatedTracks)
+                    
                 } else {
                     setError("No track details found.");
                 }
@@ -45,8 +46,14 @@ const TrackPage = () => {
         ? { backgroundImage: `url(${trackData.albumArt})` }
         : {};
 
-    // Function to toggle the full description view
+    
     const toggleDescription = () => setShowFullDescription(!showFullDescription);
+
+    const handleShare = () => {
+
+    }
+
+    
 
     return (
         <Layout>
@@ -140,7 +147,7 @@ const TrackPage = () => {
                             </button>
                             <button
                                 className="flex items-center bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-red-600 transition duration-300 ease-in-out"
-                                onClick={() => setCurrSong(trackData)}
+                                onClick={() => ClickToShare(trackData, 'track')}
                             >
                                 <Icon icon="ph:share-bold" />SHARE
                             </button>
