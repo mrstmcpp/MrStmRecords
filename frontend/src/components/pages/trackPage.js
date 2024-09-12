@@ -3,11 +3,11 @@ import Layout from "../../layouts/Layout";
 import Helmet from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import { unauthenticatedGETRequest } from "../../utils/ServerHelpers";
-import "../shared/NewReleaseCards.css";
 import TrackView from "../shared/trackView";
 import playerContext from "../../contexts/playerContexts";
 import { Icon } from "@iconify/react";
 import { ClickToShare } from "../misc/ClickToShare";
+import { TailSpin } from 'react-loader-spinner'; // Import the spinner
 
 const TrackPage = () => {
     const { currSong, setCurrSong } = useContext(playerContext);
@@ -25,7 +25,6 @@ const TrackPage = () => {
                 if (trackDetails) {
                     setTrackData(trackDetails.track);
                     setRelatedTrackData(trackDetails.relatedTracks);
-                    
                 } else {
                     setError("No track details found.");
                 }
@@ -40,20 +39,13 @@ const TrackPage = () => {
         fetchSongDetails();
     }, [trackID]);
 
-    const titleOfTrack = isLoading ? "Loading..." : trackData.title + " - " + trackData.artist.stageName || "Track Not Found";
+    const titleOfTrack = isLoading ? "Loading..." : trackData.title + " - " + trackData.artist?.stageName || "Track Not Found";
 
     const containerStyle = trackData.albumArt
         ? { backgroundImage: `url(${trackData.albumArt})` }
         : {};
 
-    
     const toggleDescription = () => setShowFullDescription(!showFullDescription);
-
-    const handleShare = () => {
-
-    }
-
-    
 
     return (
         <Layout>
@@ -62,7 +54,9 @@ const TrackPage = () => {
             </Helmet>
 
             {isLoading ? (
-                <p className="text-white text-center">Loading track details...</p>
+                <div className="flex justify-center items-center h-screen">
+                    <TailSpin visible={true} height="80" width="80" color="#F97316" />
+                </div>
             ) : error ? (
                 <p className="text-red-500 text-center">{error}</p>
             ) : (
@@ -121,13 +115,11 @@ const TrackPage = () => {
                                 </div>
 
                                 <div className="text-gray-500 pb-2">
-                                
                                     <div className="text-gray-300">
-
                                         <strong>Streams:</strong> {trackData.plays}
-                                        <br/>
+                                        <br />
                                         <strong>Label:</strong> Mr Stm Records
-                                        <br/>
+                                        <br />
                                         <strong>Released:</strong> {new Date(trackData.releaseDate).toLocaleDateString()}
                                     </div>
                                 </div>
