@@ -59,6 +59,8 @@ const ArtistPage = () => {
         }
     }, [artistId]);
 
+    const sortedtop5 = songsData.toSorted((a, b) => b.plays - a.plays);
+
     return (
         <Layout>
             <Helmet>
@@ -126,6 +128,14 @@ const ArtistPage = () => {
                                         </div>
                                     </a>
                                 )}
+                                {artistData.socialLinks.website && artistData.socialLinks.website.length > 0 && (
+                                    <a href={artistData.socialLinks.website} target="_blank" rel="noopener noreferrer">
+                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-slate-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
+                                            <Icon icon="mdi:web" className="h-8 w-8" />
+                                        </div>
+                                    </a>
+                                )}
+
                             </>
                         )}
                     </div>
@@ -144,8 +154,8 @@ const ArtistPage = () => {
                     Top Tracks By Artist
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
-                    {songsData.length > 0 ? (
-                        songsData.sort((a,b) => b.plays - a.plays).slice(0, 3).map((card, index) => (
+                    {sortedtop5.length > 0 ? (
+                        sortedtop5.slice(0, 3).map((card, index) => (
                             <TrackView
                                 key={index}
                                 id={card._id}
@@ -166,7 +176,7 @@ const ArtistPage = () => {
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
                     {songsData.length > 0 ? (
-                        songsData.map((card, index) => (
+                        songsData.reverse().map((card, index) => (
                             <TrackView
                                 key={index}
                                 id={card._id}

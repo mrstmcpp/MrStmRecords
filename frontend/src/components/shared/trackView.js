@@ -25,7 +25,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                     <div className="background-image" style={containerStyle}></div>
                     <div className="flex items-center justify-center">
                         <Link to={`/track/${id}`}>
-                            <img src={urlImage} alt="Home Card" className="w-44 h-44 object-cover" />
+                            <img src={urlImage} alt="Home Card" className="w-44 h-44 object-cover " />
                         </Link>
                     </div>
                     <div className="flex justify-center items-center flex-col">

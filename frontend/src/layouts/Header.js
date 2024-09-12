@@ -55,10 +55,10 @@ const Header = () => {
                             </div>
                             {isDropdownOpen && (
                                 <div className="absolute right-0 mt-4 w-48 bg-app-color rounded-lg shadow-lg">
-                                    <Link to="/artist/profile" className="block px-4 py-2 text-white hover:bg-slate-600 hover:rounded-lg ">
+                                    <Link to="/user/profile" className="block px-4 py-2 text-white hover:bg-slate-600 hover:rounded-lg ">
                                         Profile
                                     </Link>
-                                    <Link to="/artist/settings" className="block px-4 py-2 text-white hover:bg-slate-600 hover:rounded-lg ">
+                                    <Link to="/user/settings" className="block px-4 py-2 text-white hover:bg-slate-600 hover:rounded-lg ">
                                         Settings
                                     </Link>
                                     <div onClick={handleLogout} className="block px-4 py-2 text-white hover:bg-slate-600 hover:rounded-lg cursor-pointer">

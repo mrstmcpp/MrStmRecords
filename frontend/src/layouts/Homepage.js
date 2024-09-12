@@ -51,7 +51,7 @@ const Homepage = () => {
             try {
                 const tracksData = await topTracksData();
                 setsongData(tracksData);
-                
+
             } catch (error) {
                 console.log("Error occured while fetching top tracks : ", error);
             }
@@ -62,7 +62,7 @@ const Homepage = () => {
         getAllSongs();
     }, []);
 
-
+    const sortedtop5 = songData.toSorted((a, b) => b.plays - a.plays);
 
     return (
         <Layout>
@@ -72,6 +72,25 @@ const Homepage = () => {
                 </div>
 
 
+                <div className="text-3xl font-bold text-center text-white mb-8 pt-24">
+                    <div className="text-3xl font-bold text-white z-10">
+                        Top 5 Tracks
+                    </div>
+
+                </div>
+                <div className="flex flex-wrap justify-center">
+                    {sortedtop5.slice(0, 5).map((card, index) => (
+                        <TrackView
+                            key={index}
+                            text={card.title}
+                            urlImage={card.albumArt}
+                            artist={card.artist}
+                            genre={card.genre}
+                            id={card._id}
+                            all={card}
+                        />
+                    ))}
+                </div>
 
 
                 {/* Top Tracks cards */}
@@ -96,7 +115,7 @@ const Homepage = () => {
                             urlImage={card.albumArt}
                             artist={card.artist}
                             genre={card.genre}
-                            id={card._id} 
+                            id={card._id}
                             all={card}
                         />
                     ))}

@@ -38,7 +38,8 @@ const userSchema = new mongo.Schema({
         instagram: { type: String, default: '' },
         soundcloud: { type: String, default: '' },
         youtube: { type: String, default: '' },
-        twitter: { type: String, default: '' }
+        twitter: { type: String, default: '' },
+        website: { type: String, default: '' }
     }
 
 })

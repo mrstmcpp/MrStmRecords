@@ -1,6 +1,10 @@
 const mongo = require("mongoose");
 
 const sliderContent = new mongo.Schema({
+    title:{
+        type: String,
+        required: true,
+    },
     linkUrl:{
         type: String,
     },

@@ -1,6 +1,6 @@
 const express = require("express");
+require('dotenv').config();
 const app = express();
-const port = 8080;
 const {Connection} = require("./database/db");
 const PassPortModule = require("./passport");
 const authRoutes = require("./routes/authRoutes");
@@ -11,6 +11,7 @@ const cors = require("cors");
 const genreRoute = require("./routes/genreRoute");
 const artistRoutes = require("./routes/artistRoutes");
 const accountRoutes = require("./routes/acccountRoutes");
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
