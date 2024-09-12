@@ -7,19 +7,20 @@ import { Helmet } from "react-helmet";
 import { Icon } from "@iconify/react";
 import "../shared/NewReleaseCards.css";
 import { toast } from "react-toastify";
+import { TailSpin } from "react-loader-spinner";
 
 const ArtistPage = () => {
     const { artistId } = useParams();
     const [artistData, setartistData] = useState({});
     const [songsData, setsongsData] = useState([]);
     const [similarArtists, setSimilarArtists] = useState([]);
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         const fetchArtistData = async () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/artist/id/${artistId}`);
                 setartistData(userDetail || {});
-                
             } catch (error) {
                 toast.error("Error while fetching artist data", error);
             }
@@ -46,20 +47,35 @@ const ArtistPage = () => {
             try {
                 const similarArtistsData = await unauthenticatedGETRequest(`/artist/similar/${artistId}`);
                 setSimilarArtists(similarArtistsData || []);
-                
             } catch (error) {
                 toast.error("Error while fetching similar artists", error);
             }
         }
 
         if (artistId) {
-            fetchArtistData();
-            fetchTrackByArtist();
-            fetchSimilarArtists();
+            setLoading(true); // Set loading to true before fetching data
+            Promise.all([fetchArtistData(), fetchTrackByArtist(), fetchSimilarArtists()])
+                .then(() => setLoading(false)) // Set loading to false after data is fetched
+                .catch(() => setLoading(false));
         }
     }, [artistId]);
 
     const sortedtop5 = songsData.toSorted((a, b) => b.plays - a.plays);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <TailSpin
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#F97316"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                />
+            </div>
+        );
+    }
 
     return (
         <Layout>
@@ -135,7 +151,6 @@ const ArtistPage = () => {
                                         </div>
                                     </a>
                                 )}
-
                             </>
                         )}
                     </div>
@@ -192,31 +207,61 @@ const ArtistPage = () => {
                     )}
                 </div>
 
-                {/* Similar Artists Section */}
                 <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
                     Similar Artists
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
-                    {
-                        similarArtists.map((artist, index) => (
-                            <Link key={index} to={`/artist/id/${artist._id}`}>
+                    {similarArtists.length > 0 ? (
+                        similarArtists.slice(0, 5).map((artist, index) => (
+                            <Link
+                                key={artist._id}
+                                to={`/artist/id/${artist._id}`}
+                                className="cursor-pointer text-gray-400 hover:text-white transition duration-300 ease-in-out"
+                            >
                                 <div className="flex flex-col items-center m-4">
                                     <img
                                         src={artist.artistImage}
                                         alt={artist.stageName}
                                         className="h-40 w-40 object-cover rounded-full border-4 border-orange-400"
                                     />
-                                    <div className="text-center mt-2 font-bold text-lg">
-                                        {artist.stageName}
-                                    </div>
+                                    <div className="text-center mt-2 font-bold text-lg">{artist.stageName}</div>
+
                                 </div>
                             </Link>
-                        )
+                        ))
+                    ) : (
+                        <div className="text-gray-500">No similar artists available.</div>
                     )}
                 </div>
             </div>
         </Layout>
     );
-}
+};
 
 export default ArtistPage;
+
+
+
+
+// {/* Similar Artists Section */}
+// <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
+// Similar Artists
+// </div>
+// <div className="flex flex-wrap justify-center w-5/6">
+// {
+//     similarArtists.map((artist, index) => (
+//         <Link key={index} to={`/artist/id/${artist._id}`}>
+//             <div className="flex flex-col items-center m-4">
+//                 <img
+//                     src={artist.artistImage}
+//                     alt={artist.stageName}
+//                     className="h-40 w-40 object-cover rounded-full border-4 border-orange-400"
+//                 />
+//                 <div className="text-center mt-2 font-bold text-lg">
+//                     {artist.stageName}
+//                 </div>
+//             </div>
+//         </Link>
+//     )
+// )}
+// </div>

@@ -44,7 +44,7 @@ const Header = () => {
                 </div>
                 <div className={`md:flex flex-wrap ${isOpen ? '' : 'hidden'}`}>
                     <NavLink to={"/"} label="HOME" toggleMenu={toggleMenu} className="hover:text-gray-300" />
-                    <NavLink to={"/artist"} label="ARTISTS" toggleMenu={toggleMenu} className="hover:text-gray-300" />
+                    <NavLink to={"/artists"} label="ARTISTS" toggleMenu={toggleMenu} className="hover:text-gray-300" />
                     <NavLink to={"/releases"} label="RELEASES" toggleMenu={toggleMenu} className="hover:text-gray-300" />
                     <NavLink to={"/about"} label="ABOUT" toggleMenu={toggleMenu} className="hover:text-gray-300" />
                     <NavLink to={"/contact-us"} label="CONTACT US" toggleMenu={toggleMenu} className="hover:text-gray-300" />

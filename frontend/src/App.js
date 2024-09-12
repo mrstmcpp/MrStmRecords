@@ -49,7 +49,7 @@ function App() {
               <Route path='/genre/:genreId' element={<GenrePage />} />
               <Route path='/track/:trackID' element={<TrackPage />} />
               <Route path='/artist/id/:artistId' element={<ArtistPage />} />
-              <Route path='/artist' element={<AllArtistPage />} />
+              <Route path='/artists' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
             </Routes>
@@ -63,7 +63,7 @@ function App() {
             <Route path='/genre/*' element={<GenrePage />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact-us' element={<ContactUs />} />
-            <Route path='*' element={<Homepage />} />
+            <Route path='/*' element={<Homepage />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/register' element={<RegisterComponent />} />
           </Routes>)}
