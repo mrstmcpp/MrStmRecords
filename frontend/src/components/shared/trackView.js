@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import playerContext from "../../contexts/playerContexts";
 import { ClickToShare } from "../misc/ClickToShare";
-import { TailSpin } from 'react-loader-spinner';
+import { TailSpin, Audio } from 'react-loader-spinner';
 
 const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
     const { currSong, setCurrSong } = useContext(playerContext);
@@ -27,10 +27,10 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                 <div className="home-card bg-slate-800 shadow-lg pt-8 relative">
                     {loading ? (
                         <div className="absolute inset-0 flex justify-center items-center bg-slate-800 bg-opacity-75">
-                            <TailSpin
+                            <Audio
                                 visible={true}
-                                height="50"
-                                width="50"
+                                height="40"
+                                width="40"
                                 color="#F97316"
                                 ariaLabel="tail-spin-loading"
                                 radius="1"
