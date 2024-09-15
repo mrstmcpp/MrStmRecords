@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import './Header.css';
 import { useCookies } from 'react-cookie';
 
+
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [cookies, setCookies, removeCookies] = useCookies(["token"]);
@@ -69,6 +70,7 @@ const Header = () => {
                         </div>
                         :
                         <NavLink to={"/login"} label="LOGIN/SIGN UP" className="bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-400" toggleMenu={toggleMenu} />
+                        
                     }
 
                 </div>

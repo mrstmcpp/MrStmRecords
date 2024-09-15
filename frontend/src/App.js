@@ -36,7 +36,7 @@ function App() {
 
 
         {cookie.token ? (
-          <playerContext.Provider value={{ currSong, setCurrSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused, isPlayerVisible,setIsPlayerVisible, isSongPlaying, setIsSongPlaying }}>
+          <playerContext.Provider value={{ currSong, setCurrSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused, isPlayerVisible, setIsPlayerVisible, isSongPlaying, setIsSongPlaying }}>
 
             <Routes>
               <Route path='/' element={<Homepage />} />
@@ -57,13 +57,28 @@ function App() {
           </playerContext.Provider>
         ) : (
           <Routes>
-            <Route path='/' element={<Homepage />} />
+            {/* <Route path='/' element={<Homepage />} />
             <Route path='/artist/*' element={<ArtistPage />} />
             <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
             <Route path='/genre/*' element={<GenrePage />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact-us' element={<ContactUs />} />
             <Route path='/*' element={<Homepage />} />
+            <Route path='/login' element={<LoginComponent />} />
+            <Route path='/register' element={<RegisterComponent />} /> */}
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='*' element={<Homepage />} />
+            <Route path='/admin/*' element={<Admin />} />
+            <Route path='/player' element={<FloatingPlayer />} />
+            <Route path='/upload' element={<UploadArea />} />
+            <Route path='/genre/:genreId' element={<GenrePage />} />
+            <Route path='/track/:trackID' element={<TrackPage />} />
+            <Route path='/artist/id/:artistId' element={<ArtistPage />} />
+            <Route path='/artists' element={<AllArtistPage />} />
+            <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
+            <Route path='/releases' element={<ReleasesPage />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/register' element={<RegisterComponent />} />
           </Routes>)}
