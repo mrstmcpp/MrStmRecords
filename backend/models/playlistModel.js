@@ -1,6 +1,6 @@
 const mongo = require("mongoose");
 
-const playlist = new mongo.Schema({
+const playlistSchema = new mongo.Schema({
     name:{
         type: String,
         required: true,
@@ -9,11 +9,7 @@ const playlist = new mongo.Schema({
         type: String,
         default: "",
     },
-    owner:{
-        type: mongo.Types.ObjectId,
-        ref: "userdata",
-    },
-    likedCount:{
+    likeCount:{
         type: Number,
         default: 0,
     },
@@ -23,18 +19,19 @@ const playlist = new mongo.Schema({
     },
     tracks:[
         {
-            type: mongo.Types.ObjectId,
-            ref: "tracks",
+            type: mongo.Schema.Types.ObjectId,
+            ref: "Track",
         }
     ],
-    collabrators:[
+    owner:[
         {
-            type: mongo.Types.ObjectId,
-            ref: "userdata",
+            type: mongo.Schema.Types.ObjectId,
+            ref: "Artist",
+            required: true,
         }
     ]
 })
 
-const playlistModel = mongo.model("playlists" , playlist);
+const playlistModel = mongo.model("Playlist" , playlistSchema);
 
 module.exports = playlistModel;

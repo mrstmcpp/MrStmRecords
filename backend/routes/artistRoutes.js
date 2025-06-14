@@ -1,6 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/artistModel");
-const SongModel = require("../models/songModel");
+const SongModel = require("../models/trackModel");
 const router = express.Router();
 
 

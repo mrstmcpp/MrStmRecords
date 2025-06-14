@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const genreModel = require("../models/genreModel");
 const passport = require("passport");
-const SongModel = require("../models/songModel");
+const SongModel = require("../models/trackModel");
 
 router.post("/createNew", passport.authenticate("jwt", { session: false }), async (req, res) => {
     const { genreName, description, artwork } = req.body;

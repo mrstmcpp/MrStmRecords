@@ -1,6 +1,6 @@
 const mongo = require("mongoose");
 
-const userSchema = new mongo.Schema({
+const artistSchema = new mongo.Schema({
     firstName: {
         type: String,
         required: true,
@@ -23,15 +23,14 @@ const userSchema = new mongo.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
-        private: true,
     },
     bio: {
         type: String,
-        required: false,
     },
     socialLinks: {
         spotify: { type: String, default: '' },
@@ -42,8 +41,8 @@ const userSchema = new mongo.Schema({
         website: { type: String, default: '' }
     }
 
-})
+} , { timestamps: true })
 
-const UserModel = mongo.model("userdata", userSchema);
+const artistModel = mongo.model("Artist", artistSchema);
 
-module.exports = UserModel;
+module.exports = artistModel;

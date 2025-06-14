@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const playlistModel = require("../models/playlistModel");
 const UserModel = require("../models/artistModel");
-const SongModel = require("../models/songModel");
+const SongModel = require("../models/trackModel");
 const router = express.Router();
 
 router.post("/create", passport.authenticate("jwt", { session: false }), async (req, res) => {

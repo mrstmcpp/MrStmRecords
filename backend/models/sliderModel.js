@@ -1,6 +1,6 @@
 const mongo = require("mongoose");
 
-const sliderContent = new mongo.Schema({
+const sliderSchema = new mongo.Schema({
     title:{
         type: String,
         required: true,
@@ -18,6 +18,6 @@ const sliderContent = new mongo.Schema({
     }
 })
 
-const sliderModel = mongo.Model("sliderData" , sliderContent);
+const sliderModel = mongo.Model("Slider" , sliderSchema);
 
 module.exports = sliderModel;

@@ -1,14 +1,14 @@
 const mongo = require("mongoose");
 
 const genre = new mongo.Schema({
-    genreName:{
+    name:{
         type: String,
         required: true,
     },
-    tracksName:[
+    tracks:[
         {
-            type: mongo.Types.ObjectId,
-            ref: "tracks",
+            type: mongo.Schema.Types.ObjectId,
+            ref: "Track",
         }
     ],
     description:{
@@ -18,10 +18,17 @@ const genre = new mongo.Schema({
     artwork:{
         type: String,
         default: "",
-    }
+    },
+    owner:[
+        {
+            type: mongo.Schema.Types.ObjectId,
+            ref:"Artist",
+            required: true,
+        }
+    ]
 
-})
+} , {timestamps: true});
 
-const genreModel = mongo.model("genres" , genre);
+const genreModel = mongo.model("Genre" , genre);
 
 module.exports = genreModel;
