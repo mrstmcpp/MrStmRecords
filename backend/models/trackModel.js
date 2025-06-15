@@ -9,11 +9,13 @@ const TrackSchema = new mongo.Schema(
       type: String,
       required: true,
     },
-    artists: {
-      type: mongo.Schema.Types.ObjectId,
-      ref: "Artist",
-      required: true,
-    },
+    artists: [
+      {
+        type: mongo.Schema.Types.ObjectId,
+        ref: "Artist",
+        required: true,
+      },
+    ],
     releaseDate: {
       type: Date,
       required: true,
@@ -42,7 +44,7 @@ const TrackSchema = new mongo.Schema(
       default: "Original",
     },
     duration: {
-      type: Number, // in seconds
+      type: Number,
       required: true,
     },
   },

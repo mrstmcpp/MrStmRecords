@@ -1,20 +1,26 @@
+const ArtistModel = require("../models/artistModel");
+const TrackModel = require("../models/trackModel");
+const GenreModel = require("../models/genreModel")
+
 exports.createNewTrack = async (req, res) => {
-  const { title, releaseDate, plays, albumArt, trackUrl, genre } = req.body;
-  if (!title || !releaseDate || !albumArt || !trackUrl || !genre) {
-    return res.status(301).json({ error: "Insufficient details." });
-  }
-  const artist = req.user._id;
-  const songDetails = {
-    title,
-    releaseDate,
-    plays,
-    albumArt,
-    artist,
-    trackUrl,
-    genre,
-  };
+  const { name, releaseDate, plays, albumArt, url, genreId , duration } = req.body;
   try {
-    const createdSong = await SongModel.create(songDetails);
+    if (!name || !releaseDate || !albumArt || !url || !genreId) {
+      return res.status(301).json({ error: "Insufficient details." });
+    }
+    const artistLinkedToUser = await ArtistModel.findOne({ user: req.user._id });; //verification is done in middleware
+    const genre = await GenreModel.findById(genreId);
+    const trackPayload = {
+      name,
+      releaseDate,
+      plays,
+      albumArt,
+      artists: artistLinkedToUser,
+      url,
+      genre : genre,
+      duration,
+    };
+    const createdSong = (await TrackModel.create(trackPayload));
     return res.status(200).json(createdSong);
   } catch (error) {
     return res.status(500).json({ error: error.message });

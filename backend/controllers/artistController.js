@@ -49,3 +49,5 @@ exports.createNewArtist = async (req, res) => {
         .status(201)
         .json("Successfully registerd for artist account" + token);
 };
+
+

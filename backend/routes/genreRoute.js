@@ -5,6 +5,8 @@ const passport = require("passport");
 const SongModel = require("../models/trackModel");
 const isAdmin = require("../middlewares/isAdmin")
 const genreController = require("../controllers/genreControllers");
+const TrackModel = require("../models/trackModel");
+const trackPagination = require("../middlewares/trackPagination")
 
 router.post("/",
     passport.authenticate("jwt",
@@ -12,6 +14,14 @@ router.post("/",
     isAdmin , 
     genreController.createNewGenre
 );
+
+router.post("/addTrack" ,
+    passport.authenticate("jwt" , {session: false}) ,
+    isAdmin ,
+    genreController.addTrackToGenre
+);
+
+router.get("/:genreId" , genreController.getTracksByGenre);
 
 router.get("/genres", async (req, res) => {
     try {
@@ -21,6 +31,7 @@ router.get("/genres", async (req, res) => {
         res.status(500).json({ message: "Error fetching genre details", error });
     }
 });
+
 
 
 router.get("/genres/:genreId" , async(req , res) => {

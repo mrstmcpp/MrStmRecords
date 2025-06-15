@@ -1,13 +1,13 @@
 const express = require("express");
 const passport = require("passport");
 const SongModel = require("../models/trackModel");
-const User = require("../models/artistModel");
-const UserModel = require("../models/artistModel");
 const router = express.Router();
 const mongoose = require("mongoose");
 const trackController = require("../controllers/trackController")
+const isArtist = require("../middlewares/isArtist")
 
-router.post("/", passport.authenticate("jwt", { session: false }), trackController.createNewTrack);
+
+router.post("/", passport.authenticate("jwt", { session: false }), isArtist, trackController.createNewTrack);
 
 
 router.get("/mytracks", passport.authenticate("jwt", { session: false }), async (req, res) => {

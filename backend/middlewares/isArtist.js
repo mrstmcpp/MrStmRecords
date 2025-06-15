@@ -1,11 +1,19 @@
-const ArtistModel = require("../models/artistModel")
+const ArtistModel = require("../models/artistModel");
 
-module.exports = function isArtist(req , res , next) {
-    if(ArtistModel.findOne(req.user._id)){
-        return next();
-    }else{
-        return res.status(403).json({
-            error : "You are not authorized for this action."
-        })
+module.exports = async function isArtist(req, res, next) {
+    try {
+        const artist = await ArtistModel.findOne({ user: req.user._id });
+
+        if (artist) {
+            return next();
+        } else {
+            return res.status(403).json({
+                error: "You are not a valid artist."
+            });
+        }
+    } catch (err) {
+        return res.status(500).json({
+            error: "Server error while checking artist authorization."
+        });
     }
-}
+};

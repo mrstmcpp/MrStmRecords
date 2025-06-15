@@ -10,7 +10,7 @@ exports.makeAdminByUserId = async(req , res) => {
     }
 
     user.isAdmin = true;
-    user.save();
+    await user.save();
     return res.status(200).json({
         Success: "Successfully made admin."
     })
