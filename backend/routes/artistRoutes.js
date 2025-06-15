@@ -1,8 +1,15 @@
 const express = require("express");
 const UserModel = require("../models/artistModel");
 const SongModel = require("../models/trackModel");
+const passport = require("passport");
+const isArtist = require("../middlewares/isArtist");
 const router = express.Router();
+const artistController = require("../controllers/artistController");
 
+
+router.post("/" , passport.authenticate("jwt", {session: false}),
+    artistController.createNewArtist
+);
 
 //getting artist page
 router.get("/id/:artistId" , async(req, res) => {

@@ -1,10 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const AccountModel = require('../models/userModel');
+const userModel = require('../models/userModel');
 const getToken = require('../utils/helpers');
+const bcrypt = require('bcrypt');
 
-router.post('/register', async (req, res) => {
+exports.register = async (req, res) => {
     try {
         const { email, firstName, lastName, password } = req.body;
 
@@ -12,14 +10,14 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ error: 'All fields are required.' });
         }
 
-        const existingUser = await AccountModel.findOne({ email });
+        const existingUser = await userModel.findOne({ email });
         if (existingUser) {
             return res.status(409).json({ error: 'User already exists.' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new AccountModel({
+        const newUser = new userModel({
             email,
             password: hashedPassword,
             firstName,
@@ -50,14 +48,12 @@ router.post('/register', async (req, res) => {
 
         return res.status(500).json({ error: 'Internal server error.' });
     }
-});
+}
 
-
-
-router.post("/login", async (req, res) => {
+exports.login = async(req, res) => {
     try {
         const { email, password } = req.body;
-        const loginUser = await AccountModel.findOne({ email });
+        const loginUser = await userModel.findOne({ email });
         if (!loginUser) {
             return res.status(401).json({ error: "Invalid credentials." });
         }
@@ -76,6 +72,13 @@ router.post("/login", async (req, res) => {
         console.error('Error during login:', error);
         return res.status(500).json({ error: 'Internal server error.' });
     }
-});
+}
 
-module.exports = router;
+exports.logout = async(req ,res) => {
+    try{
+        req.logout();
+        return res.status(200).json({Success : "Successfully logged out."})
+    }catch{
+        return res.status(500).json({error: "Internal server error"});
+    }
+}

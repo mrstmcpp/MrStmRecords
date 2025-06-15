@@ -3,15 +3,15 @@ require('dotenv').config();
 const app = express();
 const {Connection} = require("./database/db");
 const PassPortModule = require("./passport");
-const authRoutes = require("./routes/authRoutes");
 const trackRoutes = require("./routes/trackRoutes");
 const playlistRoutes = require("./routes/playlistRoutes");
 const passport = require("passport");
 const cors = require("cors");
 const genreRoute = require("./routes/genreRoute");
 const artistRoutes = require("./routes/artistRoutes");
-const accountRoutes = require("./routes/acccountRoutes");
-const port = process.env.PORT || 8080;
+const accountRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adminRoutes")
+const port = process.env.PORT || 5500;
 
 app.use(cors());
 app.use(express.json());
@@ -21,13 +21,14 @@ app.get("/" , (req, res) => {
     res.send("Welcome to the server");
 })
 
-app.use("/auth" , authRoutes);
-app.use("/song" , trackRoutes);
-app.use("/playlist" , playlistRoutes);
-app.use("/genre" , genreRoute);
-app.use("/artist" , artistRoutes);
-app.use("/account" , accountRoutes);
+const apiVersion = "/api/v1";
 
+app.use(`${apiVersion}/track` , trackRoutes);
+app.use(`${apiVersion}/playlist` , playlistRoutes);
+app.use(`${apiVersion}/genre` , genreRoute);
+app.use(`${apiVersion}/artist` , artistRoutes);
+app.use(`${apiVersion}/user` , accountRoutes);
+app.use(`${apiVersion}/admin` , adminRoutes);
 
 Connection();
 

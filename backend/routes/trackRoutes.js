@@ -5,23 +5,9 @@ const User = require("../models/artistModel");
 const UserModel = require("../models/artistModel");
 const router = express.Router();
 const mongoose = require("mongoose");
+const trackController = require("../controllers/trackController")
 
-router.post("/create", passport.authenticate("jwt", { session: false }), async (req, res) => {
-  const { title, releaseDate, plays, albumArt, trackUrl, genre } = req.body;
-  if (!title || !releaseDate || !albumArt || !trackUrl || !genre) {
-    return res.status(301).json({ error: "Insufficient details." });
-  }
-  const artist = req.user._id;
-  const songDetails = { title, releaseDate, plays, albumArt, artist, trackUrl, genre };
-  try {
-    const createdSong = await SongModel.create(songDetails);
-    return res.status(200).json(createdSong);
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
-
-
-})
+router.post("/", passport.authenticate("jwt", { session: false }), trackController.createNewTrack);
 
 
 router.get("/mytracks", passport.authenticate("jwt", { session: false }), async (req, res) => {

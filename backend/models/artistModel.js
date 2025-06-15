@@ -1,16 +1,18 @@
 const mongo = require("mongoose");
 
 const artistSchema = new mongo.Schema({
+    user:{
+        type: mongo.Schema.Types.ObjectId,
+        required: true,
+        ref: "User",
+        unique: true,
+    },
     firstName: {
         type: String,
         required: true,
     },
     lastName: {
         type: String,
-    },
-    username: {
-        type: String,
-        required: true,
     },
     stageName: {
         type: String,

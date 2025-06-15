@@ -3,26 +3,15 @@ const router = express.Router();
 const genreModel = require("../models/genreModel");
 const passport = require("passport");
 const SongModel = require("../models/trackModel");
+const isAdmin = require("../middlewares/isAdmin")
+const genreController = require("../controllers/genreControllers");
 
-router.post("/createNew", passport.authenticate("jwt", { session: false }), async (req, res) => {
-    const { genreName, description, artwork } = req.body;
-    if (!genreName) {
-        return res.status(400).json({ error: "Must enter genre name" }); 
-    }
-    const payload = {
-        genreName,
-        description,
-        tracksName: [],
-        artwork,
-    }
-
-    try {
-        const genreDetails = await genreModel.create(payload);
-        return res.status(201).json(genreDetails);
-    } catch (error) {
-        return res.status(500).json({ message: "Error creating genre", error });
-    }
-});
+router.post("/",
+    passport.authenticate("jwt",
+    { session: false }), 
+    isAdmin , 
+    genreController.createNewGenre
+);
 
 router.get("/genres", async (req, res) => {
     try {
