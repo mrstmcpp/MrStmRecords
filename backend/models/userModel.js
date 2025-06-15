@@ -43,7 +43,12 @@ const UserAccount = new mongoose.Schema({
         enum: ["Track" , "Playlist"],
       }
     }
-  ]
+  ],
+
+  isAdmin:{
+    type: Boolean,
+    default: false,
+  }
 } , {timestamps : true});
 
 const UserModel = mongoose.model("User", UserAccount);
