@@ -6,7 +6,6 @@ const SongModel = require("../models/trackModel");
 const isAdmin = require("../middlewares/isAdmin")
 const genreController = require("../controllers/genreControllers");
 const TrackModel = require("../models/trackModel");
-const trackPagination = require("../middlewares/trackPagination")
 
 router.post("/",
     passport.authenticate("jwt",
@@ -14,78 +13,19 @@ router.post("/",
     isAdmin , 
     genreController.createNewGenre
 );
-
 router.post("/addTrack" ,
     passport.authenticate("jwt" , {session: false}) ,
     isAdmin ,
     genreController.addTrackToGenre
 );
-
 router.get("/:genreId" , genreController.getTracksByGenre);
 
-router.get("/genres", async (req, res) => {
-    try {
-        const genreDetails = await genreModel.find({});
-        res.status(200).json(genreDetails);
-    } catch (error) {
-        res.status(500).json({ message: "Error fetching genre details", error });
-    }
-});
+router.put("/:genreId" , 
+    passport.authenticate("jwt" , {session : true}) , 
+    isAdmin, 
+    genreController.updateGenreDetails
+);
 
-
-
-router.get("/genres/:genreId" , async(req , res) => {
-    const {genreId} = req.params;
-    const genre = await genreModel.find({_id : genreId});
-    return res.status(200).json({data : genre});
-})
-
-
-router.put("/updateGenre/:genreId" , passport.authenticate("jwt" , {session: false}) , async(req , res) => {
-    const {genreId} = req.params;
-    const {artwork , description , genreName} = req.body;
-
-    try {
-        const updatedGenre = await genreModel.findByIdAndUpdate(genreId , {artwork , description ,  genreName} , {new : true});
-        if (!updatedGenre) {
-            return res.status(404).json({ message: "Genre not found" });
-        }
-
-        return res.status(200).json(updatedGenre);
-    } catch (error) {
-        return res.status(500).json({ message: "Error updating genre", error });
-    }
-})
-
-
-router.get("/id/:genreId", async (req, res) => {
-    const genreId = req.params.genreId;
-    const playlistToShow = await genreModel.findOne({ _id: genreId }).populate("tracksName");
-    if (!playlistToShow) {
-        return res.status(301).json({ error: "Doesn't exist." })
-    }
-    return res.status(200).json(playlistToShow.tracksName);
-})
-
-
-router.post("/add/song" , passport.authenticate("jwt" , {session: false}) , async(req,res) =>{
-    const {genreId , trackId} = req.body;
-    const verifyGenreId = await genreModel.findOne({_id: genreId});
-    if(!verifyGenreId){
-        return res.status(301).json({error: "Invalid Genre Name"});
-    }
-    const verifyTrackId = await SongModel.findOne({_id : trackId});
-    if(!verifyTrackId){
-        return res.status(301).json({error: "Invalid track."});
-    }
-
-    if(verifyGenreId.tracksName.includes(trackId)){
-        return res.status(301).json({error: "Already Exist."});
-    }
-
-    verifyGenreId.tracksName.push(trackId);
-    await verifyGenreId.save();
-    return res.status(200).json(verifyGenreId);
-})
+router.get("/", genreController.getAllGenres);
 
 module.exports = router;

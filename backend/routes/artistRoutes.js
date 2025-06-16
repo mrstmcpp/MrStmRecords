@@ -4,12 +4,16 @@ const SongModel = require("../models/trackModel");
 const passport = require("passport");
 const isArtist = require("../middlewares/isArtist");
 const router = express.Router();
-const artistController = require("../controllers/artistController");
-
+const ArtistController = require("../controllers/artistController");
+const TrackController = require("../controllers/trackController");
 
 router.post("/" , passport.authenticate("jwt", {session: false}),
-    artistController.createNewArtist
+    ArtistController.createNewArtist
 );
+
+router.get("/:id" , ArtistController.getArtistDetailsPublic);
+
+router.get("/:id/tracks" , TrackController.getTrackByArtist);
 
 //getting artist page
 router.get("/id/:artistId" , async(req, res) => {

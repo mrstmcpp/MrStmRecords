@@ -26,3 +26,20 @@ exports.createNewTrack = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+
+//to fetch artist's tracks
+exports.getTrackByArtist = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const TrackByArtist = await TrackModel.find({artists : id});
+    if (!TrackByArtist) {
+      return res
+        .status(400)
+        .json({ error: "Please provide a valid artist id." });
+    }
+    return res.status(200).json(TrackByArtist);
+  } catch (e) {
+    return res.status(500).json({ error: "Internal Server Error." });
+  }
+};
