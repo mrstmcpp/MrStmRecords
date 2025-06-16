@@ -11,6 +11,7 @@ const genreRoute = require("./routes/genreRoute");
 const artistRoutes = require("./routes/artistRoutes");
 const accountRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes")
+const albumRoutes = require("./routes/albumRoutes");
 const port = process.env.PORT || 5500;
 
 app.use(cors());
@@ -29,6 +30,7 @@ app.use(`${apiVersion}/genre` , genreRoute);
 app.use(`${apiVersion}/artist` , artistRoutes);
 app.use(`${apiVersion}/user` , accountRoutes);
 app.use(`${apiVersion}/admin` , adminRoutes);
+app.use(`${apiVersion}/album` , albumRoutes);
 
 Connection();
 
