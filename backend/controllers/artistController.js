@@ -3,11 +3,11 @@ const bcrypt = require("bcrypt");
 const getToken = require("../utils/helpers");
 
 exports.createNewArtist = async (req, res) => {
-  const { firstName, lastName, stageName, artistImage, email, password } =
+  const {stageName, artistImage } =
     req.body;
   const user = req.user._id;
 
-  if (!firstName || !stageName || !email || !password) {
+  if (!stageName || !artistImage) {
     return res.status(400).json({ error: "Insufficient details." });
   }
 
@@ -19,13 +19,6 @@ exports.createNewArtist = async (req, res) => {
         .json({ error: "Artist with this stage name already exists." });
     }
 
-    const artistByEmail = await ArtistModel.findOne({ email });
-    if (artistByEmail) {
-      return res
-        .status(409)
-        .json({ error: "Artist with this email already exists." });
-    }
-
     const existingArtist = await ArtistModel.findOne({ user });
     if (existingArtist) {
       return res
@@ -33,25 +26,17 @@ exports.createNewArtist = async (req, res) => {
         .json({ error: "Artist already linked to this user." });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newArtist = new ArtistModel({
       user,
-      firstName,
-      lastName,
       stageName,
       artistImage,
-      email,
-      password: hashedPassword,
     });
 
     await newArtist.save();
 
-    const token = await getToken(email, newArtist);
-
     return res.status(201).json({
       message: "Successfully registered for artist account.",
-      token,
     });
   } catch (error) {
     console.error("Error creating artist:", error);

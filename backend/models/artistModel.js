@@ -7,29 +7,14 @@ const artistSchema = new mongo.Schema({
         ref: "User",
         unique: true,
     },
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-    },
     stageName: {
-        type: String,
-        required: true,
-    },
-    artistImage: {
-        type: String,
-        default: "https://res.cloudinary.com/dtur9xepq/image/upload/v1721457968/stmify/assets/s1wczvohzzhzzbqwisga.png",
-    },
-    email: {
         type: String,
         required: true,
         unique: true,
     },
-    password: {
+    artistImage: {
         type: String,
-        required: true,
+        default: "https://res.cloudinary.com/dtur9xepq/image/upload/v1721457968/stmify/assets/s1wczvohzzhzzbqwisga.png",
     },
     bio: {
         type: String,

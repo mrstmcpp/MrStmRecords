@@ -64,27 +64,30 @@ exports.getTracksByGenre = async (req, res) => {
   const startIndex = (page - 1) * limit;
 
   try {
-    const genre = await GenreModel.findById(genreId);
+    const genre = await GenreModel.findById(genreId)
+      .populate({
+        path: "tracks",
+        populate: [
+          { path: "artists", select: "stageName" },
+        ],
+      });
+
     if (!genre) {
-      return res.status(404).json({ error: "Invalid genre Id." });
+      return res.status(404).json({ error: "Invalid genre ID." });
     }
 
-    const total = await TrackModel.countDocuments({ genre: genreId });
-
-    const tracks = await TrackModel.find({ genre: genreId })
-      .populate("artists", "stageName") 
-      .populate("genre", "name")  
-      .skip(startIndex)
-      .limit(limit);
+    const total = genre.tracks.length;
+    const paginatedTracks = genre.tracks.slice(startIndex, startIndex + limit);
 
     return res.status(200).json({
       total,
       page,
       limit,
-      results: tracks,
+      results: paginatedTracks,
     });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    console.error("Error fetching tracks by genre:", error);
+    return res.status(500).json({ error: "Internal Server Error." });
   }
 };
 

@@ -1,37 +1,42 @@
 const mongo = require("mongoose");
 
 const playlistSchema = new mongo.Schema({
-    name:{
+    name: {
         type: String,
         required: true,
     },
-    description:{
+    description: {
         type: String,
         default: "",
     },
-    likeCount:{
+    likeCount: {
         type: Number,
         default: 0,
     },
-    artwork:{
+    artwork: {
         type: String,
         default: "",
     },
-    tracks:[
+    tracks: [
         {
             type: mongo.Schema.Types.ObjectId,
             ref: "Track",
+        },
+    ],
+    artistOwners: [
+        { 
+            type: mongo.Schema.Types.ObjectId, 
+            ref: "Artist" 
         }
     ],
-    owner:[
-        {
-            type: mongo.Schema.Types.ObjectId,
-            ref: "Artist",
-            required: true,
+    userOwners: [
+        { 
+            type: mongo.Schema.Types.ObjectId, 
+            ref: "User" 
         }
-    ]
-})
+    ],
+});
 
-const playlistModel = mongo.model("Playlist" , playlistSchema);
+const playlistModel = mongo.model("Playlist", playlistSchema);
 
 module.exports = playlistModel;
