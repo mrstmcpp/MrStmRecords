@@ -13,43 +13,39 @@ const UserAccount = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true,
-    match:[
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
-        "Please provide a valid email address"
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+      "Please provide a valid email address"
     ]
   },
   password: {
     type: String,
     required: true,
   },
-  followedArtists: [
-    {
-      artists: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Artist",
-      },
-    },
-  ],
+  followedArtists: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Artist"
+  }],
 
-  liked:[
+  liked: [
     {
-      itemId:{
+      itemId: {
         type: mongoose.Schema.Types.ObjectId,
         refPath: "likedItems.itemType",
       },
-      itemType:{
+      itemType: {
         type: String,
         required: true,
-        enum: ["Track" , "Playlist"],
+        enum: ["Track", "Playlist"],
       }
     }
   ],
 
-  isAdmin:{
+  isAdmin: {
     type: Boolean,
     default: false,
   }
-} , {timestamps : true});
+}, { timestamps: true });
 
 const UserModel = mongoose.model("User", UserAccount);
 

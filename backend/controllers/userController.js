@@ -1,6 +1,8 @@
-const userModel = require('../models/userModel');
+const UserModel = require('../models/userModel');
 const getToken = require('../utils/helpers');
 const bcrypt = require('bcrypt');
+const TrackModel = require("../models/trackModel");
+const playlistModel = require('../models/playlistModel');
 
 exports.register = async (req, res) => {
     try {
@@ -10,14 +12,14 @@ exports.register = async (req, res) => {
             return res.status(400).json({ error: 'All fields are required.' });
         }
 
-        const existingUser = await userModel.findOne({ email });
+        const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             return res.status(409).json({ error: 'User already exists.' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new userModel({
+        const newUser = new UserModel({
             email,
             password: hashedPassword,
             firstName,
@@ -50,10 +52,10 @@ exports.register = async (req, res) => {
     }
 }
 
-exports.login = async(req, res) => {
+exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const loginUser = await userModel.findOne({ email });
+        const loginUser = await UserModel.findOne({ email });
         if (!loginUser) {
             return res.status(401).json({ error: "Invalid credentials." });
         }
@@ -74,11 +76,96 @@ exports.login = async(req, res) => {
     }
 }
 
-exports.logout = async(req ,res) => {
-    try{
+exports.logout = async (req, res) => {
+    try {
         req.logout();
-        return res.status(200).json({Success : "Successfully logged out."})
-    }catch{
-        return res.status(500).json({error: "Internal server error"});
+        return res.status(200).json({ Success: "Successfully logged out." })
+    } catch {
+        return res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+
+exports.getUserAccountPublic = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const user = await UserModel.findById(userId)
+            .select("firstName lastName followedArtists")
+            .populate("followedArtists", "stageName _id")
+        if (!user) {
+            return res.status(404).json({
+                error: "User not found."
+            })
+        }
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(500).json({ error: "Internal server error" })
+    }
+}
+
+exports.likeTrack = async (req, res) => {
+    const { trackId } = req.params;
+    const user = req.user;
+    try {
+        const track = await TrackModel.findById(trackId).select("_id");
+        if (!track) {
+            return res.status(404).json({
+                error: "Track not found."
+            })
+        }
+
+        const alreadyLiked = user.liked.some(
+            (like) =>
+                like.itemId.toString() === trackId && like.itemType === "Track"
+        );
+
+        if (alreadyLiked) {
+            return res.status(400).json({ message: "Track already liked." });
+        }
+
+        user.liked.push({
+            itemId: track._id,
+            itemType: "Track",
+        });
+
+        await user.save();
+
+        return res.status(200).json({ message: "Track liked successfully." });
+    } catch (error) {
+        return res.status(500).json({ error: "Internal server error" })
+    }
+}
+
+
+exports.likePlaylist = async (req, res) => {
+    const { playlistId } = req.params;
+    const user = req.user;
+    try {
+        const playlist = await playlistModel.findById(playlistId).select("_id");
+        if (!playlist) {
+            return res.status(404).json({
+                error: "Playlist not found."
+            })
+        }
+
+        const alreadyLiked = user.liked.some(
+            (like) =>
+                like.itemId.toString() === playlistId && like.itemType === "Playlist"
+        );
+
+        if (alreadyLiked) {
+            return res.status(400).json({ message: "Playlist already liked." });
+        }
+
+        user.liked.push({
+            itemId: playlist._id,
+            itemType: "Playlist",
+        });
+
+        await user.save();
+
+        return res.status(200).json({ message: "Playlist liked successfully." });
+    } catch (error) {
+        return res.status(500).json({ error: "Internal server error" })
     }
 }

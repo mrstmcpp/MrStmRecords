@@ -1,8 +1,5 @@
 const express = require("express");
 const passport = require("passport");
-const playlistModel = require("../models/playlistModel");
-const UserModel = require("../models/artistModel");
-const SongModel = require("../models/trackModel");
 const router = express.Router();
 const PlaylistController = require("../controllers/playlistController")
 

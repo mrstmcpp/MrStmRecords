@@ -95,10 +95,11 @@ exports.getTracksByGenre = async (req, res) => {
 //to get all genres name at homepage
 exports.getAllGenres = async(req , res) => {
   try{
-    const genres = await GenreModel.find({}, '_id name description');
-    if(genres){
-      return res.status(200).json(genres);
+    const genres = await GenreModel.find({}, '_id name description artwork');
+    if(!genres){
+      return res.status(404).json({error : "Could get any genre with id provided"});
     }
+    return res.status(200).json(genres);
   }catch(e){
       return res.status(500).json({error : "Internal Server Error."});
   }

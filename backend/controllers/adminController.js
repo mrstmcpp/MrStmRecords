@@ -1,8 +1,8 @@
-const userModel = require("../models/userModel");
+const UserModel = require("../models/userModel");
 
 exports.makeAdminByUserId = async(req , res) => {
     const {userId} = req.body;
-    const user = await userModel.findById(userId);
+    const user = await UserModel.findById(userId);
     if(!user){
         return res.status(400).json({
             error: "User doesn't exists with provided id."
@@ -15,3 +15,4 @@ exports.makeAdminByUserId = async(req , res) => {
         Success: "Successfully made admin."
     })
 }
+

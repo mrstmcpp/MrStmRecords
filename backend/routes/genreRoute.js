@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const genreModel = require("../models/genreModel");
 const passport = require("passport");
-const SongModel = require("../models/trackModel");
 const isAdmin = require("../middlewares/isAdmin")
 const genreController = require("../controllers/genreControllers");
-const TrackModel = require("../models/trackModel");
 
 router.post("/",
     passport.authenticate("jwt",

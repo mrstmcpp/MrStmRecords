@@ -8,6 +8,7 @@ const isArtist = require("../middlewares/isArtist")
 
 
 router.post("/", passport.authenticate("jwt", { session: false }), isArtist, trackController.createNewTrack);
+router.get("/:trackId" , trackController.getTrackById);
 
 
 router.get("/mytracks", passport.authenticate("jwt", { session: false }), async (req, res) => {
