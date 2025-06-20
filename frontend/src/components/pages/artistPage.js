@@ -89,6 +89,8 @@ const ArtistPage = () => {
                         src={artistData.artistImage}
                         alt={artistData.stageName}
                         className="h-60 w-60 object-cover rounded-full border-4 border-orange-400 z-10 mx-auto relative drop-shadow-lg"
+                        style={{ opacity: 0, transform: 'scale(0.95)', animation: 'fadeInScale 0.6s ease-out forwards' }}
+
                     />
                 </div>
 

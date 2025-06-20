@@ -2,7 +2,7 @@ import {unauthenticatedGETRequest , authenticatedPUTRequest} from "../../utils/S
 export const fetchGenres = async () => {
     try {
         const response = await unauthenticatedGETRequest("/genre");
-        return response?.data || [];
+        return response;
     } catch (error) {
         console.error("Failed to fetch genres:", error);
         throw error;

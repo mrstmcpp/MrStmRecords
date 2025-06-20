@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect , useRef } from "react";
 import "./HomeCards.css";
+import "./Ribbon.css"
 import { Link } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import playerContext from "../../contexts/playerContexts";
@@ -8,18 +9,24 @@ import { TailSpin, Audio } from 'react-loader-spinner';
 
 const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
     const { currSong, setCurrSong } = useContext(playerContext);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [currImage, setCurrImage] = useState(urlImage);
 
+    const imgRef = useRef(null);
     const containerStyle = {
-        backgroundImage: `url(${urlImage})`,
+        backgroundImage: `url(${currImage})`,
         filter: `blur(70px)`,
         backgroundColor: `rgba(0, 0, 0, 0.5)`,
     };
 
     useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 2000);
-        return () => clearTimeout(timer);
-    }, []);
+        setCurrImage(urlImage);
+
+        if (imgRef.current && imgRef.current.complete) {
+            // Already loaded from cache
+            setLoading(false);
+        }
+    }, [urlImage]);
 
     return (
         <div className="p-2">
@@ -41,34 +48,63 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                     ) : (
                         <>
                             <div className="background-image" style={containerStyle}></div>
+                            <div
+                                className={`ribbon ${all.songType === "Remix"
+                                    ? "bg-cyan-400"
+                                    : all.songType === "Cover"
+                                        ? "bg-orange-500"
+                                        : "bg-green-500"
+                                    }`}
+                            >{all.songType}</div>
                             <div className="flex items-center justify-center">
                                 <Link to={`/track/${id}`}>
-                                    <img src={urlImage} alt="Home Card" className="w-44 h-44 object-cover " />
+                                    <img
+                                        ref={imgRef} 
+                                        src={urlImage} 
+                                        alt={text} 
+                                        className="w-44 h-44 object-cover"
+                                        style={{
+                                            opacity: 0,
+                                            transform: 'scale(0.95)',
+                                            animation: 'fadeInScale 0.6s ease-out forwards'
+                                        }}
+                                        loading="lazy"
+                                        onLoad={() => setLoading(false)}
+                                    />
                                 </Link>
                             </div>
                             <div className="flex justify-center items-center flex-col">
                                 <div className="description font-semibold text-white text-center pt-6 text-ellipsis overflow-auto p-1.5">
-                                    <Link to={`/track/${id}`} className="text-white hover:text-slate-300">
+                                    <Link key={text} to={`/track/${id}`} className="text-white hover:text-slate-300">
                                         {text}
                                     </Link>
                                 </div>
-                                <div className="font-thin text-white text-center pt-4">
-                                    {artist.map(element => (
-                                        <Link
-                                        key={element._id}
-                                        to={`/artist/id/${element._id}`}>
-                                            {element.stageName}
-                                        </Link>
+                                <div className="font-semibold text-xs text-white text-center pt-4 pb-1">
+                                    {artist.map((element, index) => (
+                                        <>
+                                            <Link
+                                                key={element._id}
+                                                to={`/artist/id/${element._id}`}>
+                                                {element.stageName}
+                                            </Link>
+                                            {index < artist.length - 1 && ', '}
+                                        </>
                                     ))
                                     }
                                 </div>
-                                <p className="bg-orange-500 text-sm font-extralight text-white rounded mt-3 px-1">
-                                    <Link key={genre[0]._id}
-                                        to={`/genre/${genre[0]._id}`}
-                                    >
-                                    {genre[0].name}
-                                    </Link>
-                                </p>
+                                <div className="flex flex-wrap gap-2 mt-3 py-1">
+                                    {genre.map((g) => (
+                                        <p
+                                            key={g._id}
+                                            className="bg-slate-500 font-mono text-white uppercase rounded px-1.5"
+                                            style={{ fontSize: '10px', fontWeight: 80 }}
+                                        >
+                                            <Link to={`/genre/${g._id}`}>
+                                                {g.name}
+                                            </Link>
+                                        </p>
+                                    ))}
+                                </div>
                                 <div className="border w-full mt-3 border-slate-500 opacity-30"></div>
                                 <div className="flex w-full justify-around opacity-60">
                                     <button className="text-gray-400 hover:text-white hover:cursor-pointer mt-2 " title="Play" onClick={() => setCurrSong(all)}>

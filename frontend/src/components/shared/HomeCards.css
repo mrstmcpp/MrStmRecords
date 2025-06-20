@@ -48,6 +48,7 @@
     background-color: rgba(0, 0, 0, 0.5);
      /* Adjust the blur amount here */
     z-index: -1; /* Place it behind the card content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .home-card img {

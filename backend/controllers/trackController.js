@@ -78,13 +78,28 @@ exports.getTrackById = async (req, res) => {
 
 
 exports.getAllTracks = async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 12;
+  const skip = (page - 1) * limit;
+
   try {
-    const allTracks = await TrackModel.find().populate("artists", '_id stageName').populate("genre", '_id name');
+    const totalTracks = await TrackModel.countDocuments();
+    const allTracks = await TrackModel.find()
+      .populate("artists", '_id stageName')
+      .populate("genre", '_id name')
+      .skip(skip)
+      .limit(limit);
     if (!allTracks) {
       return res.status(404).json("Not found");
-
     }
-    return res.status(200).json(allTracks);
+
+    
+    return res.status(200).json({
+      totalTracks : totalTracks,
+      page : page,
+      totalPages: Math.ceil(totalTracks / limit),
+      tracks : allTracks
+    });
   } catch (error) {
     return res.status(500).json({ Error: "Internal server error." })
   }

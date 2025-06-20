@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import { topArtistsData } from "../components/cards/artistsData";
 import { topTracksData } from "../components/cards/topTracks";
 import { GenreCards } from "../components/shared/GenreCards";
-import { fetchGenre, fetchPlaylist, fetchPlaylists } from "../components/cards/genreData";
+import { fetchGenres, fetchPlaylists } from "../components/cards/genreData";
 import { LazySlider } from "../components/shared/NewReleasesCard";
 import { slides } from "../components/cards/NewReleaseData";
 import { ArtistCard } from "../components/shared/ArtistCards";
@@ -11,6 +11,8 @@ import { PlaylistCards } from "../components/shared/playlistCard";
 import TrackView from "../components/shared/trackView";
 import { Link } from "react-router-dom";
 import { TailSpin } from 'react-loader-spinner'; 
+import { Pagination } from "../components/shared/Pagination";
+
 
 const Homepage = () => {
     const [genres, setGenres] = useState([]);
@@ -25,32 +27,31 @@ const Homepage = () => {
     const [loadingSongs, setLoadingSongs] = useState(true);
 
     useEffect(() => {
-        // const getGenres = async () => {
-        //     try {
-        //         const genreData = await fetchGenre();
-        //         setGenres(genreData);
-        //         setLoadingGenres(false); // stop loading
-        //     } catch (error) {
-        //         console.error("Error fetching genres:", error);
-        //         setLoadingGenres(false); // stop loading in case of error
-        //     }
-        // };
+        const getGenres = async () => {
+            try {
+                const genreData = await fetchGenres();
+                setGenres(genreData);
+                setLoadingGenres(false); // stop loading
+            } catch (error) {
+                console.error("Error fetching genres:", error);
+                setLoadingGenres(false); // stop loading in case of error
+            }
+        };
 
-        // const getArtist = async () => {
-        //     try {
-        //         const artistData = await topArtistsData();
-        //         setArtist(artistData);
-        //         setLoadingArtists(false); // stop loading
-        //     } catch (error) {
-        //         console.error("Error fetching artists:", error);
-        //         setLoadingArtists(false); // stop loading in case of error
-        //     }
-        // };
+        const getArtist = async () => {
+            try {
+                const artistData = await topArtistsData();
+                setArtist(artistData.artists);
+                setLoadingArtists(false); // stop loading
+            } catch (error) {
+                console.error("Error fetching artists:", error);
+                setLoadingArtists(false); // stop loading in case of error
+            }
+        };
 
         const getPlaylist = async () => {
             try {
                 const playlistData = await fetchPlaylists();
-                console.log(playlistData)
                 setPlaylist(playlistData.playlists);
                 setLoadingPlaylist(false); // stop loading
             } catch (error) {
@@ -59,24 +60,24 @@ const Homepage = () => {
             }
         };
 
-        // const getAllSongs = async () => {
-        //     try {
-        //         const tracksData = await topTracksData();
-        //         setsongData(tracksData);
-        //         setLoadingSongs(false); // stop loading
-        //     } catch (error) {
-        //         console.log("Error occurred while fetching top tracks: ", error);
-        //         setLoadingSongs(false); // stop loading in case of error
-        //     }
-        // };
+        const getAllSongs = async () => {
+            try {
+                const tracksData = await topTracksData();
+                setsongData(tracksData.tracks);
+                setLoadingSongs(false); // stop loading
+            } catch (error) {
+                console.log("Error occurred while fetching top tracks: ", error);
+                setLoadingSongs(false); // stop loading in case of error
+            }
+        };
 
-        // getArtist();
-        // getGenres();
+        getArtist();
+        getGenres();
         getPlaylist();
-        // getAllSongs();
+        getAllSongs();
     }, []);
 
-    // const sortedtop5 = songData.toSorted((a, b) => b.plays - a.plays);
+    const sortedtop5 = songData.toSorted((a, b) => b.plays - a.plays);
 
     return (
         <Layout>
@@ -85,7 +86,7 @@ const Homepage = () => {
                     <LazySlider slides={slides} />
                 </div>
 
-                {/* <div className="text-3xl font-bold text-center text-white mb-8 pt-24">
+                <div className="text-3xl font-bold text-center text-white mb-8 pt-24">
                     <div>Top 5 Tracks</div>
                 </div>
                 <div className="flex flex-wrap justify-center">
@@ -96,9 +97,9 @@ const Homepage = () => {
                             {sortedtop5.slice(0, 5).map((card, index) => (
                                 <TrackView
                                     key={index}
-                                    text={card.title}
+                                    text={card.name}
                                     urlImage={card.albumArt}
-                                    artist={card.artist}
+                                    artist={card.artists}
                                     genre={card.genre}
                                     id={card._id}
                                     all={card}
@@ -125,9 +126,9 @@ const Homepage = () => {
                             {songData.slice(0, 5).map((card, index) => (
                                 <TrackView
                                     key={index}
-                                    text={card.title}
+                                    text={card.name}
                                     urlImage={card.albumArt}
-                                    artist={card.artist}
+                                    artist={card.artists}
                                     genre={card.genre}
                                     id={card._id}
                                     all={card}
@@ -164,7 +165,7 @@ const Homepage = () => {
                             {genres.slice(0, 5).map((genre, index) => (
                                 <GenreCards
                                     key={index}
-                                    genreName={genre.genreName}
+                                    genreName={genre.name}
                                     description={genre.description}
                                     imageUrl={genre.artwork}
                                     genreId={genre._id}
@@ -172,7 +173,7 @@ const Homepage = () => {
                             ))}
                         </>
                     )}
-                </div> */}
+                </div>
 
                 <h1 className="text-3xl font-bold text-center text-white mb-8 pt-24">Our Playlists</h1>
                 <div className="flex flex-wrap justify-center">

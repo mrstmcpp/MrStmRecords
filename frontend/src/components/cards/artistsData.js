@@ -5,9 +5,10 @@ export const topArtistsData = async () => {
         const data = await unauthenticatedGETRequest("/artist");
         return data;
     } catch (error) {
-        console.log(error);
+        console.log("topArtistsData error:", error);
+        return { artists: [] };
     }
+};
 
-}
 
 

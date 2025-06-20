@@ -70,7 +70,7 @@ exports.getAllArtists = async (req, res) => {
     try {
         const total = await ArtistModel.countDocuments();
         const artists = await ArtistModel.find({})
-            .select('stageName')
+            .select('stageName artistImage')
             .skip(skip)
             .limit(limit);
 
