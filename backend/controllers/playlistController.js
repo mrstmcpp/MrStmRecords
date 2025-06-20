@@ -165,3 +165,30 @@ exports.addTrackToPlaylist = async (req, res) => {
 };
 
 
+exports.getAllPlaylists = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    try {
+        const total = await PlaylistModel.countDocuments();
+        const playlists = await PlaylistModel.find({})
+            .select('_id name artwork description')
+            .skip(skip)
+            .limit(limit);
+
+        if (!playlists || playlists.length === 0) {
+            return res.status(404).json({ error: "No playlists found." });
+        }
+
+        return res.status(200).json({
+            totalPlaylists: total,
+            currentPage: page,
+            totalPages: Math.ceil(total / limit),
+            playlists,
+        });
+    } catch (error) {
+        console.error("Error fetching playlists:", error);
+        return res.status(500).json({ error: "Internal Server Error." });
+    }
+};

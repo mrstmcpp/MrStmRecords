@@ -9,7 +9,7 @@ const isArtist = require("../middlewares/isArtist")
 
 router.post("/", passport.authenticate("jwt", { session: false }), isArtist, trackController.createNewTrack);
 router.get("/:trackId" , trackController.getTrackById);
-
+router.get("/" , trackController.getAllTracks);
 
 router.get("/mytracks", passport.authenticate("jwt", { session: false }), async (req, res) => {
   const tracks = await SongModel.find({ artist: req.user._id }).populate("artist");

@@ -17,7 +17,7 @@ const LoginComponent = () => {
         const data = { email, password };
         
         try {
-            const response = await unauthenticatedPostRequest('/account/login', data);
+            const response = await unauthenticatedPostRequest('/user/login', data);
             if (response && response.token) {
                 const token = response.token;
                 const date = new Date();

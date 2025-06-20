@@ -21,10 +21,14 @@ const TrackPage = () => {
     useEffect(() => {
         const fetchSongDetails = async () => {
             try {
-                const trackDetails = await unauthenticatedGETRequest(`/song/id/${trackID}`);
+                const trackDetails = await unauthenticatedGETRequest(`/track/${trackID}`);
                 if (trackDetails) {
-                    setTrackData(trackDetails.track);
-                    setRelatedTrackData(trackDetails.relatedTracks);
+                    setTrackData(trackDetails);
+                    console.log(trackDetails)
+                    const moreFromArtist = await unauthenticatedGETRequest(`/artist/${trackDetails.artists[0]._id}/tracks`);
+                    if (moreFromArtist) {
+                        setRelatedTrackData(moreFromArtist);
+                    }
                 } else {
                     setError("No track details found.");
                 }
@@ -39,7 +43,7 @@ const TrackPage = () => {
         fetchSongDetails();
     }, [trackID]);
 
-    const titleOfTrack = isLoading ? "Loading..." : trackData.title + " - " + trackData.artist?.stageName || "Track Not Found";
+    const titleOfTrack = isLoading ? "Loading..." : trackData.name + " - " + trackData.artists?.stageName || "Track Not Found";
 
     const containerStyle = trackData.albumArt
         ? { backgroundImage: `url(${trackData.albumArt})` }
@@ -70,7 +74,7 @@ const TrackPage = () => {
                         <div className="flex flex-wrap justify-center space-x-8">
                             <img
                                 src={trackData.albumArt}
-                                alt={`${trackData.title} album art`}
+                                alt={`${trackData.name} album art`}
                                 className="w-80 h-80 object-cover rounded-md shadow-lg mb-4"
                             />
                             <div className="w-96 h-80 flex flex-col flex-wrap justify-between">
@@ -79,13 +83,19 @@ const TrackPage = () => {
                                         {trackData.songType}
                                     </div>
                                     <div className="text-4xl text-white font-bold ">
-                                        {trackData.title}
+                                        {trackData.name}
                                     </div>
 
                                     <div className="text-white text-lg">
-                                        <Link to={`/artist/id/${trackData.artist._id}`}>
-                                            {trackData.artist?.stageName}
-                                        </Link>
+                                        {trackData.artists.map((element, index) => (
+                                            <>
+                                                <Link to={`/artist/id/${element._id}`}
+                                                    className="hover:underline">
+                                                    {element.stageName}
+                                                </Link>
+                                                {index < trackData.artists.length - 1 && ', '}
+                                            </>
+                                        ))}
                                     </div>
                                 </div>
 
@@ -150,14 +160,14 @@ const TrackPage = () => {
 
                         <div className="border border-gray-500 mt-32 m-8 sm:ml-80 sm:mr-80"></div>
 
-                        <h1 className="text-3xl font-bold text-center mt-24 text-white">More From {trackData.artist?.stageName}</h1>
+                        <h1 className="text-3xl font-bold text-center mt-24 text-white">More From {trackData.artists[0]?.stageName}</h1>
                         <div className="flex flex-wrap justify-center items-center mt-12">
                             {relatedTrackData.map((card, index) => (
                                 <TrackView
                                     key={index}
-                                    text={card.title}
+                                    text={card.name}
                                     urlImage={card.albumArt}
-                                    artist={card.artist}
+                                    artist={card.artists}
                                     genre={card.genre}
                                     id={card._id}
                                     all={card}

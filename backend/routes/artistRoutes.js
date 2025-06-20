@@ -12,5 +12,7 @@ router.get("/:id" , ArtistController.getArtistDetailsPublic);
 
 router.get("/:id/tracks" , TrackController.getTrackByArtist);
 
+router.get("/" , ArtistController.getAllArtists);
+
 
 module.exports = router;

@@ -12,7 +12,7 @@ const AllArtistPage = () => {
         const functiontoget = async () => {
             try {
                 const data = await topArtistsData();
-                setAllArtists(data);
+                setAllArtists(data.artists);
                 setLoading(false);
             } catch (error) {
                 console.log(error);

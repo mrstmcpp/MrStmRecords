@@ -19,4 +19,6 @@ router.post("/:playlistId/add-track" ,
     passport.authenticate("jwt" , {session: false}),
     PlaylistController.addTrackToPlaylist
 )
+
+router.get("/" , PlaylistController.getAllPlaylists);
 module.exports = router;

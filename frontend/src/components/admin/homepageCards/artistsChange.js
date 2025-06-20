@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {fetchGenre , updateGenre} from '../../cards/genreData';
+import {fetchGenre , fetchGenres, updateGenre} from '../../cards/genreData';
 
 export const ArtistChange = () => {
     const [genres, setGenres] = useState([]);
@@ -9,7 +9,7 @@ export const ArtistChange = () => {
     useEffect(() => {
         const getGenres = async () => {
             try {
-                const data = await fetchGenre();
+                const data = await fetchGenres();
                 setGenres(data);
             } catch (error) {
                 console.error("Failed to fetch genres:", error);

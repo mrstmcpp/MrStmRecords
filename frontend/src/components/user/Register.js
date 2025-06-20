@@ -34,7 +34,7 @@ const RegisterComponent = () => {
 
         const data = { email, password, firstName, lastName };
         try {
-            const response = await unauthenticatedPostRequest("/account/register", data);
+            const response = await unauthenticatedPostRequest("/user/register", data);
             if (response && !response.err) {
                 toast.success("Registration successful! Login through the login page.");
                 navigate('/login');  // Navigate to login page on successful registration

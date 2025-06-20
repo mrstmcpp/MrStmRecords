@@ -1,9 +1,7 @@
 const ArtistModel = require("../models/artistModel");
-const bcrypt = require("bcrypt");
-const getToken = require("../utils/helpers");
 
 exports.createNewArtist = async (req, res) => {
-  const {stageName, artistImage } =
+  const { stageName, artistImage } =
     req.body;
   const user = req.user._id;
 
@@ -60,6 +58,34 @@ exports.getArtistDetailsPublic = async (req, res) => {
     }
     return res.status(200).json(artistDetails);
   } catch (e) {
-    return res.status(500).json({ error: "Internal Server Error." , e });
+    return res.status(500).json({ error: "Internal Server Error.", e });
   }
+};
+
+exports.getAllArtists = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    try {
+        const total = await ArtistModel.countDocuments();
+        const artists = await ArtistModel.find({})
+            .select('stageName')
+            .skip(skip)
+            .limit(limit);
+
+        if (!artists || artists.length === 0) {
+            return res.status(404).json({ error: "No artists found." });
+        }
+
+        return res.status(200).json({
+            totalArtists: total,
+            currentPage: page,
+            totalPages: Math.ceil(total / limit),
+            artists,
+        });
+    } catch (error) {
+        console.error("Error fetching artists:", error);
+        return res.status(500).json({ error: "Internal Server Error." });
+    }
 };

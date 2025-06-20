@@ -12,7 +12,7 @@ const ReleasesPage = () => {
     useEffect(() => {
         const TrackGetFunction = async () => {
             try {
-                const tracksfromApi = await authenticatedGETRequest("/song/getallsongs");
+                const tracksfromApi = await authenticatedGETRequest("/track");
                 setsongData(tracksfromApi);
             } catch (error) {
                 console.log(error);
@@ -53,7 +53,7 @@ const ReleasesPage = () => {
                         key={index}
                         text={card.title}
                         urlImage={card.albumArt}
-                        artist={card.artist}
+                        artist={card.artists}
                         genre={card.genre}
                         id={card._id}
                         all={card}

@@ -1,13 +1,13 @@
 import { frontEndUrl } from "../../utils/FrontendUrl";
 export const ClickToShare = async (data, type) => {
     if (navigator.share) {
-
         try {
             let shareUrl = '';
 
             switch (type) {
                 case 'track':
                     shareUrl = `${frontEndUrl}/track/${data._id}`;
+                    console.log(data);
                     break;
                 case 'artist':
                     shareUrl = `${frontEndUrl}/artist/${data.artist._id}`;
@@ -23,7 +23,7 @@ export const ClickToShare = async (data, type) => {
                     break;
             }
             await navigator.share({
-                title: data.title,
+                title: data.name,
                 text: data.description,
                 url: shareUrl
             });

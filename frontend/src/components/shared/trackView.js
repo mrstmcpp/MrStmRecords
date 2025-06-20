@@ -52,12 +52,23 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                                         {text}
                                     </Link>
                                 </div>
-                                <p className="font-normal text-white text-center pt-4">
-                                    <Link to={`/artist/id/${artist._id}`}>
-                                        {artist.stageName}
+                                <div className="font-thin text-white text-center pt-4">
+                                    {artist.map(element => (
+                                        <Link
+                                        key={element._id}
+                                        to={`/artist/id/${element._id}`}>
+                                            {element.stageName}
+                                        </Link>
+                                    ))
+                                    }
+                                </div>
+                                <p className="bg-orange-500 text-sm font-extralight text-white rounded mt-3 px-1">
+                                    <Link key={genre[0]._id}
+                                        to={`/genre/${genre[0]._id}`}
+                                    >
+                                    {genre[0].name}
                                     </Link>
                                 </p>
-                                <p className="bg-orange-500 text-sm font-extralight text-white rounded mt-3 px-1">{genre}</p>
                                 <div className="border w-full mt-3 border-slate-500 opacity-30"></div>
                                 <div className="flex w-full justify-around opacity-60">
                                     <button className="text-gray-400 hover:text-white hover:cursor-pointer mt-2 " title="Play" onClick={() => setCurrSong(all)}>

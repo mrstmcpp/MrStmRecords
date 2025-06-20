@@ -12,14 +12,14 @@ import { TailSpin } from "react-loader-spinner";
 const ArtistPage = () => {
     const { artistId } = useParams();
     const [artistData, setartistData] = useState({});
-    const [songsData, setsongsData] = useState([]);
+    const [tracksData, setTracksData] = useState([]);
     const [similarArtists, setSimilarArtists] = useState([]);
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         const fetchArtistData = async () => {
             try {
-                const userDetail = await unauthenticatedGETRequest(`/artist/id/${artistId}`);
+                const userDetail = await unauthenticatedGETRequest(`/artist/${artistId}`);
                 setartistData(userDetail || {});
             } catch (error) {
                 toast.error("Error while fetching artist data", error);
@@ -28,39 +28,32 @@ const ArtistPage = () => {
 
         const fetchTrackByArtist = async () => {
             try {
-                const tracksData = await unauthenticatedGETRequest(`/artist/tracks/${artistId}`);
-
-                if (!tracksData || tracksData.length === 0) {
-                    setsongsData([]);
-                    toast.error("No Data to Show.");
-                } else {
-                    setsongsData(tracksData);
-                    console.log(tracksData);
-                }
+                const tracks = await unauthenticatedGETRequest(`/artist/${artistId}/tracks`);
+                setTracksData(tracks);
+                console.log(tracks)
             } catch (error) {
                 toast.error("No Data to Show.");
-                setsongsData([]);
             }
         }
 
-        const fetchSimilarArtists = async () => {
-            try {
-                const similarArtistsData = await unauthenticatedGETRequest(`/artist/similar/${artistId}`);
-                setSimilarArtists(similarArtistsData || []);
-            } catch (error) {
-                toast.error("Error while fetching similar artists", error);
-            }
-        }
+        // const fetchSimilarArtists = async () => {
+        //     try {
+        //         const similarArtistsData = await unauthenticatedGETRequest(`/artist/similar/${artistId}`);
+        //         setSimilarArtists(similarArtistsData || []);
+        //     } catch (error) {
+        //         toast.error("Error while fetching similar artists", error);
+        //     }
+        // }
 
         if (artistId) {
             setLoading(true); // Set loading to true before fetching data
-            Promise.all([fetchArtistData(), fetchTrackByArtist(), fetchSimilarArtists()])
+            Promise.all([fetchArtistData(), fetchTrackByArtist()])
                 .then(() => setLoading(false)) // Set loading to false after data is fetched
                 .catch(() => setLoading(false));
         }
     }, [artistId]);
 
-    const sortedtop5 = songsData.toSorted((a, b) => b.plays - a.plays);
+    const sortedtop5 = tracksData.toSorted((a, b) => b.plays - a.plays);
 
     if (loading) {
         return (
@@ -170,7 +163,7 @@ const ArtistPage = () => {
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
                     {sortedtop5.length > 0 ? (
-                        sortedtop5.slice(0, 3).map((card, index) => (
+                        sortedtop5.map((card, index) => (
                             <TrackView
                                 key={index}
                                 id={card._id}
@@ -178,7 +171,7 @@ const ArtistPage = () => {
                                 urlImage={card.albumArt}
                                 text={card.title}
                                 genre={card.genre}
-                                artist={card.artist}
+                                artist={card.artists}
                             />
                         ))
                     ) : (
@@ -189,7 +182,7 @@ const ArtistPage = () => {
                 <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
                     Discography
                 </div>
-                <div className="flex flex-wrap justify-center w-5/6">
+                {/* <div className="flex flex-wrap justify-center w-5/6">
                     {songsData.length > 0 ? (
                         songsData.reverse().map((card, index) => (
                             <TrackView
@@ -205,9 +198,9 @@ const ArtistPage = () => {
                     ) : (
                         <div className="text-gray-500">No discography available for this artist.</div>
                     )}
-                </div>
+                </div> */}
 
-                <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
+                {/* <div className="w-full text-center mt-8 mb-8 text-3xl font-bold">
                     Similar Artists
                 </div>
                 <div className="flex flex-wrap justify-center w-5/6">
@@ -232,7 +225,7 @@ const ArtistPage = () => {
                     ) : (
                         <div className="text-gray-500">No similar artists available.</div>
                     )}
-                </div>
+                </div> */}
             </div>
         </Layout>
     );

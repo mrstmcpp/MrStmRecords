@@ -32,7 +32,7 @@ exports.createNewTrack = async (req, res) => {
 exports.getTrackByArtist = async (req, res) => {
   const { id } = req.params;
   try {
-    const TrackByArtist = await TrackModel.find({ artists: id });
+    const TrackByArtist = await TrackModel.find({ artists: id }).populate("artists", '_id stageName').populate("genre", '_id name');
     if (!TrackByArtist) {
       return res
         .status(400)
@@ -49,8 +49,8 @@ exports.getTrackById = async (req, res) => {
   const { trackId } = req.params;
   try {
     const track = await TrackModel.findById(trackId)
-        .populate('artists' , 'stageName _id')
-        .populate('genre' , 'name _id');
+      .populate('artists', 'stageName _id')
+      .populate('genre', 'name _id');
     if (!track) {
       return res.status(404).json({
         Error: "Invalid track id."
@@ -65,15 +65,27 @@ exports.getTrackById = async (req, res) => {
       albumArt: track.albumArt,
       genre: track.genre,
       description: track.description,
-      songType : track.songType,
+      songType: track.songType,
       duration: track.duration
     }
 
     return res.status(200).json(response);
-  }catch(e){
+  } catch (e) {
     console.log(e);
-    return res.status(500).json({Error: "Internal server error."})
+    return res.status(500).json({ Error: "Internal server error." })
   }
 }
 
 
+exports.getAllTracks = async (req, res) => {
+  try {
+    const allTracks = await TrackModel.find().populate("artists", '_id stageName').populate("genre", '_id name');
+    if (!allTracks) {
+      return res.status(404).json("Not found");
+
+    }
+    return res.status(200).json(allTracks);
+  } catch (error) {
+    return res.status(500).json({ Error: "Internal server error." })
+  }
+}
