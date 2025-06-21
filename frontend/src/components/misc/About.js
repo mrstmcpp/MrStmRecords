@@ -3,9 +3,15 @@ import Layout from "../../layouts/Layout";
 import { Icon } from "@iconify/react";
 
 const About = () => {
+    const mrstmImageUrl = "/mrstm.jpg";
     return (
         <Layout>
-            <div className="bg-app-color min-h-screen flex flex-col items-center justify-center p-4">
+                <div
+                    className="background-release-image"
+                    style={{ backgroundImage: `url(${mrstmImageUrl})` }}
+                ></div>
+            <div className="relative min-h-screen flex flex-col items-center justify-center p-4 content-release-box">
+
                 <div className="max-w-3xl bg-gray-800 shadow-lg rounded-lg p-8">
                     <h1 className="text-3xl font-bold text-white mb-4 text-center">About Mr Stm</h1>
                     <img

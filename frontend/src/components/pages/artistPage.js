@@ -8,6 +8,7 @@ import { Icon } from "@iconify/react";
 import "../shared/NewReleaseCards.css";
 import { toast } from "react-toastify";
 import { TailSpin } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const ArtistPage = () => {
     const { artistId } = useParams();
@@ -15,14 +16,22 @@ const ArtistPage = () => {
     const [tracksData, setTracksData] = useState([]);
     const [similarArtists, setSimilarArtists] = useState([]);
     const [loading, setLoading] = useState(true); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchArtistData = async () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/artist/${artistId}`);
-                setartistData(userDetail || {});
+                
+                if (!userDetail || userDetail.error || !userDetail._id) {
+                    toast.error("Artist not found.");
+                    navigate("/");
+                    return;
+                }
+                setartistData(userDetail)
             } catch (error) {
-                toast.error("Error while fetching artist data", error);
+                toast.error("Error while fetching artist data");
+                navigate("/");
             }
         }
 
@@ -51,7 +60,7 @@ const ArtistPage = () => {
                 .then(() => setLoading(false)) // Set loading to false after data is fetched
                 .catch(() => setLoading(false));
         }
-    }, [artistId]);
+    }, [artistId , navigate]);
 
     const sortedtop5 = tracksData.toSorted((a, b) => b.plays - a.plays);
 

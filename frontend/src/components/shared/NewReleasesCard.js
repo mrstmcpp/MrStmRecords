@@ -19,9 +19,14 @@ export const LazySlider = () => {
         const interval = setInterval(() => {
             nextSlide();
         }, 5000);
+        if(slideIndex){
+            return () => clearInterval(interval);
+        }
 
         return () => clearInterval(interval);
-    }, []);
+
+        
+    }, [slideIndex]);
 
 
 
@@ -45,6 +50,7 @@ export const LazySlider = () => {
                                     src={slides[slideIndex].image}
                                     alt={slides[slideIndex].title}
                                     className="object-cover w-full h-full shadow-2xl slider-image"
+                                    style={{ opacity: 0, transform: 'scale(0.95)', animation: 'fadeInScale 0.6s ease-out forwards' }}
                                 />
                             </div>
                         </div>

@@ -48,7 +48,7 @@ function App() {
               <Route path='/upload' element={<UploadArea />} />
               <Route path='/genre/:genreId' element={<GenrePage />} />
               <Route path='/track/:trackID' element={<TrackPage />} />
-              <Route path='/artist/id/:artistId' element={<ArtistPage />} />
+              <Route path='/artist/:artistId' element={<ArtistPage />} />
               <Route path='/artists' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
@@ -75,7 +75,7 @@ function App() {
             <Route path='/upload' element={<UploadArea />} />
             <Route path='/genre/:genreId' element={<GenrePage />} />
             <Route path='/track/:trackID' element={<TrackPage />} />
-            <Route path='/artist/id/:artistId' element={<ArtistPage />} />
+            <Route path='/artist/:artistId' element={<ArtistPage />} />
             <Route path='/artists' element={<AllArtistPage />} />
             <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
             <Route path='/releases' element={<ReleasesPage />} />
