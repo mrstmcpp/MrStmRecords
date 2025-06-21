@@ -49,15 +49,19 @@ exports.getPlaylistTracks = async (req, res) => {
 
     try {
         const playlist = await PlaylistModel.findById(playlistId)
-            .populate({
+            .populate(
+                {
                 path: "tracks",
-                populate: {
+                populate: [{
                     path: "artists",
                     select: "stageName",
-                },
+                } , {
+                path: "genre",
+                select: "name"
+            }]
             })
             .populate("artistOwners", "stageName")
-            .populate("userOwners", "firstName lastName");
+            .populate("userOwners", "firstName lastName")
 
         if (!playlist) {
             return res.status(404).json({ error: "Playlist not found." });
@@ -69,6 +73,10 @@ exports.getPlaylistTracks = async (req, res) => {
         return res.status(200).json({
             playlistId: playlist._id,
             playlistName: playlist.name,
+            likeCount : playlist.likeCount,
+            artwork: playlist.artwork,
+            description: playlist.description,
+            owner : playlist.artistOwners || playlist.userOwners,
             totalTracks: total,
             currentPage: page,
             totalPages: Math.ceil(total / limit),

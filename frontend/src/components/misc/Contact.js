@@ -3,11 +3,17 @@ import Layout from '../../layouts/Layout';
 import TextInput from '../shared/TextInput';
 
 const ContactUs = () => {
+    const mrstmImageUrl = "/mrstm.jpg";
+
     return (
         <Layout>
-            <div className='bg-app-color flex flex-col items-center justify-center py-40'>
+            <div
+                    className="background-release-image"
+                    style={{ backgroundImage: `url(${mrstmImageUrl})` }}
+                ></div>
+            <div className='relative min-h-screen flex flex-col items-center justify-center p-4 content-release-box'>
                 <div className='w-full max-w-lg px-6 py-10 bg-gray-800 shadow-md rounded-lg'>
-                    <div className='text-center text-rev-color mb-6 text-2xl font-bold'>Contact Us</div>
+                    <div className='text-center  mb-6 text-2xl font-bold'>Contact Us</div>
                     <TextInput placeholder="Your Name" label="Name" />
                     <TextInput placeholder="you@example.com" label="Email" type="email" />
                     <div className="flex flex-col mb-4">

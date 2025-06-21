@@ -149,7 +149,7 @@ const Homepage = () => {
                                     key={index}
                                     artistName={card.stageName}
                                     imageUrl={card.artistImage}
-                                    profileUrl={`/artist/id/${card._id}`}
+                                    profileUrl={`/artist/${card._id}`}
                                 />
                             ))}
                         </>
