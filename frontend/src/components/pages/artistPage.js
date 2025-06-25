@@ -155,6 +155,11 @@ const ArtistPage = () => {
                                         </div>
                                     </a>
                                 )}
+                                <Link to={`/chat/${artistId}`}>
+                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-slate-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
+                                            <Icon icon="material-symbols:chat" className="h-8 w-8" />
+                                        </div>
+                                    </Link>
                             </>
                         )}
                     </div>

@@ -17,6 +17,8 @@ import { useState } from 'react';
 import { FloatingPlayer } from './components/player/floatingPlayer';
 import TrackPage from './components/pages/trackPage';
 import AllArtistPage from './components/pages/allArtistPage';
+import ChatPage from './components/pages/chatPage';
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [currSong, setCurrSong] = useState(null);
@@ -26,6 +28,16 @@ function App() {
   const [isSongPlaying, setIsSongPlaying] = useState(false);
   const [cookie, setCookies] = useCookies(["token"]);
 
+
+  let userId = null;
+  if (cookie.token) {
+    try {
+      const decoded = jwtDecode(cookie.token);
+      userId = decoded.id;
+    } catch (e) {
+      console.error("Invalid JWT", e);
+    }
+  }
 
   return (
     <div className=''>
@@ -52,6 +64,7 @@ function App() {
               <Route path='/artists' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
+              <Route path='/chat/:toUser' element={<ChatPage userId={userId} />} />
             </Routes>
 
           </playerContext.Provider>
