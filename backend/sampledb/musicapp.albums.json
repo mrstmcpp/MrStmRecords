@@ -1,0 +1,62 @@
+[{
+  "_id": {
+    "$oid": "684ffb8f4a35bdd18313c566"
+  },
+  "name": "Mr Stm Album",
+  "albumArt": "abhi ni h",
+  "description": "",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "tracks": [
+    {
+      "$oid": "684eaf3e7b3a6565aff948aa"
+    },
+    {
+      "$oid": "684eade476f9891bfa45cf90"
+    },
+    {
+      "$oid": "684ead777c53b62047665f69"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-16T11:10:07.487Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T11:10:07.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685011ad9b581d34b8219384"
+  },
+  "name": "Mr Stm Album",
+  "albumArt": "abhi ni h",
+  "description": "",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "tracks": [
+    {
+      "$oid": "684eaf3e7b3a6565aff948aa"
+    },
+    {
+      "$oid": "684eade476f9891bfa45cf90"
+    },
+    {
+      "$oid": "684ead777c53b62047665f69"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-16T12:44:29.869Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T12:44:29.869Z"
+  },
+  "__v": 0
+}]

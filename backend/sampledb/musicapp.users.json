@@ -1,0 +1,188 @@
+[{
+  "_id": {
+    "$oid": "684e6ca12cfaf54e6ec95d6e"
+  },
+  "firstName": "Satyam",
+  "lastName": "Prajapati",
+  "email": "mrstmmusic@gmail.com",
+  "password": "$2b$10$Tz6AEStb8B0xS8TTJmUk3O2B4gYSeG7Gouf.Cd3JX1WZjBi6B37ze",
+  "followedArtists": [],
+  "liked": [
+    {
+      "itemId": {
+        "$oid": "685023d7e29d860193ff71fb"
+      },
+      "itemType": "Playlist",
+      "_id": {
+        "$oid": "6853f6b9a53c3de000e832e1"
+      }
+    },
+    {
+      "itemId": {
+        "$oid": "68502404e29d860193ff7202"
+      },
+      "itemType": "Playlist",
+      "_id": {
+        "$oid": "6853f6c9a53c3de000e832e6"
+      }
+    },
+    {
+      "itemId": {
+        "$oid": "684eaf3e7b3a6565aff948aa"
+      },
+      "itemType": "Track",
+      "_id": {
+        "$oid": "6853f6f0a53c3de000e832ec"
+      }
+    },
+    {
+      "itemId": {
+        "$oid": "684eade476f9891bfa45cf90"
+      },
+      "itemType": "Track",
+      "_id": {
+        "$oid": "6853f6f7a53c3de000e832f3"
+      }
+    },
+    {
+      "itemId": {
+        "$oid": "684ead777c53b62047665f69"
+      },
+      "itemType": "Track",
+      "_id": {
+        "$oid": "6853f6fca53c3de000e832fb"
+      }
+    },
+    {
+      "itemId": {
+        "$oid": "684ead2ff2c2a411237e5aad"
+      },
+      "itemType": "Track",
+      "_id": {
+        "$oid": "6853f701a53c3de000e83304"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-15T06:48:01.932Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-19T11:39:45.974Z"
+  },
+  "__v": 6,
+  "isAdmin": true
+},
+{
+  "_id": {
+    "$oid": "684e750630e48e8dcab52708"
+  },
+  "firstName": "Satyam",
+  "lastName": "Prajapati",
+  "email": "ajay@gmail.com",
+  "password": "$2b$10$gzP3iFWQBDhAw4xSHweunu3NbB2bW9i3T/5j8GgowFCJfVcd8/wsO",
+  "followedArtists": [],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-15T07:23:50.410Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T07:23:50.410Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684e9436e7700abe9862d6a9"
+  },
+  "firstName": "Shivam",
+  "lastName": "Prajapati",
+  "email": "shivam@gmail.com",
+  "password": "$2b$10$30x/vUy8dDE4wO4jMxEgLuGXYLgCvO0bnI0Q1i43ZZCG4QtMjLpiC",
+  "followedArtists": [],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-15T09:36:54.046Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T09:36:54.046Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684e9944363a2577377a81db"
+  },
+  "firstName": "Aman",
+  "lastName": "Prajapati",
+  "email": "aman@gmail.com",
+  "password": "$2b$10$/F9Id8cHnLcPntuaFbhZsuRW5TTML36pqVs52A93iO/iYMhU6pNLu",
+  "followedArtists": [],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-15T09:58:28.906Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T10:41:52.625Z"
+  },
+  "__v": 0,
+  "isAdmin": true
+},
+{
+  "_id": {
+    "$oid": "684ea9ae0dd086c04482520f"
+  },
+  "firstName": "not artist",
+  "lastName": "",
+  "email": "notartist@gmail.com",
+  "password": "$2b$10$GdZRwBZJVM.UxWYhOAcrdun8ku6FJA07Z581UY51gbuEy/Hr2OEGC",
+  "isAdmin": false,
+  "followedArtists": [],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-15T11:08:30.467Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T11:08:30.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68501c8877e607ecf02565a7"
+  },
+  "firstName": "new artist",
+  "lastName": "",
+  "email": "newartist@gmail.com",
+  "password": "$2b$10$PzYExizfqCNBO7Zq0.wXEOi89WTaIcqjoUQ7TqBKmHg8JMMU1kkCm",
+  "isAdmin": false,
+  "followedArtists": [
+    "684e73dc721b186f995c42cf"
+  ],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-16T13:30:48.074Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T13:30:48.074Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685023f2e29d860193ff71fe"
+  },
+  "firstName": "new artist",
+  "lastName": "",
+  "email": "notartistnew@gmail.com",
+  "password": "$2b$10$816m063pEGKUoBeAbTRMI.m4n0putqO9FCO6F7aXV2a8YWKEimwUS",
+  "isAdmin": false,
+  "followedArtists": [],
+  "liked": [],
+  "createdAt": {
+    "$date": "2025-06-16T14:02:26.879Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T14:02:26.879Z"
+  },
+  "__v": 0
+}]

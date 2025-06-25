@@ -1,0 +1,93 @@
+[{
+  "_id": {
+    "$oid": "684e9d5dbc826b857a09999d"
+  },
+  "name": "Psytrance",
+  "tracks": [
+    {
+      "$oid": "684eaf3e7b3a6565aff948aa"
+    },
+    {
+      "$oid": "684eade476f9891bfa45cf90"
+    },
+    {
+      "$oid": "684ead2ff2c2a411237e5aad"
+    }
+  ],
+  "description": "Latest psytrance songs of 2026",
+  "artwork": "https://i.pinimg.com/736x/ee/bc/f2/eebcf2a38a5371c100028b10d1f09757.jpg",
+  "owner": [
+    {
+      "$oid": "684e9944363a2577377a81db"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-15T10:15:57.329Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T09:03:36.561Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6855657e03ddb2a7b3bb3f01"
+  },
+  "name": "Tech House",
+  "tracks": [
+    {
+      "$oid": "684eaf3e7b3a6565aff948aa"
+    },
+    {
+      "$oid": "684eade476f9891bfa45cf90"
+    },
+    {
+      "$oid": "684ead2ff2c2a411237e5aad"
+    }
+  ],
+  "description": "Latest tech house songs of 2025",
+  "artwork": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8491f492de43f8f4a0b44ef8ac",
+  "owner": [
+    {
+      "$oid": "684e9944363a2577377a81db"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-15T10:15:57.329Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T09:03:36.561Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6855667c03ddb2a7b3bb3f0a"
+  },
+  "name": "Bigroom House",
+  "tracks": [
+    {
+      "$oid": "684eaf3e7b3a6565aff948aa"
+    },
+    {
+      "$oid": "684eade476f9891bfa45cf90"
+    },
+    {
+      "$oid": "684ead2ff2c2a411237e5aad"
+    }
+  ],
+  "description": "Latest Bigroom house songs of 2025",
+  "artwork": "https://i1.sndcdn.com/artworks-YQ7r1d7y6izC9biv-Khi4hQ-t500x500.jpg",
+  "owner": [
+    {
+      "$oid": "684e9944363a2577377a81db"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-15T10:15:57.329Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T09:03:36.561Z"
+  },
+  "__v": 3
+}]

@@ -72,7 +72,7 @@ const TrackPage = () => {
                                     <div className="text-white text-lg">
                                         {trackData.artists.map((element, index) => (
                                             <React.Fragment key={element._id}>
-                                                <Link to={`/artist/id/${element._id}`} className="hover:underline">{element.stageName}</Link>
+                                                <Link to={`/artist/${element._id}`} className="hover:underline">{element.stageName}</Link>
                                                 {index < trackData.artists.length - 1 && ', '}
                                             </React.Fragment>
                                         ))}

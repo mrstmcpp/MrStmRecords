@@ -1,0 +1,303 @@
+[{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799993"
+  },
+  "name": "Midnight Vibes",
+  "description": "Perfect tunes for late-night drives and dreamy thoughts.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+  "tracks": [
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1d"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef1"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef7"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1f"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799994"
+  },
+  "name": "Workout Beast",
+  "description": "Get pumped with this high-energy workout playlist.",
+  "likeCount": 0,
+  "artwork": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84e1626ca4d433df16f0ce1e68",
+  "tracks": [
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef5"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef9"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1e"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f20"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef3"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799995"
+  },
+  "name": "Lo-Fi Study",
+  "description": "Chill lo-fi beats to keep you focused while studying.",
+  "likeCount": 0,
+  "artwork": "https://preview.redd.it/lofi-beats-playlist-update-and-submission-is-now-open-v0-no60ca1v49lb1.jpg?width=780&format=pjpg&auto=webp&s=5ed2815bbc2c613e89a945a18dd30e4e5f7e05e7",
+  "tracks": [
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1a"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1c"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1f"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef0"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799996"
+  },
+  "name": "Classic Rock Anthems",
+  "description": "A powerful blast from the past with rock legends.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+  "tracks": [
+    {
+      "$oid": "6855676603ddb2a7b3bb3f18"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1b"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef4"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef2"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f21"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799997"
+  },
+  "name": "Romantic Evenings",
+  "description": "Soft and soulful songs to set the mood right.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1508780709619-79562169bc64",
+  "tracks": [
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef6"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef8"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1b"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f19"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799998"
+  },
+  "name": "Techno Pulse",
+  "description": "Heart-throbbing techno tracks to get lost in rhythm.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1508057198894-247b23fe5ade",
+  "tracks": [
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1e"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef0"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef3"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef7"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c9799999"
+  },
+  "name": "Sunday Soul",
+  "description": "Soulful tracks for a relaxed Sunday vibe.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1521334884684-d80222895322",
+  "tracks": [
+    {
+      "$oid": "6855676603ddb2a7b3bb3f19"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f21"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef6"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1a"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c979999a"
+  },
+  "name": "Hip-Hop Heat",
+  "description": "Fresh and fire beats from the world of hip-hop.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1583337130417-d44a751d4541",
+  "tracks": [
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef9"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1c"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef1"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c979999b"
+  },
+  "name": "Morning Motivation",
+  "description": "Start your day with motivation and melodies.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1531572753322-ad063cecc140",
+  "tracks": [
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef2"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef5"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f20"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1d"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856425a01db64d5c979999c"
+  },
+  "name": "Indie Escapes",
+  "description": "A collection of indie gems that lift your spirit.",
+  "likeCount": 0,
+  "artwork": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc",
+  "tracks": [
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef8"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f18"
+    },
+    {
+      "$oid": "685557d103ddb2a7b3bb3ef4"
+    },
+    {
+      "$oid": "6855676603ddb2a7b3bb3f1c"
+    }
+  ],
+  "artistOwners": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "userOwners": [],
+  "__v": 0
+}]

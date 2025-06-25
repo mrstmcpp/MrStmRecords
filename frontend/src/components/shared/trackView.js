@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 import playerContext from "../../contexts/playerContexts";
 import { ClickToShare } from "../misc/ClickToShare";
 import { TailSpin, Audio } from 'react-loader-spinner';
+import ImageWithLoader from "../misc/ImageLoader";
 
 const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
     const { currSong, setCurrSong } = useContext(playerContext);
@@ -21,9 +22,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
 
     useEffect(() => {
         setCurrImage(urlImage);
-
         if (imgRef.current && imgRef.current.complete) {
-            // Already loaded from cache
             setLoading(false);
         }
     }, [urlImage]);
@@ -47,7 +46,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="background-image" style={containerStyle}></div>
+                            <div className="background-image" style={containerStyle} onLoad={() => setLoading(false)}></div>
                             <div
                                 className={`ribbon ${all.songType === "Remix"
                                     ? "bg-cyan-400"
@@ -58,7 +57,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                             >{all.songType}</div>
                             <div className="flex items-center justify-center">
                                 <Link to={`/track/${id}`}>
-                                    <img
+                                    {/* <img
                                         ref={imgRef} 
                                         src={urlImage} 
                                         alt={text} 
@@ -70,7 +69,8 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                                         }}
                                         loading="lazy"
                                         onLoad={() => setLoading(false)}
-                                    />
+                                    /> */}
+                                    <ImageWithLoader src={urlImage} alt={text} className={""} />
                                 </Link>
                             </div>
                             <div className="flex justify-center items-center flex-col">
@@ -80,11 +80,11 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                                     </Link>
                                 </div>
                                 <div className="font-semibold text-xs text-white text-center pt-4 pb-1">
-                                    {artist.map((element, index) => (
+                                    {artist && artist.length > 0 && artist.map((element, index) => (
                                         <>
                                             <Link
                                                 key={element._id}
-                                                to={`/artist/id/${element._id}`}>
+                                                to={`/artist/${element._id}`}>
                                                 {element.stageName}
                                             </Link>
                                             {index < artist.length - 1 && ', '}
@@ -93,7 +93,7 @@ const TrackView = ({ text, urlImage, artist, genre, id, all }) => {
                                     }
                                 </div>
                                 <div className="flex flex-wrap gap-2 mt-3 py-1">
-                                    {genre.map((g) => (
+                                    {genre && genre.length > 0 && genre.map((g) => (
                                         <p
                                             key={g._id}
                                             className="bg-slate-500 font-mono text-white uppercase rounded px-1.5"

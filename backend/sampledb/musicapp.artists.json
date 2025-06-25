@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "684e73dc721b186f995c42cf"
+  },
+  "user": {
+    "$oid": "684e6ca12cfaf54e6ec95d6e"
+  },
+  "firstName": "Satyam",
+  "lastName": "Prajapati",
+  "stageName": "Mr Stm",
+  "artistImage": "https://cdn.vectorstock.com/i/1000v/62/46/dj-in-profile-vector-22426246.jpg",
+  "email": "mrstmmusic@gmail.com",
+  "password": "$2b$10$fbt5HTlxlV6U5zwD45D2M.GxjO1IfbsVTm5sI9t3CEU.dhnelFEPG",
+  "socialLinks": {
+    "spotify": "https://open.spotify.com/artist/5oHY2VM2iSHR5aOCZrZJnR",
+    "instagram": "https://instagram.com/mrstmmusic",
+    "soundcloud": "https://soundcloud.com/mrstmmusic",
+    "youtube": "https://www.youtube.com/@mrstmmusic",
+    "twitter": "https://x.com/mrstmmusic",
+    "website": "htt://localhost:3000"
+  },
+  "createdAt": {
+    "$date": "2025-06-15T07:18:52.538Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T07:18:52.538Z"
+  },
+  "__v": 0,
+  "bio": "Your gateway to a world of electrifying EDM creations! Get ready to dive into a universe of original compositions and remixes that will ignite your senses and leave you craving for more.\n\nMr Stm crafts his own unique soundscapes, blending pulsating beats, infectious melodies, and a touch of magic into every track. Immerse yourself in a symphony of sonic bliss as you journey through genres like progressive house, future bass, trance, and more.\n\nBeyond music, Mr Stm is also a passionate full-stack developer with a knack for building robust and scalable web applications. Proficient in technologies like React, Node.js, MongoDB, and Spring Boot, he merges creativity with clean, performant code. Whether crafting intuitive frontends or designing efficient backend systems, Mr Stm brings precision and originality to every project. His recent work includes real-time apps, music platforms, and API-driven services—all infused with a love for tech and user experience."
+},
+{
+  "_id": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "user": {
+    "$oid": "684e9944363a2577377a81db"
+  },
+  "firstName": "Ajay",
+  "lastName": "Prajapati",
+  "stageName": "Mr Ajay",
+  "artistImage": "https://cdn.vectorstock.com/i/1000v/62/46/dj-in-profile-vector-22426246.jpg",
+  "email": "ajay@gmail.com",
+  "password": "$2b$10$l7pn/b3lCkZ0crd7QgtnmO7akr0KIGMmWr1vkOHp0kjIHDxJmqYb2",
+  "socialLinks": {
+    "spotify": "",
+    "instagram": "",
+    "soundcloud": "",
+    "youtube": "",
+    "twitter": "",
+    "website": ""
+  },
+  "createdAt": {
+    "$date": "2025-06-15T10:01:31.911Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-15T10:01:31.911Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68501c9277e607ecf02565ac"
+  },
+  "user": {
+    "$oid": "68501c8877e607ecf02565a7"
+  },
+  "stageName": "Mr Aman",
+  "artistImage": "https://cdn.vectorstock.com/i/1000v/62/46/dj-in-profile-vector-22426246.jpg",
+  "socialLinks": {
+    "spotify": "",
+    "instagram": "",
+    "soundcloud": "",
+    "youtube": "",
+    "twitter": "",
+    "website": ""
+  },
+  "createdAt": {
+    "$date": "2025-06-16T13:30:58.547Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-16T13:30:58.547Z"
+  },
+  "__v": 0
+}]

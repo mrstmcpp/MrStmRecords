@@ -11,7 +11,6 @@ import { PlaylistCards } from "../components/shared/playlistCard";
 import TrackView from "../components/shared/trackView";
 import { Link } from "react-router-dom";
 import { TailSpin } from 'react-loader-spinner'; 
-import { Pagination } from "../components/shared/Pagination";
 
 
 const Homepage = () => {

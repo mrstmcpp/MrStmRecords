@@ -1,0 +1,769 @@
+[{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef0"
+  },
+  "name": "Midnight Embrace",
+  "url": "https://example.com/track1",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-05-30T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track1/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "A soothing ballad about longing and love.",
+  "songType": "Remix",
+  "duration": 278
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef1"
+  },
+  "name": "Sunset Mirage",
+  "url": "https://example.com/track2",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-01T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track2/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855657e03ddb2a7b3bb3f01"
+    }
+  ],
+  "description": "Captures the illusion of a fading summer dream.",
+  "songType": "Original",
+  "duration": 312
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef2"
+  },
+  "name": "Ocean Letters",
+  "url": "https://example.com/track3",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track3/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "A romantic tune inspired by letters lost at sea.",
+  "songType": "Original",
+  "duration": 241
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef3"
+  },
+  "name": "Echoes of Rain",
+  "url": "https://example.com/track4",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-05-25T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track4/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "Melancholic beats reflecting rainy memories.",
+  "songType": "Original",
+  "duration": 389
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef4"
+  },
+  "name": "Dancing Shadows",
+  "url": "https://example.com/track5",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-12T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track5/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "Energetic track echoing movement and passion.",
+  "songType": "Original",
+  "duration": 320
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef5"
+  },
+  "name": "Velvet Sky",
+  "url": "https://example.com/track6",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-16T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track6/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "Dreamy synths and soft vocals under the stars.",
+  "songType": "Original",
+  "duration": 301
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef6"
+  },
+  "name": "Whispers of You",
+  "url": "https://example.com/track7",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-05T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track7/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855657e03ddb2a7b3bb3f01"
+    }
+  ],
+  "description": "Haunting melodies about a fading connection.",
+  "songType": "Original",
+  "duration": 344
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef7"
+  },
+  "name": "Frozen Time",
+  "url": "https://example.com/track8",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-08T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track8/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "A time-slowing instrumental for reflection.",
+  "songType": "Cover",
+  "duration": 265
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef8"
+  },
+  "name": "Crimson Pulse",
+  "url": "https://example.com/track9",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-18T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track9/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "Bold beats symbolizing heartbeats and tension.",
+  "songType": "Original",
+  "duration": 410
+},
+{
+  "_id": {
+    "$oid": "685557d103ddb2a7b3bb3ef9"
+  },
+  "name": "Glass Hearts",
+  "url": "https://example.com/track10",
+  "artists": {
+    "$oid": "684e99fbe07d1a25e65a8cf3"
+  },
+  "releaseDate": {
+    "$date": "2025-06-19T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/track10/300",
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "description": "Soft piano-led melody of fragile love stories.",
+  "songType": "Original",
+  "duration": 356
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f18"
+  },
+  "name": "Retro Vibes",
+  "url": "https://example.com/track1",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-01T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r1/300",
+  "description": "Solo ride into a world of retro beats and funky bass.",
+  "songType": "Original",
+  "duration": 284
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f19"
+  },
+  "name": "Heat Drift",
+  "url": "https://example.com/track2",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-02T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r2/300",
+  "description": "A fiery summer solo that melts into your memory.",
+  "songType": "Original",
+  "duration": 310
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1a"
+  },
+  "name": "Echo Pulse",
+  "url": "https://example.com/track3",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-03T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r3/300",
+  "description": "A genre-bending collab of melody and groove.",
+  "songType": "Cover",
+  "duration": 347
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1b"
+  },
+  "name": "City Bloom",
+  "url": "https://example.com/track4",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-04T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r4/300",
+  "description": "Urban chill with a fresh genre twist.",
+  "songType": "Original",
+  "duration": 298
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1c"
+  },
+  "name": "Velvet Engines",
+  "url": "https://example.com/track5",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-05T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r5/300",
+  "description": "Drive slow with this smooth solo blend.",
+  "songType": "Original",
+  "duration": 265
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1d"
+  },
+  "name": "Moonwalker",
+  "url": "https://example.com/track6",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-06T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r6/300",
+  "description": "Spacey collab with deep drops and cosmic feels.",
+  "songType": "Cover",
+  "duration": 322
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1e"
+  },
+  "name": "Summer Cracks",
+  "url": "https://example.com/track7",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-07T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r7/300",
+  "description": "A hybrid heatwave of beats and bounce.",
+  "songType": "Remix",
+  "duration": 311
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f1f"
+  },
+  "name": "Horizon Spin",
+  "url": "https://example.com/track8",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-08T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r8/300",
+  "description": "Music for driving through memories.",
+  "songType": "Original",
+  "duration": 273
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f20"
+  },
+  "name": "Dual Pulse",
+  "url": "https://example.com/track9",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-09T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r9/300",
+  "description": "Two artists, two styles, one unforgettable track.",
+  "songType": "Cover",
+  "duration": 337
+},
+{
+  "_id": {
+    "$oid": "6855676603ddb2a7b3bb3f21"
+  },
+  "name": "Starlit Bounce",
+  "url": "https://example.com/track10",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-10T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r10/300",
+  "description": "Bounce to the rhythm under neon skies.",
+  "songType": "Remix",
+  "duration": 299
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f25"
+  },
+  "name": "Chrome Sunset",
+  "url": "https://example.com/track11",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-11T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r11/300",
+  "description": "A radiant blend of synth and soul, made for evening rides.",
+  "songType": "Original",
+  "duration": 276
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f26"
+  },
+  "name": "Skyline Echoes",
+  "url": "https://example.com/track12",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-12T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r12/300",
+  "description": "Echoing beats for rooftop nights and summer skies.",
+  "songType": "Original",
+  "duration": 288
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f27"
+  },
+  "name": "Parallel Lights",
+  "url": "https://example.com/track13",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-13T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r13/300",
+  "description": "A vibrant fusion of genres, lights, and tempo shifts.",
+  "songType": "Cover",
+  "duration": 314
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f28"
+  },
+  "name": "Coastal Mood",
+  "url": "https://example.com/track14",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-14T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r14/300",
+  "description": "Lofi groove that feels like an ocean breeze.",
+  "songType": "Original",
+  "duration": 293
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f29"
+  },
+  "name": "Desert Glow",
+  "url": "https://example.com/track15",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-15T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r15/300",
+  "description": "A slow burner track for stargazing in solitude.",
+  "songType": "Original",
+  "duration": 305
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f2a"
+  },
+  "name": "Twilight Mechanics",
+  "url": "https://example.com/track16",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-16T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r16/300",
+  "description": "Sharp transitions, deep bass, and mechanical soul.",
+  "songType": "Cover",
+  "duration": 331
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f2b"
+  },
+  "name": "Amber Fade",
+  "url": "https://example.com/track17",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    },
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-17T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r17/300",
+  "description": "Warm, fading tones for end-of-day vibes.",
+  "songType": "Original",
+  "duration": 270
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f2c"
+  },
+  "name": "Mirror Chase",
+  "url": "https://example.com/track18",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-18T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r18/300",
+  "description": "A fast track that feels like running through reflections.",
+  "songType": "Original",
+  "duration": 318
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f2d"
+  },
+  "name": "Digital Waves",
+  "url": "https://example.com/track19",
+  "artists": [
+    {
+      "$oid": "684e99fbe07d1a25e65a8cf3"
+    },
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "684e9d5dbc826b857a09999d"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-19T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r19/300",
+  "description": "Retro pads meet future bounce in this blend of sounds.",
+  "songType": "Remix",
+  "duration": 342
+},
+{
+  "_id": {
+    "$oid": "6855687b03ddb2a7b3bb3f2e"
+  },
+  "name": "Cold Flame",
+  "url": "https://example.com/track20",
+  "artists": [
+    {
+      "$oid": "684e73dc721b186f995c42cf"
+    }
+  ],
+  "genre": [
+    {
+      "$oid": "6855667c03ddb2a7b3bb3f0a"
+    }
+  ],
+  "releaseDate": {
+    "$date": "2025-06-20T00:00:00.000Z"
+  },
+  "plays": 0,
+  "albumArt": "https://picsum.photos/seed/r20/300",
+  "description": "An ambient burner for moody nights and open roads.",
+  "songType": "Original",
+  "duration": 289
+}]
