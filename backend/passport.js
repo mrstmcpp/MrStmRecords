@@ -28,7 +28,7 @@ const PassPortModule = () => {
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:5500/api/v1/user/auth/google/callback"
+            callbackURL: `${process.env.SERVER_URL}/user/auth/google/callback`
         },
         async function (accessToken, refreshToken, profile, cb) {
             try {
