@@ -21,6 +21,7 @@ import ChatPage from './components/pages/chatPage';
 import { jwtDecode } from "jwt-decode";
 import UserProfilePage from './components/pages/userProfilePage';
 import ArtistRegistrationPage from './components/pages/registerForArtistAccount';
+import GoogleAuthSuccess from './utils/GoogleAuthSuccess';
 
 function App() {
   const [currSong, setCurrSong] = useState(null);
@@ -74,15 +75,6 @@ function App() {
           </playerContext.Provider>
         ) : (
           <Routes>
-            {/* <Route path='/' element={<Homepage />} />
-            <Route path='/artist/*' element={<ArtistPage />} />
-            <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
-            <Route path='/genre/*' element={<GenrePage />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact-us' element={<ContactUs />} />
-            <Route path='/*' element={<Homepage />} />
-            <Route path='/login' element={<LoginComponent />} />
-            <Route path='/register' element={<RegisterComponent />} /> */}
             <Route path='/' element={<Homepage />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact-us' element={<ContactUs />} />
@@ -98,6 +90,8 @@ function App() {
             <Route path='/releases' element={<ReleasesPage />} />
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/register' element={<RegisterComponent />} />
+            <Route path="/google-auth-success" element={<GoogleAuthSuccess />} />
+
           </Routes>)}
 
       </BrowserRouter>

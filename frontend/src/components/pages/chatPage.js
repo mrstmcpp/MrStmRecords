@@ -4,6 +4,7 @@ import io from "socket.io-client";
 import { socketURL } from "../../utils/config/backendUrl";
 import TextInput from "../shared/TextInput";
 import Layout from "../../layouts/Layout"
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const socket = io(socketURL, { autoConnect: false });
 
@@ -90,7 +91,7 @@ const ChatPage = ({ userId }) => {
                 </div>
 
                 {/* Input */}
-                <div className="flex gap-2 items-end">
+                <div className="flex flex-row justify-between items-end">
                     <TextInput
                         placeholder={"Type a message"}
                         value={message}
@@ -99,9 +100,9 @@ const ChatPage = ({ userId }) => {
                     />
                     <button
                         onClick={sendMessage}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                        className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700"
                     >
-                        Send
+                        <Icon icon="material-symbols:send-outline-rounded" width="24" height="24" />
                     </button>
                 </div>
             </div>

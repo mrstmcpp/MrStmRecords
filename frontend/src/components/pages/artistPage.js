@@ -39,7 +39,7 @@ const ArtistPage = () => {
             try {
                 const tracks = await unauthenticatedGETRequest(`/artist/${artistId}/tracks`);
                 setTracksData(tracks);
-                console.log(tracks)
+                // console.log(tracks)
             } catch (error) {
                 toast.error("No Data to Show.");
             }

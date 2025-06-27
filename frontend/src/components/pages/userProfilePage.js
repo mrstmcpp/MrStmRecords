@@ -18,7 +18,7 @@ const UserProfilePage = ({ userId }) => {
         const fetchArtistData = async () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/user/${userId}`);
-                // console.log(userDetail)
+                console.log(userDetail)
                 if (!userDetail || userDetail.error || !userDetail._id) {
                     toast.error("User not found.");
                     navigate("/");
@@ -137,14 +137,14 @@ const UserProfilePage = ({ userId }) => {
                 </div>
 
                 <div className="flex flex-col font-poppins m-4 w-4/5">
+
+                    {artistData.artist && Object.keys(artistData.artist).length > 0 ? (
                     <div className="flex flex-row justify-between items-center text-3xl font-semibold mb-6 border-b pb-2 border-orange-400 w-full">
                         <h2 className="text-3xl font-semibold">Artist Profile</h2>
                         <span className="text-sm text-gray-400 font-normal">
                             Artist Since {new Date(artistData.artist.createdAt).toLocaleDateString()}
                         </span>
-                    </div>
-
-
+                    </div>) : ""}
                     {artistData.artist && Object.keys(artistData.artist).length > 0 ? (
                         <Link
                             to={`/artist/${artistData.artist._id}`}
