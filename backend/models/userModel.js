@@ -49,6 +49,10 @@ const UserAccount = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  googleId: {
+    type : String,
+    unique: true,
+  },
   artist:{
           type: mongoose.Schema.Types.ObjectId,
           ref: "Artist",

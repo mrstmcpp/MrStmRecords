@@ -18,9 +18,11 @@ const port = process.env.PORT || 5500;
 const { Server } = require("socket.io");
 const redisClient = require('./utils/redis');
 const messageModel = require("./models/messageModel");
+const session = require('express-session');
 
 app.use(cors());
 app.use(express.json());
+// app.use(passport.session());
 app.use(passport.initialize());
 PassPortModule();
 
@@ -74,6 +76,9 @@ io.on("connection", (socket) => {
 app.get("/api/v1/", (req, res) => {
     res.send("Welcome to the server");
 })
+
+
+
 
 const apiVersion = "/api/v1";
 
