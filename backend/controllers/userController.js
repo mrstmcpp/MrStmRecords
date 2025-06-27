@@ -90,8 +90,28 @@ exports.getUserAccountPublic = async (req, res) => {
     const { userId } = req.params;
     try {
         const user = await UserModel.findById(userId)
-            .select("firstName lastName followedArtists")
-            .populate("followedArtists", "stageName _id")
+            .select("firstName lastName followedArtists artist profilePicture")
+            .populate("followedArtists", "stageName _id artistImage")
+            .populate("artist" , "stageName _id artistImage createdAt");
+        if (!user) {
+            return res.status(404).json({
+                error: "User not found."
+            })
+        }
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(500).json({ error: "Internal server error" })
+    }
+}
+
+
+exports.getUserAccountPrivate = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const user = await UserModel.findById(userId)
+            .select("firstName lastName followedArtists artist profilePicture liked")
+            .populate("followedArtists", "stageName _id artistImage")
+            .populate("artist" , "stageName _id artistImage");
         if (!user) {
             return res.status(404).json({
                 error: "User not found."

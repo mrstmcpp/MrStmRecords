@@ -18,6 +18,10 @@ const UserAccount = new mongoose.Schema({
       "Please provide a valid email address"
     ]
   },
+  profilePicture:{
+    type: String,
+    default: "/ava3.jpg"
+  },
   password: {
     type: String,
     required: true,
@@ -44,7 +48,12 @@ const UserAccount = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
     default: false,
-  }
+  },
+  artist:{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Artist",
+          unique: true,
+      },
 }, { timestamps: true });
 
 const UserModel = mongoose.model("User", UserAccount);

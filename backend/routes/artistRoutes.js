@@ -4,7 +4,7 @@ const router = express.Router();
 const ArtistController = require("../controllers/artistController");
 const TrackController = require("../controllers/trackController");
 
-router.post("/" , passport.authenticate("jwt", {session: false}),
+router.post("/create" , passport.authenticate("jwt", {session: false}),
     ArtistController.createNewArtist
 );
 

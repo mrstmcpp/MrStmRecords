@@ -1,4 +1,5 @@
 const ArtistModel = require("../models/artistModel");
+const UserModel = require("../models/userModel");
 
 exports.createNewArtist = async (req, res) => {
   const { stageName, artistImage } =
@@ -33,6 +34,10 @@ exports.createNewArtist = async (req, res) => {
 
     await newArtist.save();
 
+    if (user && newArtist) {
+      await UserModel.findByIdAndUpdate(user, { artist: newArtist._id }, { new: true });
+    }
+
     return res.status(201).json({
       message: "Successfully registered for artist account.",
     });
@@ -63,29 +68,29 @@ exports.getArtistDetailsPublic = async (req, res) => {
 };
 
 exports.getAllArtists = async (req, res) => {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const skip = (page - 1) * limit;
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
 
-    try {
-        const total = await ArtistModel.countDocuments();
-        const artists = await ArtistModel.find({})
-            .select('stageName artistImage')
-            .skip(skip)
-            .limit(limit);
+  try {
+    const total = await ArtistModel.countDocuments();
+    const artists = await ArtistModel.find({})
+      .select('stageName artistImage')
+      .skip(skip)
+      .limit(limit);
 
-        if (!artists || artists.length === 0) {
-            return res.status(404).json({ error: "No artists found." });
-        }
-
-        return res.status(200).json({
-            totalArtists: total,
-            currentPage: page,
-            totalPages: Math.ceil(total / limit),
-            artists,
-        });
-    } catch (error) {
-        console.error("Error fetching artists:", error);
-        return res.status(500).json({ error: "Internal Server Error." });
+    if (!artists || artists.length === 0) {
+      return res.status(404).json({ error: "No artists found." });
     }
+
+    return res.status(200).json({
+      totalArtists: total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      artists,
+    });
+  } catch (error) {
+    console.error("Error fetching artists:", error);
+    return res.status(500).json({ error: "Internal Server Error." });
+  }
 };
