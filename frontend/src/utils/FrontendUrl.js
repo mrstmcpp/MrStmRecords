@@ -1,1 +1,1 @@
-export const frontEndUrl = "http://localhost:3000";
+export const frontEndUrl = "https://mrstmrecords.vercel.app";
