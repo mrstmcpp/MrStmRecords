@@ -9,30 +9,31 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 const socket = io(socketURL, { autoConnect: false });
 
 const ChatPage = ({ userId }) => {
-    const {toUser : receiverId} = useParams();
+    const { toUser: receiverId } = useParams();
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const chatBoxRef = useRef(null);
-    
+
 
 
     useEffect(() => {
-        socket.connect();
+        if (!socket.connected) socket.connect();
 
-        // Register current user on connection
         socket.on("connect", () => {
-            socket.emit("register", userId);
+            socket.emit("join", userId);
+            console.log("Connected as:", userId);
         });
 
-        // Listen for incoming private messages
-        socket.on("private_message", ({ from, message }) => {
-            setMessages((prev) => [...prev, { sender: from, text: message }]);
+        socket.on("receive-message", ({ from, message }) => {
+            const sender = from === userId ? 'me' : 'other';
+            setMessages((prev) => [...prev, { sender, text: message }]);
         });
 
-        // Optional: load initial chat history from MongoDB
+
+        // Load initial chat history
         fetch(`/api/v1/chat/${userId}/${receiverId}`)
-            .then((res) => res.json())
-            .then((data) => {
+            .then(res => res.json())
+            .then(data => {
                 setMessages(data.map(m => ({
                     sender: m.from === userId ? 'me' : 'other',
                     text: m.message
@@ -40,8 +41,9 @@ const ChatPage = ({ userId }) => {
             });
 
         return () => {
+            socket.off("receive-message");
+            socket.off("connect");
             socket.disconnect();
-            socket.off("private_message");
         };
     }, [userId, receiverId]);
 
@@ -57,7 +59,7 @@ const ChatPage = ({ userId }) => {
             const newMsg = { sender: 'me', text: message };
             setMessages((prev) => [...prev, newMsg]);
 
-            socket.emit("private_message", {
+            socket.emit("send-message", {
                 from: userId,
                 to: receiverId,
                 message,
@@ -81,8 +83,8 @@ const ChatPage = ({ userId }) => {
                         <div
                             key={idx}
                             className={`w-fit max-w-[70%] px-4 py-2 rounded-lg text-white ${msg.sender === 'me'
-                                    ? 'bg-blue-600 ml-auto text-right'
-                                    : 'bg-green-600 mr-auto text-left'
+                                ? 'bg-blue-600 ml-auto text-right'
+                                : 'bg-green-600 mr-auto text-left'
                                 }`}
                         >
                             {msg.text}

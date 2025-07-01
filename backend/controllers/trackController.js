@@ -31,14 +31,27 @@ exports.createNewTrack = async (req, res) => {
 //to fetch artist's tracks
 exports.getTrackByArtist = async (req, res) => {
   const { id } = req.params;
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
   try {
-    const TrackByArtist = await TrackModel.find({ artists: id }).populate("artists", '_id stageName').populate("genre", '_id name');
+    const totalTracks = await TrackModel.find({ artists: id }).countDocuments();
+
+    const TrackByArtist = await TrackModel.find({ artists: id }).populate("artists", '_id stageName').populate("genre", '_id name')
+      .skip(skip)
+      .limit(limit);;
     if (!TrackByArtist) {
       return res
         .status(400)
         .json({ error: "Please provide a valid artist id." });
     }
-    return res.status(200).json(TrackByArtist);
+
+    return res.status(200).json({
+      totalTracks: totalTracks,
+      page: page,
+      totalPages: Math.ceil(totalTracks / limit),
+      tracks: TrackByArtist
+    });
   } catch (e) {
     return res.status(500).json({ error: "Internal Server Error." });
   }
@@ -93,12 +106,12 @@ exports.getAllTracks = async (req, res) => {
       return res.status(404).json("Not found");
     }
 
-    
+
     return res.status(200).json({
-      totalTracks : totalTracks,
-      page : page,
+      totalTracks: totalTracks,
+      page: page,
       totalPages: Math.ceil(totalTracks / limit),
-      tracks : allTracks
+      tracks: allTracks
     });
   } catch (error) {
     return res.status(500).json({ Error: "Internal server error." })
