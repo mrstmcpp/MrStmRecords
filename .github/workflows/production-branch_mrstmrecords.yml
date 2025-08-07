@@ -48,9 +48,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.__clientidsecretname__ }}
-          tenant-id: ${{ secrets.__tenantidsecretname__ }}
-          subscription-id: ${{ secrets.__subscriptionidsecretname__ }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_43A3B5CCB3FC4569BCA4B49AED4D717D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A9EC626FA7EF4285AF2D012B878858E1 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D67AD59CE8184A898741AEC8C27C8F13 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -59,4 +59,5 @@ jobs:
           app-name: 'mrstmrecords'
           slot-name: 'Production'
           package: ./backend  # 👈 deploy the backend folder
+
 
