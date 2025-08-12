@@ -17,7 +17,6 @@ import { useState } from 'react';
 import { FloatingPlayer } from './components/player/floatingPlayer';
 import TrackPage from './components/pages/trackPage';
 import AllArtistPage from './components/pages/allArtistPage';
-import ChatPage from './components/pages/chatPage';
 import { jwtDecode } from "jwt-decode";
 import UserProfilePage from './components/pages/userProfilePage';
 import ArtistRegistrationPage from './components/pages/registerForArtistAccount';
@@ -67,7 +66,6 @@ function App() {
               <Route path='/artists' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
-              <Route path='/chat/:toUser' element={<ChatPage userId={userId} />} />
               <Route path='/user/profile' element={<UserProfilePage userId={userId}/>} />
               <Route path='/artist/create' element={<ArtistRegistrationPage />} />
             </Routes>

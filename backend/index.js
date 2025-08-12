@@ -13,12 +13,13 @@ const artistRoutes = require("./routes/artistRoutes");
 const accountRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes")
 const albumRoutes = require("./routes/albumRoutes");
-const chatRoutes = require("./routes/chatRoutes");
 const port = process.env.PORT || 5500;
 const { Server } = require("socket.io");
 const redisClient = require('./utils/redis');
 const messageModel = require("./models/messageModel");
 const session = require('express-session');
+const messageRoutes = require("./routes/messageRoutes");
+
 
 app.use(cors());
 app.use(express.json());
@@ -89,7 +90,8 @@ app.use(`${apiVersion}/artist`, artistRoutes);
 app.use(`${apiVersion}/user`, accountRoutes);
 app.use(`${apiVersion}/admin`, adminRoutes);
 app.use(`${apiVersion}/album`, albumRoutes);
-app.use(`${apiVersion}/chat`, chatRoutes);
+app.use(`${apiVersion}/messages`, messageRoutes);
+
 
 Connection();
 
