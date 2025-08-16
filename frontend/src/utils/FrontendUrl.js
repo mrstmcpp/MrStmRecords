@@ -1,2 +1,2 @@
-const frontEndUrl = "http://localhost:3000";
-module.exports = { frontEndUrl };
+
+export const frontEndUrl = "https://mrstmrecords.vercel.app";

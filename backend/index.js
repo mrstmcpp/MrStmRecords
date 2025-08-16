@@ -15,7 +15,7 @@ const adminRoutes = require("./routes/adminRoutes")
 const albumRoutes = require("./routes/albumRoutes");
 const port = process.env.PORT || 5500;
 const { Server } = require("socket.io");
-const redisClient = require('./utils/redis');
+// const redisClient = require('./utils/redis');
 const messageModel = require("./models/messageModel");
 const session = require('express-session');
 const messageRoutes = require("./routes/messageRoutes");
@@ -47,15 +47,15 @@ io.on("connection", (socket) => {
             console.error('Invalid userId:', userId);
             return;
         }
-        await redisClient.set(`user:${userId}`, socket.id);
-        await redisClient.set(`socket:${socket.id}`, userId);
+        // await redisClient.set(`user:${userId}`, socket.id);
+        // await redisClient.set(`socket:${socket.id}`, userId);
         console.log(`Mapped user : ${userId} <-> socket:${socket.id}`);
     })
 
     socket.on('private_message', async ({ to, message, from }) => {
         await messageModel.create({ from, to, message });
 
-        const receiverSocketId = await redisClient.get(`user:${to}`);
+        // const receiverSocketId = await redisClient.get(`user:${to}`);
         if (receiverSocketId) {
             io.to(receiverSocketId).emit('private_message', {
                 message,
@@ -65,10 +65,10 @@ io.on("connection", (socket) => {
     });
 
     socket.on('disconnect', async () => {
-        const userId = await redisClient.get(`socket:${socket.id}`);
+        // const userId = await redisClient.get(`socket:${socket.id}`);
         if (userId) {
-            await redisClient.del(`user:${userId}`);
-            await redisClient.del(`socket:${socket.id}`);
+            // await redisClient.del(`user:${userId}`);
+            // await redisClient.del(`socket:${socket.id}`);
             console.log(`Removed mappings for user:${userId}`);
         }
     });
