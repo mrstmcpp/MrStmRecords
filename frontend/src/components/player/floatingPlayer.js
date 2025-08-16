@@ -29,7 +29,7 @@ export const FloatingPlayer = () => {
 
     const togglePlayPause = () => {
         if(isPaused){
-            playSong("https://res.cloudinary.com/dtur9xepq/video/upload/v1720716900/ypx5cdndp3eamlu4juml.mp3");
+            playSong("https://res.cloudinary.com/dtur9xepq/video/upload/v1754469893/Happy_Mpp3_gr3qfq.mp3");
         }else{
             pauseSong();
         }

@@ -185,7 +185,7 @@ const ArtistPage = () => {
                                 id={card._id}
                                 all={card}
                                 urlImage={card.albumArt}
-                                text={card.title}
+                                text={card.name}
                                 genre={card.genre}
                                 artist={card.artists}
                             />

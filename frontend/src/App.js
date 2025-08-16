@@ -47,10 +47,10 @@ function App() {
 
         {/* PUBLIC ROUTES */}
 
+        <playerContext.Provider value={{ currSong, setCurrSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused, isPlayerVisible, setIsPlayerVisible, isSongPlaying, setIsSongPlaying }}>
 
 
-        {cookie.token ? (
-          <playerContext.Provider value={{ currSong, setCurrSong, soundPlayed, setSoundPlayed, isPaused, setIsPaused, isPlayerVisible, setIsPlayerVisible, isSongPlaying, setIsSongPlaying }}>
+          {cookie.token ? (
 
             <Routes>
               <Route path='/' element={<Homepage />} />
@@ -66,31 +66,31 @@ function App() {
               <Route path='/artists' element={<AllArtistPage />} />
               <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
               <Route path='/releases' element={<ReleasesPage />} />
-              <Route path='/user/profile' element={<UserProfilePage userId={userId}/>} />
+              <Route path='/user/profile' element={<UserProfilePage userId={userId} />} />
               <Route path='/artist/create' element={<ArtistRegistrationPage />} />
             </Routes>
 
-          </playerContext.Provider>
-        ) : (
-          <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact-us' element={<ContactUs />} />
-            <Route path='*' element={<Homepage />} />
-            <Route path='/admin/*' element={<Admin />} />
-            <Route path='/player' element={<FloatingPlayer />} />
-            <Route path='/upload' element={<UploadArea />} />
-            <Route path='/genre/:genreId' element={<GenrePage />} />
-            <Route path='/track/:trackID' element={<TrackPage />} />
-            <Route path='/artist/:artistId' element={<ArtistPage />} />
-            <Route path='/artists' element={<AllArtistPage />} />
-            <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
-            <Route path='/releases' element={<ReleasesPage />} />
-            <Route path='/login' element={<LoginComponent />} />
-            <Route path='/register' element={<RegisterComponent />} />
-            <Route path="/google-auth-success" element={<GoogleAuthSuccess />} />
+          ) : (
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/contact-us' element={<ContactUs />} />
+              <Route path='*' element={<Homepage />} />
+              <Route path='/admin/*' element={<Admin />} />
+              <Route path='/player' element={<FloatingPlayer />} />
+              <Route path='/upload' element={<UploadArea />} />
+              <Route path='/genre/:genreId' element={<GenrePage />} />
+              <Route path='/track/:trackID' element={<TrackPage />} />
+              <Route path='/artist/:artistId' element={<ArtistPage />} />
+              <Route path='/artists' element={<AllArtistPage />} />
+              <Route path='/playlist/:playlistId' element={<PlaylistPage />} />
+              <Route path='/releases' element={<ReleasesPage />} />
+              <Route path='/login' element={<LoginComponent />} />
+              <Route path='/register' element={<RegisterComponent />} />
+              <Route path="/google-auth-success" element={<GoogleAuthSuccess />} />
 
-          </Routes>)}
+            </Routes>)}
+        </playerContext.Provider>
 
       </BrowserRouter>
     </div>

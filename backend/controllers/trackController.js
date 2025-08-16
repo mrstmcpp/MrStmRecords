@@ -70,6 +70,7 @@ exports.getTrackById = async (req, res) => {
       })
     }
     const response = {
+      id: track._id,
       name: track.name,
       url: track.url,
       artists: track.artists,
@@ -117,3 +118,4 @@ exports.getAllTracks = async (req, res) => {
     return res.status(500).json({ Error: "Internal server error." })
   }
 }
+
