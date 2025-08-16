@@ -5,7 +5,7 @@ const passport = require('passport');
 const jwt = require("jsonwebtoken");
 const { frontEndUrl } = require('../../frontend/src/utils/FrontendUrl');
 
-router.post('/register',  userController.register);
+router.post('/register', userController.register);
 
 router.post("/login", userController.login);
 
@@ -38,18 +38,19 @@ router.get('/auth/google/callback',
 );
 
 router.get(
-  '/auth/spotify',
-  passport.authenticate('spotify', {
-    scope: ['user-read-email', 'user-read-private'],
-    showDialog: true
-  })
+    '/auth/spotify',
+    passport.authenticate('spotify', {
+        session: false,
+        scope: ['user-read-email', 'user-read-private'],
+        showDialog: true
+    })
 );
 
 router.get('/auth/spotify/callback',
-    passport.authenticate('spotify', { failureRedirect: '/login' }),
+    passport.authenticate('spotify', { session: false, failureRedirect: '/login' }),
     function (req, res) {
-
-        return {Success : "Success"};
+        const token = jwt.sign({ id: req.user._id }, "mysecretkeystring", { expiresIn: '1d' });
+        res.redirect(`${frontEndUrl}/google-auth-success?token=${token}`);
     });
 
 

@@ -54,7 +54,7 @@ exports.getArtistDetailsPublic = async (req, res) => {
   try {
     const artistDetails = await ArtistModel.findById(
       id,
-      "stageName artistImage bio socialLinks"
+      "stageName artistImage bio socialLinks user"
     );
     if (!artistDetails) {
       return res

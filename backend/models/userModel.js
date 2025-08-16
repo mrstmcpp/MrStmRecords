@@ -53,6 +53,10 @@ const UserAccount = new mongoose.Schema({
     type : String,
     unique: true,
   },
+  spotifyId: {
+    type: String,
+    unique: true,
+  },
   artist:{
           type: mongoose.Schema.Types.ObjectId,
           ref: "Artist",

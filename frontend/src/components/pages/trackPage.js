@@ -26,6 +26,7 @@ const TrackPage = () => {
                 const trackDetails = await unauthenticatedGETRequest(`/track/${trackID}`);
                 if (trackDetails) {
                     setTrackData(trackDetails);
+                    
                     const moreFromArtist = await unauthenticatedGETRequest(`/artist/${trackDetails.artists[0]._id}/tracks`);
                     if (moreFromArtist) setRelatedTrackData(moreFromArtist);
                 } else setError("No track details found.");
@@ -120,7 +121,7 @@ const TrackPage = () => {
                         <div className="border border-gray-500 mt-32 m-8 sm:ml-80 sm:mr-80"></div>
 
                         <h1 className="text-3xl font-bold text-center mt-24 text-white">More From {trackData.artists[0]?.stageName}</h1>
-                        <div className="flex flex-wrap justify-center items-center mt-12">
+                        {/* <div className="flex flex-wrap justify-center items-center mt-12">
                             <Suspense fallback={<TailSpin height={40} width={40} color="#F97316" />}>
                                 {relatedTrackData.slice(0,5).map((card, index) => (
                                     <TrackView
@@ -134,7 +135,7 @@ const TrackPage = () => {
                                     />
                                 ))}
                             </Suspense>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             )}

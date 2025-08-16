@@ -1,6 +1,7 @@
 const { useEffect } = require("react");
 const { useCookies } = require("react-cookie");
 const { useNavigate } = require("react-router-dom");
+const {toast} = require("react-toastify");
 
 const GoogleAuthSuccess = () => {
     const [_, setCookie] = useCookies(['token']);
@@ -13,6 +14,7 @@ const GoogleAuthSuccess = () => {
             const date = new Date();
             date.setDate(date.getDate() + 30);
             setCookie('token', token, { path: '/', expires: date });
+            toast.success("Login Successfull.")
             navigate('/');
         } else {
             navigate('/login');

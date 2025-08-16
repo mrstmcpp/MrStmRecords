@@ -82,69 +82,22 @@ const UserProfilePage = ({ userId }) => {
                 <div className="text-center">
                     {/* Artist Name */}
                     <div className="text-4xl font-bold mt-4">
-                        {artistData.firstName + " " + artistData.lastName}
+                        {artistData.firstName + (artistData.lastName ? ` ${artistData.lastName}` : "")}
                     </div>
 
                     {/* Social Media Links */}
-                    <div className="flex justify-center space-x-4 mt-6">
-                        {artistData.socialLinks && (
-                            <>
-                                {artistData.socialLinks.twitter && artistData.socialLinks.twitter.length > 0 && (
-                                    <a href={artistData.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-blue-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="devicon:twitter" className="h-8 w-8 text-blue-500" />
-                                        </div>
-                                    </a>
-                                )}
-                                {artistData.socialLinks.instagram && artistData.socialLinks.instagram.length > 0 && (
-                                    <a href={artistData.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-pink-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="skill-icons:instagram" className="h-8 w-8 text-pink-500" />
-                                        </div>
-                                    </a>
-                                )}
-                                {artistData.socialLinks.youtube && artistData.socialLinks.youtube.length > 0 && (
-                                    <a href={artistData.socialLinks.youtube} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-red-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="logos:youtube-icon" className="h-8 w-8 text-red-500" />
-                                        </div>
-                                    </a>
-                                )}
-                                {artistData.socialLinks.soundcloud && artistData.socialLinks.soundcloud.length > 0 && (
-                                    <a href={artistData.socialLinks.soundcloud} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-orange-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="logos:soundcloud" className="h-8 w-8 text-orange-500" />
-                                        </div>
-                                    </a>
-                                )}
-                                {artistData.socialLinks.spotify && artistData.socialLinks.spotify.length > 0 && (
-                                    <a href={artistData.socialLinks.spotify} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-green-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="logos:spotify-icon" className="h-8 w-8 text-green-500" />
-                                        </div>
-                                    </a>
-                                )}
-                                {artistData.socialLinks.website && artistData.socialLinks.website.length > 0 && (
-                                    <a href={artistData.socialLinks.website} target="_blank" rel="noopener noreferrer">
-                                        <div className="flex items-center justify-center p-2 border rounded-md hover:bg-slate-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
-                                            <Icon icon="mdi:web" className="h-8 w-8" />
-                                        </div>
-                                    </a>
-                                )}
-                            </>
-                        )}
-                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col font-poppins m-4 w-4/5">
 
                     {artistData.artist && Object.keys(artistData.artist).length > 0 ? (
-                    <div className="flex flex-row justify-between items-center text-3xl font-semibold mb-6 border-b pb-2 border-orange-400 w-full">
-                        <h2 className="text-3xl font-semibold">Artist Profile</h2>
-                        <span className="text-sm text-gray-400 font-normal">
-                            Artist Since {new Date(artistData.artist.createdAt).toLocaleDateString()}
-                        </span>
-                    </div>) : ""}
+                        <div className="flex flex-row justify-between items-center text-3xl font-semibold mb-6 border-b pb-2 border-orange-400 w-full">
+                            <h2 className="text-3xl font-semibold">Artist Profile</h2>
+                            <span className="text-sm text-gray-400 font-normal">
+                                Artist Since {new Date(artistData.artist.createdAt).toLocaleDateString()}
+                            </span>
+                        </div>) : ""}
                     {artistData.artist && Object.keys(artistData.artist).length > 0 ? (
                         <Link
                             to={`/artist/${artistData.artist._id}`}
@@ -169,7 +122,7 @@ const UserProfilePage = ({ userId }) => {
 
                     <div className="flex flex-row justify-between items-center text-3xl font-semibold mb-6 border-b pb-2 border-orange-400 w-full">
                         <h2 className="text-3xl font-semibold">Followed Artists</h2>
-                        
+
                     </div>
                     {artistData.followedArtists.length > 0 && (
                         <div className="flex flex-wrap w-5/6">

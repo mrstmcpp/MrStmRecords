@@ -28,14 +28,14 @@ const PassPortModule = () => {
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: `${process.env.SERVER_URL}/user/auth/google/callback`
+            callbackURL: `${process.env.SERVER_URL}/api/v1/user/auth/google/callback`
         },
         async function (accessToken, refreshToken, profile, cb) {
-            try {
-                const user = await userModel.findOne({ googleId: profile.id }); // assuming you store Google ID in `googleId`
+            try {  
+                const user = await userModel.findOne({ email : profile.emails[0].value }); // assuming you store Google ID in `googleId`
+                
                 if (!user) {
-                    // If user doesn't exist, create a new one
-                    console.log(profile);
+                    
                     const randomPassword = generator.generate({
                         length: 8,
                         numbers: true,
@@ -46,8 +46,9 @@ const PassPortModule = () => {
 
                     });
                     const hashedPassword = await bcrypt.hash(randomPassword, 10);
+                    
 
-                    const newUser = new userModel({
+                    user = await userModel.create({
                         googleId: profile.id,
                         firstName: profile.name.givenName,
                         lastName: profile.name.familyName,
@@ -56,8 +57,7 @@ const PassPortModule = () => {
                         password: hashedPassword
                     });
                     
-                    await newUser.save();
-                    return cb(null, newUser);
+                    return cb(null, user);
                 }
                 return cb(null, user);
             } catch (err) {
@@ -70,19 +70,29 @@ const PassPortModule = () => {
         {
             clientID: process.env.SPOTIFY_CLIENT_ID,
             clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-            callbackURL: 'http://127.0.0.1:5500/api/v1/user/auth/spotify/callback'
+            callbackURL: `${process.env.SERVER_URL}/api/v1/user/auth/spotify/callback`
         },
         async (accessToken, refreshToken, expires_in, profile, done) => {
             try {
-                let user = await userModel.findOne({ email: profile.emails[0].value });
-
+                let user = await userModel.findOne({ email : profile.emails?.[0]?.value});
                 if (!user) {
+                    const randomPassword = generator.generate({
+                        length: 8,
+                        numbers: true,
+                        symbols: true,
+                        uppercase: false,
+                        excludeSimilarCharacters: true,
+                        strict: true,
+
+                    });
+                    const hashedPassword = await bcrypt.hash(randomPassword, 10);
+
                     user = await userModel.create({
                         firstName: profile.displayName || 'Spotify',
-                        lastName: 'User',
-                        email: profile.emails?.[0]?.value || `spotify_${profile.id}@spotify.com`,
-                        password: "SPOTIFY_AUTH",
-                        profilePicture: profile.photos?.[0]?.url || "/ava3.jpg",
+                        email: profile.emails?.[0]?.value,
+                        password: hashedPassword,
+                        profilePicture: profile.photos?.[0]?.value,
+                        spotifyId: profile.id
                     });
                 }
 

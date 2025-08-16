@@ -1,1 +1,2 @@
+
 export const frontEndUrl = "https://mrstmrecords.vercel.app";

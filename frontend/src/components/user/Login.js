@@ -34,8 +34,13 @@ const LoginComponent = () => {
         }
     }
     const GoogleLoginEndpoint = `${backendURL}/user/auth/google`;
+    const SpotifyLoginEndpoint = `${backendURL}/user/auth/spotify`;
+
     const handleGoogleLogin = () => {
         window.location.href = GoogleLoginEndpoint;
+    };
+    const handleSpotifyLogin = () => {
+        window.location.href = SpotifyLoginEndpoint;
     };
 
     return (
@@ -62,7 +67,6 @@ const LoginComponent = () => {
                         <div className='flex flex-col justify-items-center mb-4 space-y-4'>
                             <button
                                 className='bg-slate-900 border font-semibold p-2 rounded-full block text-white hover:bg-slate-800'
-                                onClick={handleGoogleLogin}
                             >
                                     <Link to={"/register"}>
                                 <div className='flex flex-wrap items-center place-content-center'>
@@ -85,7 +89,7 @@ const LoginComponent = () => {
 
                             <button
                                 className='bg-slate-900 border font-semibold p-2 rounded-full block text-white hover:bg-slate-800'
-                                onClick={() => toast.error("Sorry, Currently unavailable.")}
+                                onClick={handleSpotifyLogin}
                             >
                                 <div className='flex flex-wrap items-center place-content-center'>
 
