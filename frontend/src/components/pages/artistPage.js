@@ -22,7 +22,7 @@ const ArtistPage = () => {
         const fetchArtistData = async () => {
             try {
                 const userDetail = await unauthenticatedGETRequest(`/artist/${artistId}`);
-                
+                // console.log(userDetail)
                 if (!userDetail || userDetail.error || !userDetail._id) {
                     toast.error("Artist not found.");
                     navigate("/");
@@ -61,8 +61,8 @@ const ArtistPage = () => {
                 .catch(() => setLoading(false));
         }
     }, [artistId , navigate]);
-
-    const sortedtop5 = tracksData.toSorted((a, b) => b.plays - a.plays);
+    console.log(tracksData)
+    const sortedtop5 = tracksData.tracks?.toSorted((a, b) => b.plays - a.plays);
 
     if (loading) {
         return (
@@ -110,7 +110,7 @@ const ArtistPage = () => {
                     </div>
 
                     {/* Social Media Links */}
-                    <div className="flex justify-center space-x-4 mt-6">
+                    <div className="flex flex-wrap justify-items-center space-x-2 m-6">
                         {artistData.socialLinks && (
                             <>
                                 {artistData.socialLinks.twitter && artistData.socialLinks.twitter.length > 0 && (
@@ -155,7 +155,7 @@ const ArtistPage = () => {
                                         </div>
                                     </a>
                                 )}
-                                <Link to={`/chat/${artistId}`}>
+                                <Link to={`/chat/${artistData.user}`}>
                                         <div className="flex items-center justify-center p-2 border rounded-md hover:bg-slate-500 hover:bg-opacity-20 transition duration-300 ease-in-out">
                                             <Icon icon="material-symbols:chat" className="h-8 w-8" />
                                         </div>
@@ -166,7 +166,7 @@ const ArtistPage = () => {
                 </div>
 
                 <div className="flex flex-col flex-wrap justify-center font-poppins m-4 w-4/5 ">
-                    <div className="text-2xl">
+                    <div className="flex flex-row justify-between items-center text-3xl font-semibold mb-6 border-b pb-2 border-orange-400 w-full">
                         About {artistData.stageName}
                     </div>
                     <div className="text-gray-300">
@@ -185,7 +185,7 @@ const ArtistPage = () => {
                                 id={card._id}
                                 all={card}
                                 urlImage={card.albumArt}
-                                text={card.title}
+                                text={card.name}
                                 genre={card.genre}
                                 artist={card.artists}
                             />

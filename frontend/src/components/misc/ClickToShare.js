@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { frontEndUrl } from "../../utils/FrontendUrl";
 export const ClickToShare = async (data, type) => {
     if (navigator.share) {
@@ -6,20 +7,19 @@ export const ClickToShare = async (data, type) => {
 
             switch (type) {
                 case 'track':
-                    shareUrl = `${frontEndUrl}/track/${data._id}`;
-                    console.log(data);
+                    shareUrl = `${frontEndUrl}/track/${data.id}`;
                     break;
                 case 'artist':
-                    shareUrl = `${frontEndUrl}/artist/${data.artist._id}`;
+                    shareUrl = `${frontEndUrl}/artist/${data.artist.id}`;
                     break;
                 case 'album':
-                    shareUrl = `${frontEndUrl}/album/${data._id}`;
+                    shareUrl = `${frontEndUrl}/album/${data.id}`;
                     break;
                 case 'genre':
-                    shareUrl = `${frontEndUrl}/genre/${data._id}`;
+                    shareUrl = `${frontEndUrl}/genre/${data.id}`;
                     break;
                 default:
-                    shareUrl = `${frontEndUrl}/track/${data._id}`;
+                    shareUrl = `${frontEndUrl}/track/${data.id}`;
                     break;
             }
             await navigator.share({
@@ -27,7 +27,7 @@ export const ClickToShare = async (data, type) => {
                 text: data.description,
                 url: shareUrl
             });
-            console.log(data);
+            // console.log(data);
             
         } catch (error) {
             console.error('Error sharing:', error);
