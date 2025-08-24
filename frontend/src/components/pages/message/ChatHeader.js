@@ -1,9 +1,9 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useChatStore } from "../../stores/useChatStore";
-
+import { useSocketStore } from "../../stores/useSocketStore";
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
-
+  const { onlineUsers } = useSocketStore();
 
   return (
     <div className="p-2.5 border-b border-base-300">

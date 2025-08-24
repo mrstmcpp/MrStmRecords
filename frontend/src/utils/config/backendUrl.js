@@ -1,4 +1,3 @@
 
-export const backendURL = "https://mrstmrecords.onrender.com/api/v1";
-export const socketURL = "http://localhost:5001/"
-
+export const backendURL = "http://localhost:5500/api/v1";
+export const socketURL = "http://localhost:5500/api/v1"

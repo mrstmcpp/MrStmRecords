@@ -3,7 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
-const { frontEndUrl } = require('../../frontend/src/utils/FrontendUrl');
+require('dotenv').config();
 
 router.post('/register', userController.register);
 
@@ -33,7 +33,7 @@ router.get('/auth/google/callback',
     }),
     function (req, res) {
         const token = jwt.sign({ id: req.user._id }, "mysecretkeystring", { expiresIn: '1d' });
-        res.redirect(`${frontEndUrl}/google-auth-success?token=${token}`);
+        res.redirect(`${process.env.FRONTEND_URL}/google-auth-success?token=${token}`);
     }
 );
 
@@ -50,7 +50,7 @@ router.get('/auth/spotify/callback',
     passport.authenticate('spotify', { session: false, failureRedirect: '/login' }),
     function (req, res) {
         const token = jwt.sign({ id: req.user._id }, "mysecretkeystring", { expiresIn: '1d' });
-        res.redirect(`${frontEndUrl}/google-auth-success?token=${token}`);
+        res.redirect(`${process.env.FRONTEND_URL}/google-auth-success?token=${token}`);
     });
 
 

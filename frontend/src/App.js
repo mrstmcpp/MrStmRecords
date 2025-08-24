@@ -21,6 +21,7 @@ import { jwtDecode } from "jwt-decode";
 import UserProfilePage from './components/pages/userProfilePage';
 import ArtistRegistrationPage from './components/pages/registerForArtistAccount';
 import GoogleAuthSuccess from './utils/GoogleAuthSuccess';
+import ChatPage from './components/pages/message/chatPage';
 
 function App() {
   const [currSong, setCurrSong] = useState(null);
@@ -68,6 +69,7 @@ function App() {
               <Route path='/releases' element={<ReleasesPage />} />
               <Route path='/user/profile' element={<UserProfilePage userId={userId} />} />
               <Route path='/artist/create' element={<ArtistRegistrationPage />} />
+              <Route path='/messages' element={<ChatPage />} />
             </Routes>
 
           ) : (
